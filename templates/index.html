@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block navbarnavhome %}
+<li class="nav-item active">
+    <a class="nav-link" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
+</li>
+{% endblock %}
+
+{% block content %}
+<div class="card form-card"></div>
+    <!-- CTA jumbotron -->
+    <div class="jumbotron form-card text-center">
+        <h2 class="h1-responsive">Know a good barber?</h2>
+        <p class="lead">Then tell us below!</p>
+        <hr class="my-2">
+        <p>Submit your review today to be in with a chance of winning a €100 barbershop voucher</p>
+        <a class="btn barber-blue white-text btn-lg" href="{{ url_for('register') }}" role="button">Rate your
+            barber</a>
+    </div>
+    <!-- end of CTA jumbotron -->
+</div>
+{% endblock %}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="../static/images/barbers-pole_favicon.png" type="image/png">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <!-- jQuery DateTimePicker plugin CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.datetimepicker.min.css') }}">
+
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <title>{% block title %}Clipadvisor: Rate Your Barber!{% endblock %}</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark barber-red">
+        <a class="navbar-brand" href="{{ url_for('home') }}">Clipadvisor <i class="fas fa-cut"></i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                {% block navbarnavhome %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                {% endblock %}
+                {% block navbarnavbarbers %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('barbers') }}">Barbers</a>
+                </li>
+                {% endblock %}
+                {% block navbarnavreviews %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('reviews') }}">Reviews</a>
+                </li>
+                {% endblock %}
+                {% block navbarnavlogin %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">Log In</a>
+                </li>
+                {% endblock %}
+                {% block navbarnavcontact %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+                </li>
+                {% endblock %}
+            </ul>
+        </div>
+    </nav>
+    <!-- /navbar -->
+    <!-- container for dismissible flash messaging alerts -->
+    <div class="well container flash-message-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message[0] }} py-2_5 pl-3 pr-4 my-3 mb-0 text-center fade show alert-dismissible flash-msg-box-top"
+            role="alert">
+            <strong>{{ message[1] }}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" id="flash-message-dismiss">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <!-- /Flash messages container -->
+    </div>
+    <!-- /container for dismissible flash messaging alerts -->
+    <!-- main content container -->
+    <div class="well container d-flex main-container">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    <!-- /main content container -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- Material Design Bootstrap core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+    <!-- jQuery DateTimePicker plugin JS -->
+    <script src="{{ url_for('static', filename='js/jquery.datetimepicker.full.min.js') }}"></script>
+
+    <!-- Custom script -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

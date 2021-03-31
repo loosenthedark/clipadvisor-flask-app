@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h2 class="h1-responsive">Hello, world!</h2>
+    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention
+        to featured content or information.</p>
+    <hr class="my-2">
+    <p>It uses utility classes for typography and spacing to space content out within the larger
+        container.
+    </p>
+    <a class="btn btn-primary btn-lg" role="button">Learn more</a>
+</div>
+
+<!-- Table  -->
+<table class="table table-hover table-fixed">
+    <!-- Table head -->
+    <thead>
+        <tr>
+            <th>#</th>
+            <th><i class="fas fa-leaf mr-2 blue-text" aria-hidden="true"></i>Lorem</th>
+            <th><i class="fas fa-leaf mr-2 teal-text" aria-hidden="true"></i>Ipsum</th>
+            <th><i class="fas fa-leaf mr-2 indigo-text" aria-hidden="true"></i>Dolor</th>
+        </tr>
+    </thead>
+    <!-- Table head -->
+
+    <!-- Table body -->
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td><i class="far fa-gem mr-2 grey-text" aria-hidden="true"></i>Cell 1</td>
+            <td><i class="fas fa-download mr-2 grey-text" aria-hidden="true"></i>Cell 2</td>
+            <td><i class="fas fa-book mr-2 grey-text" aria-hidden="true"></i>Cell 3</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td><i class="fas fa-graduation-cap mr-2 grey-text" aria-hidden="true"></i>Cell 4</td>
+            <td><i class="fas fa-gift mr-2 grey-text" aria-hidden="true"></i>Cell 5</td>
+            <td><i class="fas fa-image mr-2 grey-text" aria-hidden="true"></i>Cell 6</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td><i class="fas fa-magic mr-2 grey-text" aria-hidden="true"></i>Cell 7</td>
+            <td><i class="fas fa-table mr-2 grey-text" aria-hidden="true"></i>Cell 8</td>
+            <td><i class="fas fa-edit mr-2 grey-text" aria-hidden="true"></i>Cell 9</td>
+        </tr>
+    </tbody>
+    <!-- Table body -->
+</table>
+<!-- Table  -->
+
+<div class="row">
+    <div class="col-sm-6 offset-sm-3 mb-3 mb-md-0">
+        <div class="card">
+            <div class="card-header">
+                Featured
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-sm-6 mb-3 mb-md-0">
+        <div class="card text-center">
+            <div class="card-header">
+                Featured
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#!" class="btn btn-primary">Go somewhere</a>
+            </div>
+            <div class="card-footer text-muted">
+                2 days ago
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="card text-center">
+            <div class="card-header">
+                Featured
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#!" class="btn btn-primary">Go somewhere</a>
+            </div>
+            <div class="card-footer text-muted">
+                2 days ago
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 col-lg-4 mb-3 mb-md-0">
+        <div class="card border-primary" style="max-width: 20rem;">
+            <div class="card-header bg-transparent border-primary">Header</div>
+            <div class="card-body text-danger">
+                <h5 class="card-title">Danger Panel title</h5>
+                <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the
+                    panel's content.</p>
+            </div>
+            <div class="card-footer bg-transparent border-primary">Footer</div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-4 mb-3 mb-md-0">
+        <div class="card text-white bg-danger mb-3" style="max-width: 20rem;">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+                <h5 class="card-title">Danger Panel title</h5>
+                <p class="card-text text-white">Some quick example text to build on the panel title and make up the
+                    bulk of the panel's content.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-4 mb-3 mb-md-0">
+        <div class="card border-danger mb-3" style="max-width: 20rem;">
+            <div class="card-header">Header</div>
+            <div class="card-body text-danger">
+                <h5 class="card-title">Danger Panel title</h5>
+                <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the
+                    panel's content.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-deck">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Panel title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content. This content is a little bit longer.</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Panel title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Panel title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content. This card has even longer content than the first to show that equal height action.</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

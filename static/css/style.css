@@ -1,0 +1,375 @@
+/* Global styles */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+h2.h1-responsive,
+h3 {
+    font-weight: 700;
+    color: #262626;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 2.2rem;
+}
+
+body::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/barbers-tools_background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: grayscale(50%);
+}
+
+body,
+.main-container {
+    min-height: calc(100vh - 56px);
+    position: relative;
+}
+
+nav,
+.well.container {position: relative;}
+
+.navbar-brand {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+}
+
+.btn {
+    border-radius: .25rem;
+}
+
+.main-container {
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.form-card.register-form-card,
+.form-card.review-submit-form-card,
+.form-card.login-form-card {
+    width: 100%;
+}
+
+/* Colour scheme */
+
+.barber-red {
+    background-color: #FE0100;
+}
+
+.barber-blue {
+    background-color: #263C92;
+}
+
+.barber-blue-text {
+    color: #263c92;
+}
+
+#review-submit-form label.barber-blue {
+    color: #263c92;
+    background-color: unset;
+}
+
+#review-submit-form .prefix.barber-blue {
+    color: #263c92;
+    background-color: unset;
+}
+
+.barber-blue-text i {
+    color: #263C92;
+}
+
+.barber-blue-text i.barber-red-text {
+    color: #fe0100;
+}
+
+/* Headings */
+
+.card-body h5.barber-blue-text {
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.card-body h5.barber-blue-text.thumbs {
+    font-size: 24px;
+}
+
+/* Spacing utility classes */
+
+.my-4_5 {
+    margin-top: 36px;
+    margin-bottom: 36px;
+}
+
+.mb-4_5 {
+    margin-bottom: 36px;
+}
+
+.pr-4_5 {
+    padding-right: 42px;
+}
+
+.py-2_5 {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.px-4_5 {
+    padding-left: 36px;
+    padding-right: 36px;
+}
+
+.pull-content-up {
+    align-items: flex-start;
+}
+
+/* Flash messaging */
+
+/* Home (Landing) page */
+
+.jumbotron {
+    margin-bottom: 0;
+    position: relative;
+    top: -20px;
+}
+
+.jumbotron > .lead {
+    font-family: ;
+}
+
+/* Registration page */
+
+.pre-register,
+.post-register {
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+.pre-register {
+    font-weight: 300;
+}
+
+#form-registration > .form-group:nth-of-type(1),
+#form-registration > .form-group:nth-of-type(2) {
+    margin-bottom: .5rem;
+}
+
+/* Login page */
+
+#form-login > .form-group:nth-of-type(1) {
+    margin-bottom: .5rem;
+}
+
+/* Review Submit page */
+
+.md-form textarea.md-textarea:focus:not([readonly])+label.barber-blue {
+    color: #fe0100;
+}
+
+.md-form textarea.md-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #fe0100;
+    box-shadow: 0 1px 0 0 #fe0100;
+}
+
+#review-submit-form {
+    color: #757575
+}
+
+#review-submit-form label.barber-blue {
+    color: #263c92;
+    background-color: unset;
+}
+
+#review-submit-form label.barber-red {
+    color: #fe0100;
+}
+
+#review-submit-form .prefix.barber-blue {
+    color: #263c92;
+    background-color: unset;
+}
+
+#review-submit-form .prefix.barber-red {
+    color: #fe0100;
+}
+
+#review-submit-form input[type="text"]:not(.browser-default):focus:not([read-only]) {
+    border-bottom: 1px solid #fe0100;
+    box-shadow: 0 1px 0 0 #fe0100;
+}
+
+.md-form .review-submit-form-label {
+    top: -16px;
+}
+
+.md-form .prefix ~ .checkbox-container {
+    width: calc(100% - 2.5rem);
+    margin-left: 2.5rem;
+}
+
+.md-form .prefix ~ .checkbox-container > .checkbox-box {
+    width: calc(50% - 1.25rem);
+    padding-left: 5%;
+    min-height: 50px;
+}
+
+.md-form .prefix ~ .checkbox-container > .checkbox-box:first-of-type {
+    margin-right: 0;
+    margin-right: -20px;
+    margin-left: 20px;
+}
+
+.md-form .prefix ~ .checkbox-container > .checkbox-box:nth-of-type(2) {
+    padding-left: 0;
+}
+
+.md-form .prefix ~ .checkbox-container > .checkbox-box > .form-check-input,
+.md-form .prefix ~ .checkbox-container > .checkbox-box > .form-check-label {
+    position: relative;
+}
+
+.md-form .prefix ~ .checkbox-container > .checkbox-box > .form-check-label {
+    top: -10px;
+    left: 3px;
+}
+
+.form-check-input.payment-checkbox {
+    height: 18px;
+    width: 18px;
+}
+
+.payment-options-span {
+    margin-left: 2.5rem;
+    font-weight: 300;
+}
+
+.thumbs {
+    line-height: 40px;
+}
+
+.card-body h5.barber-blue-text > i {
+    font-size: 22px;
+}
+
+.fa-star {
+    font-size: 20px;
+}
+
+.fa-thumbs-up,
+.fa-thumbs-down {
+    position: relative;
+}
+
+.fa-thumbs-up {
+    top: -6px;
+}
+
+.md-form .prefix ~ select {
+    width: calc(100% - 2.5rem);
+    margin-left: 2.5rem;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    font-size: 20px;
+}
+
+.md-form .review-submit-form-label.vibe-label {
+    top: -30px;
+}
+
+#review-submit-form > .form-group:nth-last-of-type(2) {
+    margin-bottom: .5rem;
+}
+
+/* Pure CSS 'star rating' custom code adapted from https://codepen.io/hesguru/pen/BaybqXv */
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.rate {
+    float: left;
+    width: 100%;
+    clear: both;
+}
+
+.star-wrapper {
+    display: block;
+    width: 100%;
+    transform: translateX(-50%) translateX(5.4em);
+}
+
+.rate:not(:checked) > .star-wrapper > input {
+    position: absolute;
+    display: none;
+    /* top: -9999px; */
+}
+.rate:not(:checked) > .star-wrapper > label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 26px;
+    color: #ccc;
+}
+.rate:not(:checked) > .star-wrapper > label:before {
+    content: '★ ';
+}
+.rate > .star-wrapper > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > .star-wrapper > label:hover,
+.rate:not(:checked) > .star-wrapper > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > .star-wrapper > input:checked + label:hover,
+.rate > .star-wrapper > input:checked + label:hover ~ label,
+.rate > .star-wrapper > input:checked ~ label:hover,
+.rate > .star-wrapper > input:checked ~ label:hover ~ label,
+.rate > .star-wrapper > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+#review-submit-form-comments {
+    background-color: #dddddd5c;
+    border-radius: 5px;
+}
+
+#review-submit-form textarea.md-textarea+label {
+    top: -0.3rem;
+    left: 0.3rem;
+}
+
+#barbers-pole-heading-img {
+    position: relative;
+    left: -18px;
+}
+
+#barbers-pole-heading-img-white-background {
+    background-color: #fff;
+    display: inline-block;
+    width: 1.35rem;
+    height: 60px;
+    vertical-align: middle;
+    position: relative;
+    left: 7px;
+}
+
+#review-submit-form-heading {
+    font-weight: 400;
+    font-size: 2.2rem;
+    font-family: 'Roboto Condensed', sans-serif;
+    position: relative;
+    top: 6px;
+    left: -8px;
+}
