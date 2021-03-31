@@ -26,7 +26,7 @@ else:
 # Bug fix/workaround: https://github.com/pallets/flask-sqlalchemy/issues/929
 app.config[
     'SQLALCHEMY_DATABASE_URI'] = os.environ.get(
-        'SQLALCHEMY_DATABASE_URI')
+        'SQLALCHEMY_DATABASE_URI').replace("postgres://", "postgresql://")
 app.secret_key = os.environ.get('SECRET_KEY')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
