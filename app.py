@@ -75,11 +75,12 @@ def register():
                                     password1, method='sha256'))
                 db.session.add(new_user)
                 db.session.commit()
-
+                print(new_user.id)
                 # Store new registered user in session cookie
-                session['user'] = data.get('email')
+                session['user'] = data.get('register-form-email')
+                print(session['user'])
 
-                return render_template('review-submit.html', registered_user=new_user)
+                return redirect(url_for('review_submit'))
             message = Markup('There is already an account associated with that email! Please try again.')
             flash(message, 'warning')   
     return render_template('register.html')
@@ -108,8 +109,8 @@ def login():
                     # Store logged-in user in session cookie
                     session['user'] = request.form.get('email')
 
-                    user=login_user[0]
-                    return render_template('review-submit.html', registered_user=user)
+                    returning_user=login_user[0]
+                    return redirect(url_for('review_submit'))
                 else:
                     # Deliberately ambiguous message to prevent brute-force login attempts
                     message = Markup('You have entered an invalid email/password.</br>Please try again!')
@@ -135,8 +136,19 @@ def barbers():
 
 
 # Route for Review Submit page
-@app.route('/review-submit/<user_id>', methods=['GET', 'POST'])
-def review_submit(user_id):
+@app.route('/review-submit', methods=['GET', 'POST'])
+def review_submit():
+
+    # user_email = db.session.query(
+    #     User).filter(User.email == session['user']).count()
+    user_email = session['user']
+    print(user_email)
+    user = User.query.filter_by(email=session['user']).first()
+    user_id = user.id
+    print(user_id)
+    users = User.query.all()
+    print(users)
+
     if request.method == 'POST':
         data = request.form
         customername = data.get('review-submit-form-customer-name')
@@ -160,26 +172,19 @@ def review_submit(user_id):
         db.session.add(new_review)
         db.session.commit()
 
-        customer_reviews = Review.query.all()
+        return redirect(url_for('reviews'))
 
-        print(customer_reviews)
-
-        return render_template('reviews.html', reviews=customer_reviews)
-
-    # Retrieve session user's username from DB
-    # existing_user = mongo.db.users.find_one(
-    #         {'username': session['user']})['username']
-
-    # if session['user']:
-    #     return render_template('review_submit.html', user=user)
-    # return render_template('login.html')
-    return render_template('review-submit.html', user=user)
+    return render_template(
+        'review-submit.html', user=user)
 
 
 # Route for Reviews page
 @app.route('/reviews')
 def reviews():
-    return render_template('reviews.html')
+    reviews = Review.query.all()
+    print(type(reviews))
+    reviews.reverse()
+    return render_template('reviews.html', reviews=reviews)
 
 
 # Route for Contact page

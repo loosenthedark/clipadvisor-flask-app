@@ -43,12 +43,15 @@ $(document).ready(function () {
     // Move form card container(s) upwards (collapse space) if alert appears
     if ($('.flash-message-container').height() > 10) {
         $('.flash-message-container').next().addClass('pull-content-up');
+        $('.register-form-card, .review-submit-form-card').removeClass('mt-3');
     }
     if ($('.flash-message-container').height() < 10) {
         $('.flash-message-container').next().removeClass('pull-content-up');
+        $('.register-form-card, .review-submit-form-card').addClass('mt-3');
     }
     // Undo this action when alert is dismissed
     $('#flash-message-dismiss').click(function () {
         $('.flash-message-container').next().removeClass('pull-content-up');
+        $('.register-form-card, .review-submit-form-card').addClass('mt-3');
     })
 });
