@@ -76,7 +76,8 @@ def register():
                                     password1, method='sha256'))
                 db.session.add(new_user)
                 db.session.commit()
-                # Store new registered user in session cookie
+                
+                # Store newly-registered user in session cookie
                 session['user'] = data.get('register-form-email')
 
                 return redirect(url_for('review_submit'))
@@ -106,9 +107,7 @@ def login():
                         login_user[0].firstname))
                     flash(message, 'success')
 
-                    returning_user=login_user[0]
-
-                    # Store new registered user in session cookie
+                    # Store logged-in user in session cookie
                     session['user'] = data.get('login-email')
 
                     return redirect(url_for('review_submit'))
@@ -127,7 +126,10 @@ def login():
 @app.route('/logout')
 def logout():
 
-    return render_template('login.html')
+    # Remove/Destroy session cookie associated with user
+    session.pop('user')
+
+    return redirect(url_for('home'))
 
 
 # Route for Barbers page
