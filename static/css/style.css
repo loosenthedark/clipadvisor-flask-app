@@ -54,6 +54,7 @@ nav,
 
 .form-card.register-form-card,
 .form-card.review-submit-form-card,
+.form-card.reviews-card,
 .form-card.login-form-card {
     width: 100%;
 }
@@ -70,6 +71,10 @@ nav,
 
 .barber-blue-text {
     color: #263c92;
+}
+
+.barber-red-text {
+    color: #fe0100;
 }
 
 #review-submit-form label.barber-blue {
@@ -106,6 +111,10 @@ nav,
 .my-4_5 {
     margin-top: 36px;
     margin-bottom: 36px;
+}
+
+.mt-4_5 {
+    margin-top: 36px;
 }
 
 .mb-4_5 {
@@ -215,24 +224,15 @@ nav,
 }
 
 .md-form .prefix ~ .checkbox-container > .checkbox-box {
-    width: calc(50% - 1.25rem);
-    padding-left: 5%;
+    width: calc(33% - 0.84rem);
     min-height: 50px;
-}
-
-.md-form .prefix ~ .checkbox-container > .checkbox-box:first-of-type {
-    margin-right: 0;
-    margin-right: -20px;
-    margin-left: 20px;
-}
-
-.md-form .prefix ~ .checkbox-container > .checkbox-box:nth-of-type(2) {
-    padding-left: 0;
 }
 
 .md-form .prefix ~ .checkbox-container > .checkbox-box > .form-check-input,
 .md-form .prefix ~ .checkbox-container > .checkbox-box > .form-check-label {
     position: relative;
+    line-height: 1.1;
+    font-size: .8rem;
 }
 
 .md-form .prefix ~ .checkbox-container > .checkbox-box > .form-check-label {
@@ -240,11 +240,13 @@ nav,
     left: 3px;
 }
 
+.form-check-input.booking-checkbox,
 .form-check-input.payment-checkbox {
     height: 18px;
     width: 18px;
 }
 
+.booking-options-span,
 .payment-options-span {
     margin-left: 2.5rem;
     font-weight: 300;
@@ -372,4 +374,178 @@ nav,
     position: relative;
     top: 6px;
     left: -8px;
+}
+
+/* Reviews page */
+
+blockquote {
+    line-height: 1.25;
+    border-left: .25rem solid #e5e9f8;
+}
+
+blockquote:before,
+blockquote:after {
+    font-size: 4em;
+    color: #ccc;
+    line-height: 0.1em;
+    vertical-align: 0em;
+    display: inline;
+    position: absolute;
+    height: 80px;
+}    
+    
+
+blockquote:before {
+    content: open-quote;
+    left: 2rem;
+    top: 2rem;
+}
+
+blockquote p {
+    display: inline;
+    line-height: 1.25;
+    /* font-style: italic; */
+}
+
+blockquote:after {
+    content: close-quote;
+    right: 1.5rem;
+    bottom: -1.5rem;
+}
+
+.blockquote-footer {
+    font-weight: 400;
+}
+
+.reviews-card-header {
+    background-color: #E08888;
+}
+
+.reviews-card-header .fa-star {
+    font-size: 1.5rem;
+}
+
+.reviews-section .card {
+    background-color: #fdfdfd;
+}
+
+.review-card-wrapper:first-of-type .card-header {
+    background-color: #fe0100;
+}
+
+.review-card-wrapper:first-of-type .card-body {
+    background-color: #fff;
+    font-weight: 400;
+}
+
+.review-card-wrapper:first-of-type .card-body blockquote.font-weight-light {
+    font-weight: 400!important;
+    color: #303030;
+}
+
+.review-card-wrapper:first-of-type .card-body .h2.font-weight-normal {
+    font-weight: 500!important;
+}
+
+.review-card-wrapper:first-of-type .card-body .h5.font-weight-light {
+    font-weight: 400!important;
+}
+
+.review-card-wrapper:first-of-type .card-body .blockquote-footer {
+    font-weight: 500;
+}
+
+.review-card-wrapper:first-of-type .card-body .blockquote {
+    border-left: .25rem solid #d1dbff;
+}
+
+.review-card-wrapper:first-of-type .card-body .blockquote:before,
+.review-card-wrapper:first-of-type .card-body .blockquote:after {
+    color: #b5b3b3;
+}
+
+.btn > .fa-cut {
+    font-size: 1rem;
+    position: relative;
+    padding-left: 3px;
+}
+
+.btn-more-info {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 160px;
+}
+
+.review-card-wrapper:not(:first-of-type) .btn-more-info {
+    filter: opacity(0.9);
+}
+
+.modal-header {
+    display: block;
+    position: relative;
+    font-size: 1.5rem;
+}
+
+.modal-header .close {
+    margin-left: 0;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.modal-header h5 {
+    font-weight: 400;
+}
+
+.modal-title {
+    line-height: 1.8rem;
+    font-size: 1.4rem;
+}
+
+.modal-list-group > .list-group-item:first-child {
+    border-top-color: #263c92;
+    font-size: 1.125rem;
+    font-weight: 300;
+}
+
+.modal-list-group > .list-group-item {
+    border-bottom: none;
+}
+
+.modal-list-group > .list-group-item:nth-of-type(2),
+.modal-list-group > .list-group-item:nth-of-type(3),
+.modal-list-group > .list-group-item:nth-of-type(4) {
+    display: flex;
+    align-items: center;
+}
+
+.modal-header {
+    border-bottom-color: #263c92;
+}
+
+.modal-header-customer-name {
+    margin-left: -15px;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.modal-body .fas,
+.modal-icon-wrapper {
+    height: 40px;
+    width: 40px;
+    display: flex;
+}
+
+.modal-body .fas {
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.card-footer {
+    border-top: none;
+    background-color: unset;
 }

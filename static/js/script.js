@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+    // Customised colour change on form input focus
     $(".review-submit-form-field").focusin(function () {
         $(this).prev().addClass("barber-red");
         $(this).next().addClass("barber-red");
@@ -7,7 +9,9 @@ $(document).ready(function () {
         $(this).prev().removeClass("barber-red");
         $(this).next().removeClass("barber-red");
     });
+
     // jQuery DateTimePicker with dark theme source code: https://github.com/xdan/datetimepicker
+
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -31,7 +35,14 @@ $(document).ready(function () {
             defaultTime: '09:00'
         })
 
-    // Rudimentary jQuery form checkbox validation to ensure users select at least one option - adapted from https://www.howtocodeschool.com/2019/11/submit-form-If-at-least-one-checkbox-is-checked.html
+    // Rudimentary jQuery form checkbox validation to ensure users select at least one booking and payment option - adapted from https://www.howtocodeschool.com/2019/11/submit-form-If-at-least-one-checkbox-is-checked.html
+
+    $("#review-submit-form").submit(function () {
+        if ($('.booking-checkbox').filter(':checked').length < 1) {
+            alert("Please list at least one booking option!");
+            return false;
+        }
+    });
 
     $("#review-submit-form").submit(function () {
         if ($('.payment-checkbox').filter(':checked').length < 1) {
@@ -43,15 +54,16 @@ $(document).ready(function () {
     // Move form card container(s) upwards (collapse space) if alert appears
     if ($('.flash-message-container').height() > 10) {
         $('.flash-message-container').next().addClass('pull-content-up');
-        $('.register-form-card, .review-submit-form-card').removeClass('mt-3');
+        $('.register-form-card, .review-submit-form-card, .reviews-card').removeClass('mt-3');
     }
     if ($('.flash-message-container').height() < 10) {
         $('.flash-message-container').next().removeClass('pull-content-up');
-        $('.register-form-card, .review-submit-form-card').addClass('mt-3');
+        $('.register-form-card, .review-submit-form-card, .reviews-card').addClass('mt-3');
     }
+
     // Undo this action when alert is dismissed
     $('#flash-message-dismiss').click(function () {
         $('.flash-message-container').next().removeClass('pull-content-up');
-        $('.register-form-card, .review-submit-form-card').addClass('mt-3');
+        $('.register-form-card, .review-submit-form-card, .reviews-card').addClass('mt-3');
     })
 });

@@ -28,6 +28,7 @@
 </head>
 
 <body>
+
     <!-- navbar -->
     <nav class="navbar navbar-expand-md navbar-dark barber-red">
         <a class="navbar-brand" href="{{ url_for('home') }}">Clipadvisor <i class="fas fa-cut"></i></a>
@@ -66,6 +67,7 @@
         </div>
     </nav>
     <!-- /navbar -->
+
     <!-- container for dismissible flash messaging alerts -->
     <div class="well container flash-message-container">
         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -84,6 +86,7 @@
         <!-- /Flash messages container -->
     </div>
     <!-- /container for dismissible flash messaging alerts -->
+
     <!-- main content container -->
     <div class="well container d-flex main-container">
         {% block content %}
@@ -91,6 +94,7 @@
         {% endblock %}
     </div>
     <!-- /main content container -->
+    
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->

@@ -35,13 +35,14 @@ class Review(db.Model):
     vibe = db.Column(db.String, nullable=False)
     rating = db.Column(db.Integer, nullable=False)
     comments = db.Column(db.String(1000), nullable=False)
-    review_timestamp = db.Column(
-        db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    phone = db.Column(db.String, nullable=False)
+    online = db.Column(db.String, nullable=False)
+    walkin = db.Column(db.String, nullable=False)
 
     def __init__(
         self, customername, barbershopname, date, time,
-            cash, card, vibe, rating, comments, review_timestamp, user_id):
+            cash, card, vibe, rating, comments, user_id, phone, online, walkin):
         self.customername = customername
         self.barbershopname = barbershopname
         self.date = date
@@ -51,5 +52,7 @@ class Review(db.Model):
         self.vibe = vibe
         self.rating = rating
         self.comments = comments
-        self.review_timestamp = review_timestamp
         self.user_id = user_id
+        self.phone = phone
+        self.online = online
+        self.walkin = walkin

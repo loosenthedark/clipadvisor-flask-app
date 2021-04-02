@@ -1,4 +1,5 @@
 import os
+import datetime
 from flask import (
     Flask, flash, render_template, request, url_for,
     redirect, session, Markup)
@@ -75,10 +76,8 @@ def register():
                                     password1, method='sha256'))
                 db.session.add(new_user)
                 db.session.commit()
-                print(new_user.id)
                 # Store new registered user in session cookie
                 session['user'] = data.get('register-form-email')
-                print(session['user'])
 
                 return redirect(url_for('review_submit'))
             message = Markup('There is already an account associated with that email! Please try again.')
@@ -106,10 +105,12 @@ def login():
                     message = Markup('Nice to see you, {}!</br>Is there a new barber you\'d like to tell us about?'.format(
                         login_user[0].firstname))
                     flash(message, 'success')
-                    # Store logged-in user in session cookie
-                    session['user'] = request.form.get('email')
 
                     returning_user=login_user[0]
+
+                    # Store new registered user in session cookie
+                    session['user'] = data.get('login-email')
+
                     return redirect(url_for('review_submit'))
                 else:
                     # Deliberately ambiguous message to prevent brute-force login attempts
@@ -142,12 +143,9 @@ def review_submit():
     # user_email = db.session.query(
     #     User).filter(User.email == session['user']).count()
     user_email = session['user']
-    print(user_email)
     user = User.query.filter_by(email=session['user']).first()
     user_id = user.id
-    print(user_id)
     users = User.query.all()
-    print(users)
 
     if request.method == 'POST':
         data = request.form
@@ -160,15 +158,17 @@ def review_submit():
         vibe = data.get('review-submit-form-vibe')
         rating = data.get('review-submit-form-star-rating')
         comments = data.get('review-submit-form-comments')
-        review_timestamp = func.now()
         user_id = user_id
+        phone = data.get('review-submit-form-booking-phone-checkbox')
+        online = data.get('review-submit-form-booking-online-checkbox')
+        walkin = data.get('review-submit-form-booking-walkin-checkbox')
 
         # flash msg here to confirm user registration upon redirect
         message = Markup('Thanks for rating your barber!')
         flash(message, 'success')
 
         new_review = Review(
-            customername=customername, barbershopname=barbershopname, date=date, time=time, cash=cash, card=card, vibe=vibe, rating=rating, comments=comments, review_timestamp=review_timestamp, user_id=user_id)
+            customername=customername, barbershopname=barbershopname, date=date, time=time, cash=cash, card=card, vibe=vibe, rating=rating, comments=comments, user_id=user_id, phone=phone, online=online, walkin=walkin)
         db.session.add(new_review)
         db.session.commit()
 
@@ -182,7 +182,6 @@ def review_submit():
 @app.route('/reviews')
 def reviews():
     reviews = Review.query.all()
-    print(type(reviews))
     reviews.reverse()
     return render_template('reviews.html', reviews=reviews)
 

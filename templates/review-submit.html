@@ -6,13 +6,17 @@
 
 <!-- review submit form card container -->
 <div class="card form-card review-submit-form-card mt-3 mb-5">
+
+    <!-- review submit form heading -->
     <div class="review-submit-form-card-heading text-center">
-        <h4 class="card-header barber-blue white-text py-4"><span
+        <h4 class="card-header barber-blue white-text py-3"><span
                 id="barbers-pole-heading-img-white-background"></span><img
                 src="../static/images/barbers-pole_icon-white.png" id="barbers-pole-heading-img" height="100"
                 width="auto" alt="barbers pole heading image"><span id="review-submit-form-heading">Rate your barber!</span>
         </h4>
     </div>
+    <!-- /review submit form heading -->
+
     <div class="card-body p-4 px-lg-5 pt-0">
         <!-- review submit form -->
         <form id="review-submit-form" action="{{ url_for('review_submit') }}"
@@ -24,7 +28,7 @@
                     <i class="fas fa-user barber-blue prefix"></i>
                     <input type="text" class="form-control review-submit-form-field"
                         id="review-submit-form-customer-name" name="review-submit-form-customer-name"
-                        value="{{ user.firstname }} {{ user.lastname }}" required>
+                        value="{{ user.firstname|title }} {{ user.lastname|title }}" required>
                     <label for="review-submit-form-customer-name" class="review-submit-form-label barber-blue">Customer
                         Name</label>
                 </div>
@@ -67,19 +71,48 @@
             </div>
             <!-- /time of visit input -->
 
+            <!-- booking options checkboxes -->
+            <div class="form-group">
+                <div class="md-form my-4">
+                    <i class="fas fa-user-clock barber-blue prefix"></i>
+                    <span class="booking-options-span barber-blue-text">Booking options:</span>
+                    <div class="checkbox-container">
+                        <div class="form-check form-check-inline checkbox-box ml-2 mr-2">
+                            <input class="form-check-input booking-checkbox" type="checkbox"
+                                id="review-submit-form-booking-phone-checkbox"
+                                name="review-submit-form-booking-phone-checkbox" value="by phone">
+                            <label class="form-check-label" for="review-submit-form-booking-phone-checkbox">by phone</label>
+                        </div>
+                        <div class="form-check form-check-inline checkbox-box mr-2">
+                            <input class="form-check-input booking-checkbox" type="checkbox"
+                                id="review-submit-form-booking-online-checkbox"
+                                name="review-submit-form-booking-online-checkbox" value="online">
+                            <label class="form-check-label" for="review-submit-form-booking-online-checkbox">online</label>
+                        </div>
+                        <div class="form-check form-check-inline checkbox-box mr-2">
+                            <input class="form-check-input booking-checkbox" type="checkbox"
+                                id="review-submit-form-booking-walkin-checkbox"
+                                name="review-submit-form-booking-walkin-checkbox" value="walk-in">
+                            <label class="form-check-label" for="review-submit-form-booking-walkin-checkbox">walk-in</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /booking options checkboxes -->
+
             <!-- payment options checkboxes -->
             <div class="form-group">
-                <div class="md-form my-2">
+                <div class="md-form my-4">
                     <i class="fas fa-euro-sign barber-blue prefix"></i>
-                    <span class="payment-options-span barber-blue-text">Payment options available:</span>
+                    <span class="payment-options-span barber-blue-text">Payment options:</span>
                     <div class="checkbox-container">
-                        <div class="form-check form-check-inline checkbox-box">
+                        <div class="form-check form-check-inline checkbox-box ml-2 mr-2">
                             <input class="form-check-input payment-checkbox" type="checkbox"
                                 id="review-submit-form-payment-cash-checkbox"
                                 name="review-submit-form-payment-cash-checkbox" value="cash">
                             <label class="form-check-label" for="review-submit-form-payment-cash-checkbox">cash</label>
                         </div>
-                        <div class="form-check form-check-inline checkbox-box">
+                        <div class="form-check form-check-inline checkbox-box mr-2">
                             <input class="form-check-input payment-checkbox" type="checkbox"
                                 id="review-submit-form-payment-card-checkbox"
                                 name="review-submit-form-payment-card-checkbox" value="card">
@@ -88,7 +121,7 @@
                     </div>
                 </div>
             </div>
-            <!-- payment options checkboxes -->
+            <!-- /payment options checkboxes -->
 
             <!-- vibe select -->
             <div class="form-group">
@@ -98,11 +131,14 @@
                     <select class="form-control review-submit-form-field" id="review-submit-form-vibe"
                         name="review-submit-form-vibe" required>
                         <option selected disabled></option>
-                        <option value="oldschool">Old-school</option>
+                        <option value="old school">Old school</option>
+                        <option value="work commute">Work commute</option>
                         <option value="hipster">Hipster</option>
-                        <option value="work">Work commute</option>
-                        <option value="cheap">Cheap and cheerful</option>
-                        <option value="silence">Silence is golden</option>
+                        <option value="cheap & cheerful">Cheap & cheerful</option>
+                        <option value="dancefloor">Dancefloor</option>
+                        <option value="silence is golden">Silence is golden</option>
+                        <option value="cookie cutter">Cookie cutter</option>
+                        <option value="sweatbox">Sweatbox</option>
                     </select>
                 </div>
             </div>
