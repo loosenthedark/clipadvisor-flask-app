@@ -43,11 +43,8 @@ nav,
 }
 
 #navbar-nav-list .nav-item.active>.nav-link {
-    background-color: #fe0100;
-    border: 0.1rem solid #263c92;
-    border-radius: 3px;
-    color: #263c92;
-    font-weight: 400;
+    background-color: #263c92;
+    border-radius: 3px;  
 }
 
 .btn {
@@ -187,6 +184,36 @@ nav,
 
 #form-login > .form-group:nth-of-type(1) {
     margin-bottom: .5rem;
+}
+
+.btn-login-register-btn.waves-effect,
+.btn-register-login-btn.waves-effect {
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+    padding: .72rem 2.14rem;
+    font-size: .81rem;
+    border-radius: .25rem;
+    box-shadow: unset;
+}
+
+.btn-login-register-btn.waves-effect:hover,
+.btn-login-register-btn.waves-effect:focus,
+.btn-login-register-btn.waves-effect:active,
+.btn-register-login-btn.waves-effect:hover,
+.btn-register-login-btn.waves-effect:focus,
+.btn-register-login-btn.waves-effect:active {
+    box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
+}
+
+.barber-blue-outline {
+    border: .1rem solid #263c92;
+}
+
+.forgot-password,
+.not-a-member p,
+.already-a-member p {
+    font-size: .85rem;
 }
 
 /* Review Submit page */
