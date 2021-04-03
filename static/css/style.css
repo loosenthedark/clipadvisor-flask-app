@@ -1,4 +1,4 @@
-/* Global styles */
+/* global styles */
 
 * {
     padding: 0;
@@ -42,6 +42,14 @@ nav,
     font-weight: 400;
 }
 
+#navbar-nav-list .nav-item.active>.nav-link {
+    background-color: #fe0100;
+    border: 0.1rem solid #263c92;
+    border-radius: 3px;
+    color: #263c92;
+    font-weight: 400;
+}
+
 .btn {
     border-radius: .25rem;
 }
@@ -59,7 +67,7 @@ nav,
     width: 100%;
 }
 
-/* Colour scheme */
+/* colour scheme */
 
 .barber-red {
     background-color: #FE0100;
@@ -95,7 +103,7 @@ nav,
     color: #fe0100;
 }
 
-/* Headings */
+/* headings */
 
 .card-body h5.barber-blue-text {
     font-weight: 300;
@@ -106,7 +114,7 @@ nav,
     font-size: 24px;
 }
 
-/* Spacing utility classes */
+/* spacing/utility classes */
 
 .my-4_5 {
     margin-top: 36px;
@@ -139,9 +147,14 @@ nav,
     align-items: flex-start;
 }
 
+.time-span,
+.date-span {
+    white-space: nowrap;
+}
+
 /* Flash messaging */
 
-/* Home (Landing) page */
+/* Home (landing) page */
 
 .jumbotron {
     margin-bottom: 0;
@@ -290,7 +303,7 @@ nav,
     margin-bottom: .5rem;
 }
 
-/* Pure CSS 'star rating' custom code adapted from https://codepen.io/hesguru/pen/BaybqXv */
+/* pure CSS 'star rating' custom code adapted from https://codepen.io/hesguru/pen/BaybqXv */
 
 .clearfix::after {
   content: "";
@@ -313,7 +326,6 @@ nav,
 .rate:not(:checked) > .star-wrapper > input {
     position: absolute;
     display: none;
-    /* top: -9999px; */
 }
 .rate:not(:checked) > .star-wrapper > label {
     float: right;
@@ -548,4 +560,8 @@ blockquote:after {
 .card-footer {
     border-top: none;
     background-color: unset;
+}
+
+.thanks-for-reviewing-icon {
+    font-size: 1.5rem;
 }

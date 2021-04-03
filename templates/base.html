@@ -21,7 +21,7 @@
     <!-- jQuery DateTimePicker plugin CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.datetimepicker.min.css') }}">
 
-    <!-- Custom stylesheet -->
+    <!-- custom stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
     <title>{% block title %}Clipadvisor: Rate Your Barber!{% endblock %}</title>
@@ -32,12 +32,12 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-md navbar-dark barber-red">
         <a class="navbar-brand pl-1" href="{{ url_for('home') }}">Clipadvisor <i class="fas fa-cut"></i></a>
-        <button class="navbar-toggler pr-0" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler pr-0" type="button" data-toggle="collapse" data-target="#navbar-nav"
+            aria-controls="navbar-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+        <div class="collapse navbar-collapse" id="navbar-nav">
+            <ul class="navbar-nav" id="navbar-nav-list">
                 {% block navbarnavhome %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
@@ -69,9 +69,11 @@
                 </li>
                 {% endblock %}
                 {% else %}
+                {% block navbarnavlogout %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
                 </li>
+                {% endblock %}
                 {% endif %}
                 {% block navbarnavcontact %}
                 <li class="nav-item">
@@ -110,7 +112,7 @@
     </div>
     <!-- /main content container -->
     
-    <!-- JQuery -->
+    <!-- jQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript"
@@ -124,8 +126,12 @@
     <!-- jQuery DateTimePicker plugin JS -->
     <script src="{{ url_for('static', filename='js/jquery.datetimepicker.full.min.js') }}"></script>
 
-    <!-- Custom script -->
+    <!-- custom script -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    {% block scripts %}
+
+    {% endblock %}
 </body>
 
 </html>

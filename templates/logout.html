@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Logging Out... | Clipadvisor: Rate Your Barber!{% endblock %}
+
+{% block navbarnavlogout %}
+<li class="nav-item active">
+    <a class="nav-link" href="{{ url_for('logout') }}">Log Out <span class="sr-only">(current)</span></a>
+</li>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block scripts %}
+
+<!-- custom script to redirect logged-out user back to Home page after 5 seconds -->
+    <script src="{{ url_for('static', filename='js/logout.js') }}"></script>
+
+{% endblock %}

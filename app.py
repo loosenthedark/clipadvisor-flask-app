@@ -58,17 +58,17 @@ def register():
         if len(lastname) < 2:
             flash('Please enter a last name with a minimum of 2 characters!', 'warning')
         if len(email) < 6:
-            message = Markup('Your email address is too short!</br>Please try again.')
+            message = Markup('Your email address is too short!</br>Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if password1 != password2:
-            message = Markup('Your passwords don\'t match!</br>Please try again.')
+            message = Markup('Your passwords don\'t match!</br>Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(firstname) >= 2 and len(lastname) >= 2 and len(email) >= 6 and password1 == password2:
 
             # Check to see if user/email entered already exists in DB
             if db.session.query(User).filter(User.email == email).count() == 0:
                 # flash msg here to confirm user registration upon redirect
-                message = Markup('Thanks for registering, {}!</br>Welcome to the Clipadvisor community &#128513;</br>Is there a new barber you\'d like to tell us about?'.format(firstname))
+                message = Markup('Thanks for registering, {} <i class="fas fa-cut"></i></br>Welcome to the Clipadvisor community!</br>Is there a new barber you\'d like to tell us about?'.format(firstname))
                 flash(message, 'success')
 
                 new_user = User(
@@ -81,7 +81,7 @@ def register():
                 session['user'] = data.get('register-form-email')
 
                 return redirect(url_for('review_submit'))
-            message = Markup('There is already an account associated with that email! Please try again.')
+            message = Markup('There is already an account associated with that email! Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')   
     return render_template('register.html')
 
@@ -103,7 +103,7 @@ def login():
             if login_user.count() != 0:
                 if check_password_hash(
                             login_user[0].password, password):
-                    message = Markup('Nice to see you, {}!</br>Is there a new barber you\'d like to tell us about?'.format(
+                    message = Markup('Nice to see you, {} <i class="fas fa-cut"></i></br>Is there a new barber you\'d like to tell us about?'.format(
                         login_user[0].firstname))
                     flash(message, 'success')
 
@@ -113,11 +113,11 @@ def login():
                     return redirect(url_for('review_submit'))
                 else:
                     # Deliberately ambiguous message to prevent brute-force login attempts
-                    message = Markup('You have entered an invalid email/password.</br>Please try again!')
+                    message = Markup('You have entered an invalid email/password!</br>Please try again <i class="fas fa-cut"></i>')
                     flash(message, 'warning')
         else:
             # Another deliberately ambiguous message to prevent brute-force login attempts
-            message = Markup('You have entered an invalid email/password.</br>Please try again!')
+            message = Markup('You have entered an invalid email/password!</br>Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')
     return render_template('login.html')
 
@@ -126,10 +126,16 @@ def login():
 @app.route('/logout')
 def logout():
 
+    user = User.query.filter_by(email=session['user']).first()
+
+    print(user.firstname)
+    message = Markup('Thanks for being a part of Clipadvisor, {} <i class="fas fa-cut"></i></br>You have logged out successfully.<br>We hope to see you again soon!'.format(user.firstname))
+    flash(message, 'success')
+
     # Remove/Destroy session cookie associated with user
     session.pop('user')
 
-    return redirect(url_for('home'))
+    return render_template('logout.html')
 
 
 # Route for Barbers page
@@ -166,7 +172,7 @@ def review_submit():
         walkin = data.get('review-submit-form-booking-walkin-checkbox')
 
         # flash msg here to confirm user registration upon redirect
-        message = Markup('Thanks for rating your barber!')
+        message = Markup('Thanks for rating your barber!<br><i class="fas thanks-for-reviewing-icon fa-cut pt-1"></i>')
         flash(message, 'success')
 
         new_review = Review(
