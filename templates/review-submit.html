@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %}Submit Review | Clipadvisor: Rate Your Barber!{% endblock %}
+{% block title %}Submit A Review | Clipadvisor: Rate Your Barber!{% endblock %}
+
+{% block navbarnavsubmitareview %}
+<li class="nav-item active">
+    <a class="nav-link" href="{{ url_for('review_submit') }}">Submit A Review<span class="sr-only">(current)</span></a>
+</li>
+{% endblock %}
 
 {% block content %}
 
@@ -12,15 +18,15 @@
         <h4 class="card-header barber-blue white-text py-3"><span
                 id="barbers-pole-heading-img-white-background"></span><img
                 src="../static/images/barbers-pole_icon-white.png" id="barbers-pole-heading-img" height="100"
-                width="auto" alt="barbers pole heading image"><span id="review-submit-form-heading">Rate your barber!</span>
+                width="auto" alt="barbers pole heading image"><span id="review-submit-form-heading">Rate your
+                barber!</span>
         </h4>
     </div>
     <!-- /review submit form heading -->
 
     <div class="card-body p-4 px-lg-5 pt-0">
         <!-- review submit form -->
-        <form id="review-submit-form" action="{{ url_for('review_submit') }}"
-            method="POST">
+        <form id="review-submit-form" action="{{ url_for('review_submit') }}" method="POST">
 
             <!-- customer name input -->
             <div class="form-group">
@@ -81,19 +87,22 @@
                             <input class="form-check-input booking-checkbox" type="checkbox"
                                 id="review-submit-form-booking-phone-checkbox"
                                 name="review-submit-form-booking-phone-checkbox" value="by phone">
-                            <label class="form-check-label" for="review-submit-form-booking-phone-checkbox">by phone</label>
+                            <label class="form-check-label" for="review-submit-form-booking-phone-checkbox">by
+                                phone</label>
                         </div>
                         <div class="form-check form-check-inline checkbox-box mr-2">
                             <input class="form-check-input booking-checkbox" type="checkbox"
                                 id="review-submit-form-booking-online-checkbox"
                                 name="review-submit-form-booking-online-checkbox" value="online">
-                            <label class="form-check-label" for="review-submit-form-booking-online-checkbox">online</label>
+                            <label class="form-check-label"
+                                for="review-submit-form-booking-online-checkbox">online</label>
                         </div>
                         <div class="form-check form-check-inline checkbox-box mr-2">
                             <input class="form-check-input booking-checkbox" type="checkbox"
                                 id="review-submit-form-booking-walkin-checkbox"
                                 name="review-submit-form-booking-walkin-checkbox" value="walk-in">
-                            <label class="form-check-label" for="review-submit-form-booking-walkin-checkbox">walk-in</label>
+                            <label class="form-check-label"
+                                for="review-submit-form-booking-walkin-checkbox">walk-in</label>
                         </div>
                     </div>
                 </div>
@@ -127,17 +136,18 @@
             <div class="form-group">
                 <div class="md-form mt-4_5 mb-5">
                     <i class="fas fa-grin-squint barber-blue prefix"></i>
-                    <label for="review-submit-form-vibe" class="review-submit-form-label vibe-label barber-blue">Vibe</label>
-                    <select class="form-control review-submit-form-field" id="review-submit-form-vibe"
+                    <label for="review-submit-form-vibe"
+                        class="review-submit-form-label vibe-label barber-blue">Vibe</label>
+                    <select class="form-control review-submit-form-field pt-3 pb-2" id="review-submit-form-vibe"
                         name="review-submit-form-vibe" required>
-                        <option selected disabled></option>
+                        <option selected disabled>Please select one:</option>
                         <option value="old school">Old school</option>
                         <option value="work commute">Work commute</option>
                         <option value="hipster">Hipster</option>
+                        <option value="cookie cutter">Cookie cutter</option>
                         <option value="cheap & cheerful">Cheap & cheerful</option>
                         <option value="dancefloor">Dancefloor</option>
                         <option value="silence is golden">Silence is golden</option>
-                        <option value="cookie cutter">Cookie cutter</option>
                         <option value="sweatbox">Sweatbox</option>
                     </select>
                 </div>

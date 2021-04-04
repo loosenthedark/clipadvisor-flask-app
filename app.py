@@ -13,7 +13,7 @@ if os.path.exists('env.py'):
     import env
 
 
-# Configure app
+# configure app
 app = Flask(__name__)
 
 ENV = 'dev'
@@ -23,25 +23,25 @@ if ENV == 'dev':
 else:
     app.debug = False
 
-# Configure DB
-# Bug fix/workaround: https://github.com/pallets/flask-sqlalchemy/issues/929
+# configure DB
+# bug fix/workaround: https://github.com/pallets/flask-sqlalchemy/issues/929
 app.config[
     'SQLALCHEMY_DATABASE_URI'] = os.environ.get(
         'SQLALCHEMY_DATABASE_URI')
 app.secret_key = os.environ.get('SECRET_KEY')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Initiate connection to DB
+# initiate connection to DB
 db = SQLAlchemy(app)
 
 
-# Route for Home (landing) page
+# route for Home (landing) page
 @app.route('/')
 def home():
     return render_template('index.html')
 
 
-# Route for Registration page
+# route for Registration page
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -52,15 +52,20 @@ def register():
         password1 = data.get('register-form-password1')
         password2 = data.get('register-form-password2')
 
-        # Form validation and categorised flash messaging conditional logic
-        if len(firstname) < 2:
-            flash('Please enter a first name with a minimum of 2 characters!', 'warning')
-        if len(lastname) < 2:
-            flash('Please enter a last name with a minimum of 2 characters!', 'warning')
-        if len(email) < 6:
+        # Register form validation and categorised flash messaging conditional logic
+        if firstname == '' or lastname == '' or email == '' or password1 == '' or password2 == '':
+            message = Markup('Please fill out all fields!<br><i class="fas all-required-fields-icon fa-cut pt-1"></i>')
+            flash(message, 'warning')
+        if len(firstname) > 0 and len(firstname) < 2:
+            message = Markup('Your first name is too short!</br>Please try again <i class="fas fa-cut"></i>')
+            flash(message, 'warning')
+        if len(lastname) > 0 and len(lastname) < 2:
+            message = Markup('Your last name is too short!</br>Please try again <i class="fas fa-cut"></i>')
+            flash(message, 'warning')
+        if len(email) > 0 and len(email) < 6:
             message = Markup('Your email address is too short!</br>Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')
-        if password1 != password2:
+        if len(password1) > 0 and len(password2) > 0 and password1 != password2:
             message = Markup('Your passwords don\'t match!</br>Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(firstname) >= 2 and len(lastname) >= 2 and len(email) >= 6 and password1 == password2:
@@ -86,7 +91,7 @@ def register():
     return render_template('register.html')
 
 
-# Route for Login page
+# route for Login page
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -94,35 +99,42 @@ def login():
         email = data.get('login-email')
         password = data.get('login-password')
 
-        # Form validation and categorised flash messaging conditional logic
-        # Check to see if user/email entered already exists in DB
-        if db.session.query(User).filter(User.email == email).count() != 0:
-
-            # verify that login password matches hashed password stored in DB
-            login_user = db.session.query(User).filter(User.email == email)
-            if login_user.count() != 0:
-                if check_password_hash(
-                            login_user[0].password, password):
-                    message = Markup('Nice to see you, {} <i class="fas fa-cut"></i></br>Is there a new barber you\'d like to tell us about?'.format(
-                        login_user[0].firstname))
-                    flash(message, 'success')
-
-                    # Store logged-in user in session cookie
-                    session['user'] = data.get('login-email')
-
-                    return redirect(url_for('review_submit'))
-                else:
-                    # Deliberately ambiguous message to prevent brute-force login attempts
-                    message = Markup('You have entered an invalid email/password!</br>Please try again <i class="fas fa-cut"></i>')
-                    flash(message, 'warning')
-        else:
-            # Another deliberately ambiguous message to prevent brute-force login attempts
-            message = Markup('You have entered an invalid email/password!</br>Please try again <i class="fas fa-cut"></i>')
+        # Login form validation and categorised flash messaging conditional logic
+        if email == '' or password == '':
+            message = Markup('Please fill out all fields!<br><i class="fas all-required-fields-icon fa-cut pt-1"></i>')
             flash(message, 'warning')
+        if len(email) > 0 and len(email) < 6:
+            message = Markup('Your email address is too short!</br>Please try again <i class="fas fa-cut"></i>')
+            flash(message, 'warning')
+        if len(email) >= 6:
+        # Check to see if user/email entered already exists in DB
+            if db.session.query(User).filter(User.email == email).count() != 0:
+
+                # verify that login password matches hashed password stored in DB
+                login_user = db.session.query(User).filter(User.email == email)
+                if login_user.count() != 0:
+                    if check_password_hash(
+                                login_user[0].password, password):
+                        message = Markup('Nice to see you, {} <i class="fas fa-cut"></i></br>Is there a new barber you\'d like to tell us about?'.format(
+                            login_user[0].firstname))
+                        flash(message, 'success')
+
+                        # Store logged-in user in session cookie
+                        session['user'] = data.get('login-email')
+
+                        return redirect(url_for('review_submit'))
+                    else:
+                        # Deliberately ambiguous message to prevent malicious brute-force login attempts
+                        message = Markup('You have entered an invalid email address/password!</br>Please try again <i class="fas fa-cut"></i>')
+                        flash(message, 'warning')
+            else:
+                # Another deliberately ambiguous message to prevent malicious brute-force login attempts
+                message = Markup('You have entered an invalid email address/password!</br>Please try again <i class="fas fa-cut"></i>')
+                flash(message, 'warning')
     return render_template('login.html')
 
 
-# Route for login page
+# route for login page
 @app.route('/logout')
 def logout():
 
@@ -138,13 +150,13 @@ def logout():
     return render_template('logout.html')
 
 
-# Route for Barbers page
+# route for Barbers page
 @app.route('/barbers')
 def barbers():
     return render_template('barbers.html')
 
 
-# Route for Review Submit page
+# route for Submit A Review page
 @app.route('/review-submit', methods=['GET', 'POST'])
 def review_submit():
 
@@ -186,7 +198,7 @@ def review_submit():
         'review-submit.html', user=user)
 
 
-# Route for Reviews page
+# route for Reviews page
 @app.route('/reviews')
 def reviews():
     reviews = Review.query.all()
@@ -194,7 +206,7 @@ def reviews():
     return render_template('reviews.html', reviews=reviews)
 
 
-# Route for Contact page
+# route for Contact page
 @app.route('/contact')
 def contact():
     return render_template('contact.html')

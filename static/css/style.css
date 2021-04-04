@@ -180,6 +180,10 @@ nav,
     margin-bottom: .5rem;
 }
 
+.all-required-fields-icon {
+    font-size: 1.5rem;
+}
+
 /* Login page */
 
 #form-login > .form-group:nth-of-type(1) {
@@ -249,9 +253,14 @@ nav,
     color: #fe0100;
 }
 
-#review-submit-form input[type="text"]:not(.browser-default):focus:not([read-only]) {
+#review-submit-form input[type="text"]:not(.browser-default):focus:not([read-only]),
+#review-submit-form select:focus {
     border-bottom: 1px solid #fe0100;
     box-shadow: 0 1px 0 0 #fe0100;
+}
+
+#review-submit-form select:focus {
+    color: #fe0100;
 }
 
 .md-form .review-submit-form-label {
@@ -413,6 +422,12 @@ nav,
     position: relative;
     top: 6px;
     left: -8px;
+}
+
+#review-submit-form-vibe {
+    color: #263C92;
+    font-size: 1rem;
+    font-weight: 300;
 }
 
 /* Reviews page */
