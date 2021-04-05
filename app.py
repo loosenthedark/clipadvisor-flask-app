@@ -186,12 +186,8 @@ def barbers():
 @app.route('/review-submit', methods=['GET', 'POST'])
 def review_submit():
 
-    # user_email = db.session.query(
-    #     User).filter(User.email == session['user']).count()
-    user_email = session['user']
     user = User.query.filter_by(email=session['user']).first()
     user_id = user.id
-    users = User.query.all()
 
     if request.method == 'POST':
         data = request.form
@@ -252,10 +248,19 @@ def review_submit():
 # route for Reviews page
 @app.route('/reviews')
 def reviews():
+
+    current_user = User.query.filter_by(email=session['user']).first()
     reviews = Review.query.all()
     reviews.reverse()
-    return render_template('reviews.html', reviews=reviews)
+    return render_template('reviews.html', user=current_user, reviews=reviews)
 
+
+# route for Update Review page
+@app.route('/review_update/<review_id>', methods=['GET', 'POST'])
+def review_update(review_id):
+    current_review = Review.query.filter_by(id=review_id).first()
+    return render_template(
+        'review-update.html', review=current_review)
 
 # route for Contact page
 @app.route('/contact')

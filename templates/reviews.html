@@ -35,9 +35,10 @@
                 <div class="card z-depth-5">
                     <!-- review card header -->
                     <div class="card-header reviews-card-header font-weight-light white-text">
-                        <div class="star-rating-display yellow-text w-75 mx-auto text-center p-3">{% if review.rating == 5 %}<i
-                                class="fas fa-star p-1"></i><i class="fas fa-star p-1 yellow-text"></i><i
-                                class="fas fa-star p-1"></i><i class="fas fa-star p-1"></i><i
+                        <div class="star-rating-display yellow-text w-75 mx-auto text-center p-3">
+                            {% if review.rating == 5 %}<i class="fas fa-star p-1"></i><i
+                                class="fas fa-star p-1 yellow-text"></i><i class="fas fa-star p-1"></i><i
+                                class="fas fa-star p-1"></i><i
                                 class="fas fa-star p-1"></i>{% elif review.rating == 4 %}<i
                                 class="fas fa-star p-1"></i><i class="fas fa-star p-1 yellow-text"></i><i
                                 class="fas fa-star p-1"></i><i
@@ -63,7 +64,8 @@
                                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ review.comments }}</p>
                                     <footer class="blockquote-footer mt-3 barber-blue-text">
                                         {{ review.customername|title }}
-                                        visited @ <span class="time-span">{{ review.time }}</span> on <span class="date-span">{{ review.date }}</span></footer>
+                                        visited @ <span class="time-span">{{ review.time }}</span> on <span
+                                            class="date-span">{{ review.date }}</span></footer>
                                 </blockquote>
                             </div>
                         </div>
@@ -71,15 +73,33 @@
                     <!-- /review card body -->
                     <!-- review card footer -->
                     <div class="card-footer p-0 text-center">
-                        
-                        <!-- review card modal trigger button -->
-                        <button type="button" class="btn white-text mt-0 mb-3 btn-more-info barber-blue"
+
+                        <!-- review card More Info modal trigger button -->
+                        <button type="button"
+                            class="btn white-text mt-0 mb-3 btn-more-info barber-blue px-3"
                             data-toggle="modal" data-target="#review-card-modal_{{ review.id }}">
                             More info <i class="fas fa-cut"></i>
                         </button>
-                        <!-- review card modal trigger button -->
+                        <!-- /review card More Info modal trigger button -->
 
-                        <!-- review card modal -->
+                        {% if user.id == review.user_id %}
+
+                        <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+
+                            <!-- Update Review button -->
+                            <a href="{{ url_for('review_update', review_id=review.id) }}"
+                                class="btn mb-3 rounded-top px-3 btn-update-review-btn barber-blue-text barber-blue-outline m-0">Update Review <i class="fas fa-cut"></i></a>
+                            <!-- /Update Review button -->
+                            <!-- Delete Review button -->
+                            <a href="{{ url_for('login') }}"
+                                class="btn mb-3 rounded-bottom px-3 btn-delete-review-btn barber-red-text barber-red-outline m-0">Delete Review <i class="fas fa-cut"></i></a>
+                            <!-- Delete Review button -->
+
+                        </div>
+
+                        {% endif %}
+
+                        <!-- review card More Info modal -->
                         <div class="modal fade" id="review-card-modal_{{ review.id }}" tabindex="-1" role="dialog"
                             aria-labelledby="review-card-modal-title" aria-hidden="true">
                             <!-- review card modal vertical centering -->
@@ -132,7 +152,8 @@
                                                         walk-in</span></li>
                                             </ul>
                                             <ul class="list-group modal-list-group">
-                                                <li class="text-left py-3 pl-4 list-group-item barber-blue white-text"> and payment:
+                                                <li class="text-left py-3 pl-4 list-group-item barber-blue white-text">
+                                                    and payment:
                                                 </li>
                                                 <li class="list-group-item">
                                                     <span
@@ -165,7 +186,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- /review card modal -->
+                        <!-- /review card More Info modal -->
 
                     </div>
                     <!-- /review card footer-->

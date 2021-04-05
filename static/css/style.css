@@ -59,6 +59,7 @@ nav,
 
 .form-card.register-form-card,
 .form-card.review-submit-form-card,
+.form-card.review-update-form-card,
 .form-card.reviews-card,
 .form-card.login-form-card {
     width: 100%;
@@ -82,12 +83,9 @@ nav,
     color: #fe0100;
 }
 
-#review-submit-form label.barber-blue {
-    color: #263c92;
-    background-color: unset;
-}
-
-#review-submit-form .prefix.barber-blue {
+#review-submit-form .prefix.barber-blue,
+#review-update-form .prefix.barber-blue
+ {
     color: #263c92;
     background-color: unset;
 }
@@ -98,6 +96,18 @@ nav,
 
 .barber-blue-text i.barber-red-text {
     color: #fe0100;
+}
+
+.barber-blue-outline {
+    border: .1rem solid #263c92;
+}
+
+.barber-red-outline {
+    border: .1rem solid #fe0100;
+}
+
+.text-very-muted {
+    color: rgb(209, 209, 209);
 }
 
 /* headings */
@@ -191,7 +201,9 @@ nav,
 }
 
 .btn-login-register-btn.waves-effect,
-.btn-register-login-btn.waves-effect {
+.btn-register-login-btn.waves-effect,
+.btn-update-review-btn,
+.btn-delete-review-btn {
     text-transform: uppercase;
     text-decoration: none;
     display: block;
@@ -208,10 +220,6 @@ nav,
 .btn-register-login-btn.waves-effect:focus,
 .btn-register-login-btn.waves-effect:active {
     box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
-}
-
-.barber-blue-outline {
-    border: .1rem solid #263c92;
 }
 
 .forgot-password,
@@ -231,39 +239,48 @@ nav,
     box-shadow: 0 1px 0 0 #fe0100;
 }
 
-#review-submit-form {
+#review-submit-form,
+#review-update-form {
     color: #757575
 }
 
-#review-submit-form label.barber-blue {
+#review-submit-form label.barber-blue,
+#review-update-form label.barber-blue {
     color: #263c92;
     background-color: unset;
 }
 
-#review-submit-form label.barber-red {
+#review-submit-form label.barber-red,
+#review-update-form label.barber-red {
     color: #fe0100;
 }
 
-#review-submit-form .prefix.barber-blue {
+#review-submit-form .prefix.barber-blue,
+#review-update-form .prefix.barber-blue {
     color: #263c92;
     background-color: unset;
 }
 
-#review-submit-form .prefix.barber-red {
+#review-submit-form .prefix.barber-red,
+#review-update-form .prefix.barber-red {
     color: #fe0100;
 }
 
 #review-submit-form input[type="text"]:not(.browser-default):focus:not([read-only]),
-#review-submit-form select:focus {
+#review-submit-form select:focus,
+#review-update-form input[type="text"]:not(.browser-default):focus:not([read-only]),
+#review-update-form select:focus {
     border-bottom: 1px solid #fe0100;
     box-shadow: 0 1px 0 0 #fe0100;
 }
 
-#review-submit-form select:focus {
+#review-submit-form select:focus,
+#review-update-form select:focus {
     color: #fe0100;
 }
 
-.md-form .review-submit-form-label {
+.md-form .review-submit-form-label,
+.md-form .review-update-form-label {
     top: -16px;
 }
 
@@ -331,11 +348,13 @@ nav,
     font-size: 20px;
 }
 
-.md-form .review-submit-form-label.vibe-label {
+.md-form .review-submit-form-label.vibe-label,
+.md-form .review-update-form-label.vibe-label {
     top: -30px;
 }
 
-#review-submit-form > .form-group:nth-last-of-type(2) {
+#review-submit-form > .form-group:nth-last-of-type(2),
+#review-update-form > .form-group:nth-last-of-type(2) {
     margin-bottom: .5rem;
 }
 
@@ -390,12 +409,14 @@ nav,
     color: #c59b08;
 }
 
-#review-submit-form-comments {
+#review-submit-form-comments,
+#review-update-form-comments {
     background-color: #dddddd5c;
     border-radius: 5px;
 }
 
-#review-submit-form textarea.md-textarea+label {
+#review-submit-form textarea.md-textarea+label,
+#review-update-form textarea.md-textarea+label {
     top: -0.3rem;
     left: 0.3rem;
 }
@@ -415,16 +436,25 @@ nav,
     left: 7px;
 }
 
-#review-submit-form-heading {
+#review-submit-form-heading,
+#review-update-form-heading {
     font-weight: 400;
-    font-size: 2.2rem;
     font-family: 'Roboto Condensed', sans-serif;
     position: relative;
     top: 6px;
     left: -8px;
 }
 
-#review-submit-form-vibe {
+#review-submit-form-heading {
+    font-size: 1.85rem;
+}
+
+#review-update-form-heading {
+    font-size: 1.6rem;
+}
+
+#review-submit-form-vibe,
+#review-update-form-vibe {
     color: #263C92;
     font-size: 1rem;
     font-weight: 300;
@@ -524,10 +554,11 @@ blockquote:after {
     padding-left: 3px;
 }
 
-.btn-more-info {
+.btn-more-info,
+.btn-group-vertical {
     width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 25%;
+    margin-right: 25%;
     min-width: 160px;
 }
 
@@ -607,3 +638,6 @@ blockquote:after {
 .thanks-for-reviewing-icon {
     font-size: 1.5rem;
 }
+
+/* Review Update page */
+
