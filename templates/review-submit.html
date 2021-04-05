@@ -34,7 +34,7 @@
                     <i class="fas fa-user barber-blue prefix"></i>
                     <input type="text" class="form-control review-submit-form-field"
                         id="review-submit-form-customer-name" name="review-submit-form-customer-name"
-                        value="{{ user.firstname|title }} {{ user.lastname|title }}" required>
+                        value="{{ user.firstname|title }} {{ user.lastname|title }}" minlength="4" maxlength="50">
                     <label for="review-submit-form-customer-name" class="review-submit-form-label barber-blue">Customer
                         Name</label>
                 </div>
@@ -46,7 +46,7 @@
                 <div class="md-form my-5">
                     <i class="fas fa-building barber-blue prefix"></i>
                     <input type="text" class="form-control review-submit-form-field" minlength="3" maxlength="50"
-                        id="review-submit-form-barbershop-name" name="review-submit-form-barbershop-name" required>
+                        id="review-submit-form-barbershop-name" name="review-submit-form-barbershop-name">
                     <label for="review-submit-form-barbershop-name"
                         class="review-submit-form-label barber-blue">Barber</label>
                 </div>
@@ -58,7 +58,7 @@
                 <div class="md-form my-5">
                     <i class="fas fa-calendar-day barber-blue prefix"></i>
                     <input type="text" id="review-submit-form-date-picker" name="review-submit-form-date-picker"
-                        class="form-control review-submit-form-field" required>
+                        class="form-control review-submit-form-field">
                     <label for="review-submit-form-date-picker" class="review-submit-form-label barber-blue">What date
                         did you visit?</label>
                 </div>
@@ -70,7 +70,7 @@
                 <div class="md-form my-5">
                     <i class="fas fa-clock barber-blue prefix"></i>
                     <input type="text" id="review-submit-form-time-picker" name="review-submit-form-time-picker"
-                        class="form-control review-submit-form-field" required>
+                        class="form-control review-submit-form-field">
                     <label for="review-submit-form-time-picker" class="review-submit-form-label barber-blue">What time
                         did you visit?</label>
                 </div>
@@ -139,7 +139,7 @@
                     <label for="review-submit-form-vibe"
                         class="review-submit-form-label vibe-label barber-blue">Vibe</label>
                     <select class="form-control review-submit-form-field pt-3 pb-2" id="review-submit-form-vibe"
-                        name="review-submit-form-vibe" required>
+                        name="review-submit-form-vibe">
                         <option selected disabled>Please select one:</option>
                         <option value="old school">Old school</option>
                         <option value="work commute">Work commute</option>
@@ -159,7 +159,7 @@
                 <div class="md-form mt-5 mb-4">
                     <textarea id="review-submit-form-comments" name="review-submit-form-comments"
                         class="p-2 shadow-sm form-control md-textarea review-submit-form-field" rows="3" minlength="10"
-                        maxlength="1000" required></textarea>
+                        maxlength="1000"></textarea>
                     <label for="review-submit-form-comments" class="barber-blue">Tell us what you liked and/or did not
                         like...</label>
                 </div>
@@ -173,7 +173,7 @@
                             class="ml-1 fas fa-thumbs-down barber-red-text"></i></h5>
                     <h5 class="barber-blue-text">Overall Rating</h5>
                     <div class="star-wrapper text-center">
-                        <input type="radio" id="star-5" name="review-submit-form-star-rating" value="5" required>
+                        <input type="radio" id="star-5" name="review-submit-form-star-rating" value="5">
                         <label class="mx-1" for="star-5" title="Awesome!">5 stars</label>
                         <input type="radio" id="star-4" name="review-submit-form-star-rating" value="4">
                         <label class="mx-1" for="star-4" title="Good">4 stars</label>
@@ -187,16 +187,6 @@
                 </div>
             </div>
             <!-- /star rating radio buttons -->
-
-            <!-- email copy checkbox -->
-            <!-- <div class="form-group mb-4_5">
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="review-submit-form-send-copy">
-                    <label class="form-check-label" for="review-submit-form-send-copy">Send me a copy of this
-                        review</label>
-                </div>
-            </div> -->
-            <!-- email copy checkbox -->
 
             <!-- review submit button -->
             <button class="btn btn-success btn-lg btn-block btn-pills z-depth-0 mt-3 mb-4 waves-effect"
