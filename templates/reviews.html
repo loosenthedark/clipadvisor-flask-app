@@ -75,8 +75,7 @@
                     <div class="card-footer p-0 text-center">
 
                         <!-- review card More Info modal trigger button -->
-                        <button type="button"
-                            class="btn white-text mt-0 mb-3 btn-more-info barber-blue px-3"
+                        <button type="button" class="btn white-text mt-0 mb-3 btn-more-info barber-blue px-3"
                             data-toggle="modal" data-target="#review-card-modal_{{ review.id }}">
                             More info <i class="fas fa-cut"></i>
                         </button>
@@ -88,12 +87,21 @@
 
                             <!-- Update Review button -->
                             <a href="{{ url_for('review_update', review_id=review.id) }}"
-                                class="btn mb-3 rounded-top px-3 btn-update-review-btn barber-blue-text barber-blue-outline m-0">Update Review <i class="fas fa-cut"></i></a>
+                                class="btn mb-3 rounded-top px-3 btn-update-review-btn barber-blue-text barber-blue-outline m-0">Update
+                                Review <i class="fas fa-cut"></i></a>
                             <!-- /Update Review button -->
-                            <!-- Delete Review button -->
-                            <a href="{{ url_for('login') }}"
-                                class="btn mb-3 rounded-bottom px-3 btn-delete-review-btn barber-red-text barber-red-outline m-0">Delete Review <i class="fas fa-cut"></i></a>
-                            <!-- Delete Review button -->
+                            <!-- review card Are You Sure? modal trigger button -->
+                            <a class="btn mb-3 rounded-bottom px-3 btn-delete-review-btn barber-red-outline m-0"
+                                id="review-delete-modal-trigger" data-toggle="modal"
+                                data-target="#review-card-are-you-sure-modal_{{ review.id }}">Delete
+                                Review <i class="fas fa-cut"></i></a>
+                            <!-- /review card Are You Sure? modal trigger button -->
+                            <!-- review card Are You Sure? modal trigger button -->
+                            <!-- <button type="button" href="{{ url_for('review_delete', review_id=review.id) }}" class="btn white-text mt-0 mb-3 btn-more-info barber-blue px-3"
+                                data-toggle="modal" data-target="#review-card-modal_{{ review.id }}">
+                                More info <i class="fas fa-cut"></i>
+                            </button> -->
+                            <!-- /review card Are You Sure? modal trigger button -->
 
                         </div>
 
@@ -187,6 +195,47 @@
                             </div>
                         </div>
                         <!-- /review card More Info modal -->
+
+                        <!-- review card Are You Sure? modal -->
+                        <div class="modal fade" id="review-card-are-you-sure-modal_{{ review.id }}" tabindex="-1"
+                            role="dialog" aria-labelledby="review-card-are-you-sure-modal-title" aria-hidden="true">
+                            <!-- review card Are You Sure? modal vertical centering -->
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <!-- review card Are You Sure? modal header -->
+                                    <div class="modal-header barber-red white-text text-center py-4 px-4_5"
+                                        id="are-you-sure-modal-header">
+                                        <h5 class="modal-title" id="review-card-are-you-sure-modal-title">
+                                            <p class="mb-0">Are you sure you want to delete your review of:</p>
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <!-- /review card Are You Sure? modal header -->
+                                    <!-- review card Are You Sure? modal body -->
+                                    <div class="modal-body text-center px-2 pt-3 pb-4">
+                                        <h6 class="mt-4 mb-0 barber-blue-text">{{ review.barbershopname }}?</h6>
+                                    </div>
+                                    <!-- /review card Are You Sure? modal body -->
+                                    <!-- review card Are You Sure? modal footer -->
+                                    <div class="modal-footer">
+                                        <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                                            <!-- Delete Review button -->
+                                            <a href="{{ url_for('review_delete', review_id=review.id) }}"
+                                                class="btn mb-3 rounded-top barber-red-outline px-3 btn-yes-delete-btn barber-red white-text m-0">Yes <i class="fas fa-cut"></i></a>
+                                            <!-- /Delete Review button -->
+                                            <!-- review card Are You Sure? modal dismiss button -->
+                                            <a class="btn mb-3 rounded-bottom px-3 btn-no-keep-btn barber-blue barber-blue-outline white-text m-0"
+                                                id="review-delete-modal-trigger" data-dismiss="modal">No <i class="fas fa-cut"></i></a>
+                                            <!-- /review card Are You Sure? modal dismiss button -->
+                                        </div>
+                                    </div>
+                                    <!-- /review card Are You Sure? modal footer -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /review card Are You Sure? modal -->
 
                     </div>
                     <!-- /review card footer-->

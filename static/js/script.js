@@ -91,7 +91,7 @@ $(document).ready(function () {
     // Undo this action when alert is dismissed
     $('#flash-message-dismiss').click(function () {
         $('.flash-message-container').next().removeClass('pull-content-up');
-        $('.register-form-card, .review-submit-form-card, .review-update-form-card, .reviews-card').addClass('mt-3');
+        $('.register-form-card, .login-form-card, .review-submit-form-card, .review-update-form-card, .reviews-card').addClass('mt-3');
     })
 
     // Darken vibe select menu text on Review Update page once user clicks to change selected value

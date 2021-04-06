@@ -35,13 +35,13 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-# route for Home (landing) page
+# Home route (landing page)
 @app.route('/')
 def home():
     return render_template('index.html')
 
 
-# route for Registration page
+# route to register user
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -108,7 +108,7 @@ def register():
     return render_template('register.html')
 
 
-# route for Login page
+# route to log user in
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -161,7 +161,7 @@ def login():
     return render_template('login.html')
 
 
-# route for login page
+# route to log user out
 @app.route('/logout')
 def logout():
 
@@ -176,13 +176,13 @@ def logout():
     return render_template('logout.html')
 
 
-# route for Barbers page
+# route to view all barbers
 @app.route('/barbers')
 def barbers():
     return render_template('barbers.html')
 
 
-# route for Submit A Review page
+# route to submit a review
 @app.route('/review-submit', methods=['GET', 'POST'])
 def review_submit():
 
@@ -245,7 +245,7 @@ def review_submit():
         'review-submit.html', user=user)
 
 
-# route for Reviews page
+# route to view all reviews
 @app.route('/reviews')
 def reviews():
 
@@ -254,7 +254,7 @@ def reviews():
     return render_template('reviews.html', user=current_user, reviews=reviews)
 
 
-# route for Update Review page
+# route to update a review
 @app.route('/review_update/<review_id>', methods=['GET', 'POST'])
 def review_update(review_id):
 
@@ -289,12 +289,25 @@ def review_update(review_id):
     current_review = Review.query.get(review_id)
     vibes = Vibe.query.all()
 
-    print(current_review.barbershopname)
-
     return render_template(
         'review-update.html', review=current_review, vibes=vibes)
 
-# route for Contact page
+
+# route to delete a review
+@app.route('/review_delete/<review_id>')
+def review_delete(review_id):
+
+    review_to_be_deleted = db.session.query(Review).filter(Review.id == review_id).first()
+    db.session.delete(review_to_be_deleted)
+    db.session.commit()
+
+    message = Markup('Review deleted successfully!<br><i class="fas thanks-for-reviewing-icon fa-cut pt-1"></i>')
+    flash(message, 'success')
+
+    return redirect(url_for('reviews'))
+
+
+# route to contact site owner
 @app.route('/contact')
 def contact():
     return render_template('contact.html')

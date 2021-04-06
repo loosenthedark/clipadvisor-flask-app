@@ -14,6 +14,11 @@ h3 {
     font-size: 2.2rem;
 }
 
+h6 {
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
 body::before {
     position: absolute;
     content: "";
@@ -146,11 +151,12 @@ nav,
 }
 
 .px-4_5 {
-    padding-left: 36px;
-    padding-right: 36px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .pull-content-up {
+    justify-content: flex-start;
     align-items: flex-start;
 }
 
@@ -196,6 +202,11 @@ nav,
 
 /* Login page */
 
+.login-form-card {
+    position: relative;
+    top: -20px;
+}
+
 #form-login > .form-group:nth-of-type(1) {
     margin-bottom: .5rem;
 }
@@ -203,7 +214,9 @@ nav,
 .btn-login-register-btn.waves-effect,
 .btn-register-login-btn.waves-effect,
 .btn-update-review-btn,
-.btn-delete-review-btn {
+.btn-delete-review-btn,
+.btn-yes-delete-btn,
+.btn-no-keep-btn {
     text-transform: uppercase;
     text-decoration: none;
     display: block;
@@ -211,6 +224,11 @@ nav,
     font-size: .81rem;
     border-radius: .25rem;
     box-shadow: unset;
+}
+
+.btn-yes-delete-btn,
+.btn-no-keep-btn {
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
 }
 
 .btn-login-register-btn.waves-effect:hover,
@@ -569,6 +587,10 @@ blockquote:after {
     filter: opacity(0.9);
 }
 
+#review-delete-modal-trigger {
+    color: #fe0100;
+}
+
 .modal-header {
     display: block;
     position: relative;
@@ -640,6 +662,10 @@ blockquote:after {
 
 .thanks-for-reviewing-icon {
     font-size: 1.5rem;
+}
+
+#are-you-sure-modal-header {
+    border-bottom: none;
 }
 
 /* Review Update page */
