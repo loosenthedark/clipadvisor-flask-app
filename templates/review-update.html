@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 
-{% block title %}Submit A Review | Clipadvisor: Rate Your Barber!{% endblock %}
+{% block title %}Update Your Review | Clipadvisor: Rate Your Barber!{% endblock %}
 
 {% block content %}
 
+<div class="alert alert-info py-2_5 pl-3 pr-4 my-3 mb-0 text-center fade show alert-dismissible flash-msg-box-top"
+    role="alert"><strong>You can update your review using the form below!<br>When you've made your changes, click the 'Update Review' button to save them <i
+            class="fas fa-cut"></i></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"
+        id="flash-message-dismiss"><span aria-hidden="true">&times;</span></button></div>
+
 <!-- Update Review form card container -->
-<div class="card form-card review-update-form-card mt-3 mb-5">
+<div class="card form-card review-update-form-card mb-5">
 
     <!-- Update Review form heading -->
     <div class="review-update-form-card-heading text-center">
@@ -21,6 +26,8 @@
     <div class="card-body p-4 px-lg-5 pt-0">
         <!-- Update Review form -->
         <form id="review-update-form" action="{{ url_for('review_update', review_id = review.id) }}" method="POST">
+
+            <input type="hidden" name="review-update-form-review-id" value="{{review.id}}">
 
             <!-- customer name input -->
             <div class="form-group">
@@ -65,7 +72,7 @@
                 <div class="md-form my-5">
                     <i class="fas fa-clock barber-blue prefix"></i>
                     <input type="text" id="review-update-form-time-picker" name="review-update-form-time-picker"
-                        class="form-control review-update-form-field text-very-muted" value="{{ review.date }}">
+                        class="form-control review-update-form-field text-very-muted" value="{{ review.time }}">
                     <label for="review-update-form-time-picker" class="review-update-form-label barber-blue">What time
                         did you visit?</label>
                 </div>
@@ -161,19 +168,16 @@
             <div class="form-group">
                 <div class="md-form mt-4_5 mb-5">
                     <i class="fas fa-grin-squint barber-blue prefix"></i>
-                    <label for="review-submit-form-vibe"
-                        class="review-submit-form-label vibe-label barber-blue">Vibe</label>
-                    <select class="form-control review-update-form-field pt-3 pb-2" id="review-submit-form-vibe"
-                        name="review-submit-form-vibe">
-                        <option selected disabled>Please select one:</option>
-                        <option value="old school">Old school</option>
-                        <option value="work commute">Work commute</option>
-                        <option value="hipster">Hipster</option>
-                        <option value="cookie cutter">Cookie cutter</option>
-                        <option value="cheap & cheerful">Cheap & cheerful</option>
-                        <option value="dancefloor">Dancefloor</option>
-                        <option value="silence is golden">Silence is golden</option>
-                        <option value="sweatbox">Sweatbox</option>
+                    <label for="review-update-form-vibe"
+                        class="review-update-form-label vibe-label barber-blue">Vibe</label>
+                    <select class="form-control review-update-form-field pt-3 pb-2 text-very-muted"
+                        id="review-update-form-vibe" name="review-update-form-vibe">
+                        <option value="{{ review.vibe }}" selected>{{ review.vibe }}</option>
+                        {% for vibe in vibes %}
+                        {% if review.vibe != vibe.vibe_name %}
+                        <option value="{{ vibe.vibe_name }}">{{ vibe.vibe_name }}</option>
+                        {% endif %}
+                        {% endfor %}
                     </select>
                 </div>
             </div>
@@ -198,26 +202,72 @@
                             class="ml-1 fas fa-thumbs-down barber-red-text"></i></h5>
                     <h5 class="barber-blue-text">Overall Rating</h5>
                     <div class="star-wrapper text-center">
-                        <input type="radio" id="star-5" name="review-submit-form-star-rating" value="5">
+                        {% if review.rating == 5 %}
+                        <input type="radio" id="star-5" name="review-update-form-star-rating" value="5" checked>
                         <label class="mx-1" for="star-5" title="Awesome!">5 stars</label>
-                        <input type="radio" id="star-4" name="review-submit-form-star-rating" value="4">
+                        <input type="radio" id="star-4" name="review-update-form-star-rating" value="4">
                         <label class="mx-1" for="star-4" title="Good">4 stars</label>
-                        <input type="radio" id="star-3" name="review-submit-form-star-rating" value="3">
+                        <input type="radio" id="star-3" name="review-update-form-star-rating" value="3">
                         <label class="mx-1" for="star-3" title="OK">3 stars</label>
-                        <input type="radio" id="star-2" name="review-submit-form-star-rating" value="2">
+                        <input type="radio" id="star-2" name="review-update-form-star-rating" value="2">
                         <label class="mx-1" for="star-2" title="Poor">2 stars</label>
-                        <input type="radio" id="star-1" name="review-submit-form-star-rating" value="1">
+                        <input type="radio" id="star-1" name="review-update-form-star-rating" value="1">
                         <label class="mx-1" for="star-1" title="Terrible!">1 star</label>
+                        {% elif review.rating == 4 %}
+                        <input type="radio" id="star-5" name="review-update-form-star-rating" value="5">
+                        <label class="mx-1" for="star-5" title="Awesome!">5 stars</label>
+                        <input type="radio" id="star-4" name="review-update-form-star-rating" value="4" checked>
+                        <label class="mx-1" for="star-4" title="Good">4 stars</label>
+                        <input type="radio" id="star-3" name="review-update-form-star-rating" value="3">
+                        <label class="mx-1" for="star-3" title="OK">3 stars</label>
+                        <input type="radio" id="star-2" name="review-update-form-star-rating" value="2">
+                        <label class="mx-1" for="star-2" title="Poor">2 stars</label>
+                        <input type="radio" id="star-1" name="review-update-form-star-rating" value="1">
+                        <label class="mx-1" for="star-1" title="Terrible!">1 star</label>
+                        {% elif review.rating == 3 %}
+                        <input type="radio" id="star-5" name="review-update-form-star-rating" value="5">
+                        <label class="mx-1" for="star-5" title="Awesome!">5 stars</label>
+                        <input type="radio" id="star-4" name="review-update-form-star-rating" value="4">
+                        <label class="mx-1" for="star-4" title="Good">4 stars</label>
+                        <input type="radio" id="star-3" name="review-update-form-star-rating" value="3" checked>
+                        <label class="mx-1" for="star-3" title="OK">3 stars</label>
+                        <input type="radio" id="star-2" name="review-update-form-star-rating" value="2">
+                        <label class="mx-1" for="star-2" title="Poor">2 stars</label>
+                        <input type="radio" id="star-1" name="review-update-form-star-rating" value="1">
+                        <label class="mx-1" for="star-1" title="Terrible!">1 star</label>
+                        {% elif review.rating == 2 %}
+                        <input type="radio" id="star-5" name="review-update-form-star-rating" value="5">
+                        <label class="mx-1" for="star-5" title="Awesome!">5 stars</label>
+                        <input type="radio" id="star-4" name="review-update-form-star-rating" value="4">
+                        <label class="mx-1" for="star-4" title="Good">4 stars</label>
+                        <input type="radio" id="star-3" name="review-update-form-star-rating" value="3">
+                        <label class="mx-1" for="star-3" title="OK">3 stars</label>
+                        <input type="radio" id="star-2" name="review-update-form-star-rating" value="2" checked>
+                        <label class="mx-1" for="star-2" title="Poor">2 stars</label>
+                        <input type="radio" id="star-1" name="review-update-form-star-rating" value="1">
+                        <label class="mx-1" for="star-1" title="Terrible!">1 star</label>
+                        {% elif review.rating == 1 %}
+                        <input type="radio" id="star-5" name="review-update-form-star-rating" value="5">
+                        <label class="mx-1" for="star-5" title="Awesome!">5 stars</label>
+                        <input type="radio" id="star-4" name="review-update-form-star-rating" value="4">
+                        <label class="mx-1" for="star-4" title="Good">4 stars</label>
+                        <input type="radio" id="star-3" name="review-update-form-star-rating" value="3">
+                        <label class="mx-1" for="star-3" title="OK">3 stars</label>
+                        <input type="radio" id="star-2" name="review-update-form-star-rating" value="2">
+                        <label class="mx-1" for="star-2" title="Poor">2 stars</label>
+                        <input type="radio" id="star-1" name="review-update-form-star-rating" value="1" checked>
+                        <label class="mx-1" for="star-1" title="Terrible!">1 star</label>
+                        {% endif %}
                     </div>
                 </div>
             </div>
             <!-- /star rating radio buttons -->
 
-            <!-- review submit button -->
+            <!-- review update button -->
             <button class="btn btn-success btn-lg btn-block btn-pills z-depth-0 mt-3 mb-4 waves-effect"
-                type="submit">Submit
+                type="submit">Update
                 Review</button>
-            <!-- /review submit button -->
+            <!-- /review update button -->
         </form>
         <!-- /Update Review form -->
     </div>

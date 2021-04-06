@@ -7,7 +7,7 @@ from flask import (
 from werkzeug.security import (
     generate_password_hash, check_password_hash)
 from flask_sqlalchemy import SQLAlchemy
-from models import User, Review
+from models import User, Review, Vibe
 from sqlalchemy.sql import func
 if os.path.exists('env.py'):
     import env
@@ -251,16 +251,48 @@ def reviews():
 
     current_user = User.query.filter_by(email=session['user']).first()
     reviews = Review.query.all()
-    reviews.reverse()
     return render_template('reviews.html', user=current_user, reviews=reviews)
 
 
 # route for Update Review page
 @app.route('/review_update/<review_id>', methods=['GET', 'POST'])
 def review_update(review_id):
-    current_review = Review.query.filter_by(id=review_id).first()
+
+    user = User.query.filter_by(email=session['user']).first()
+    user_id = user.id
+
+    if request.method == 'POST':
+
+        data = request.form
+        updated_review = db.session.query(Review).filter(Review.id == review_id).first()
+        updated_review.customername = data.get('review-update-form-customer-name')
+        updated_review.barbershopname = data.get('review-update-form-barbershop-name')
+        updated_review.date = data.get('review-update-form-date-picker')
+        updated_review.time = data.get('review-update-form-time-picker')
+        updated_review.cash = data.get('review-update-form-payment-cash-checkbox')
+        updated_review.card = data.get('review-update-form-payment-card-checkbox')
+        updated_review.vibe = data.get('review-update-form-vibe')
+        updated_review.rating = data.get('review-update-form-star-rating')
+        updated_review.comments = data.get('review-update-form-comments')
+        updated_review.user_id = user_id
+        updated_review.phone = data.get('review-update-form-booking-phone-checkbox')
+        updated_review.online = data.get('review-update-form-booking-online-checkbox')
+        updated_review.walkin = data.get('review-update-form-booking-walkin-checkbox')
+
+        db.session.commit()
+
+        message = Markup('Review updated successfully!<br><i class="fas thanks-for-reviewing-icon fa-cut pt-1"></i>')
+        flash(message, 'success')
+
+        return redirect(url_for('reviews'))
+
+    current_review = Review.query.get(review_id)
+    vibes = Vibe.query.all()
+
+    print(current_review.barbershopname)
+
     return render_template(
-        'review-update.html', review=current_review)
+        'review-update.html', review=current_review, vibes=vibes)
 
 # route for Contact page
 @app.route('/contact')

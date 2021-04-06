@@ -455,9 +455,12 @@ nav,
 
 #review-submit-form-vibe,
 #review-update-form-vibe {
-    color: #263C92;
     font-size: 1rem;
     font-weight: 300;
+}
+
+#review-submit-form-vibe {
+    color: #263C92;
 }
 
 /* Reviews page */

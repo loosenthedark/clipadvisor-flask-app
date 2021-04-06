@@ -25,7 +25,7 @@ $(document).ready(function () {
     var mm = String(today.getMonth() + 1).padStart(2, '0');
     var yyyy = today.getFullYear();
     today = dd + '-' + mm + '-' + yyyy;
-    $('#review-submit-form-date-picker').datetimepicker(
+    $('#review-submit-form-date-picker, #review-update-form-date-picker').datetimepicker(
         {
             timepicker: false,
             datepicker: true,
@@ -33,7 +33,7 @@ $(document).ready(function () {
             format: 'd-m-Y',
             maxDate: '0'
         });
-    $('#review-submit-form-time-picker').datetimepicker(
+    $('#review-submit-form-time-picker, #review-update-form-time-picker').datetimepicker(
         {
             timepicker: true,
             datepicker: false,
@@ -91,7 +91,12 @@ $(document).ready(function () {
     // Undo this action when alert is dismissed
     $('#flash-message-dismiss').click(function () {
         $('.flash-message-container').next().removeClass('pull-content-up');
-        $('.register-form-card, .review-submit-form-card, .reviews-card').addClass('mt-3');
+        $('.register-form-card, .review-submit-form-card, .review-update-form-card, .reviews-card').addClass('mt-3');
+    })
+
+    // Darken vibe select menu text on Review Update page once user clicks to change selected value
+    $('.review-update-form-field').focus(function () {
+        $(this).removeClass('text-very-muted').addClass('barber-blue-text');
     })
 
     // // Tooltips Initialization

@@ -56,3 +56,13 @@ class Review(db.Model):
         self.phone = phone
         self.online = online
         self.walkin = walkin
+
+
+class Vibe(db.Model):
+    """ Vibe model """
+    __tablename__ = 'vibes'
+    id = db.Column(db.Integer, primary_key=True)
+    vibe_name = db.Column(db.String(50), nullable=False)
+
+    def __init__(self, vibe_name):
+        self.vibe_name = vibe_name

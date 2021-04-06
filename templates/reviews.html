@@ -30,7 +30,7 @@
             {% if reviews|length > 0 %}
 
             <!-- review card -->
-            {% for review in reviews %}
+            {% for review in reviews|sort(attribute='id', reverse = True) %}
             <div class="col-12 review-card-wrapper mb-3">
                 <div class="card z-depth-5">
                     <!-- review card header -->
