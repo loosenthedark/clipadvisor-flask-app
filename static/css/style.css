@@ -14,6 +14,11 @@ h3 {
     font-size: 2.2rem;
 }
 
+h4 {
+    font-weight: 500;
+    font-size: 1.7rem;
+}
+
 h6 {
     font-size: 1.4rem;
     font-weight: 400;
@@ -668,5 +673,9 @@ blockquote:after {
     border-bottom: none;
 }
 
-/* Review Update page */
+/* Logout page */
 
+.logout-alert {
+    position: relative;
+    top: -20px;
+}

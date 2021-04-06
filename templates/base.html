@@ -50,7 +50,11 @@
                 {% endblock %}
                 {% block navbarnavreviews %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('reviews') }}">Reviews</a>
+                    {% if not session.user %}
+                    <a class="nav-link" href="{{ url_for('reviews_') }}">Recent Reviews</a>
+                    {% else %}
+                    <a class="nav-link" href="{{ url_for('reviews') }}">Recent Reviews</a>
+                    {% endif %}
                 </li>
                 {% endblock %}
                 {% block navbarnavsubmitareview %}

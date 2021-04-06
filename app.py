@@ -167,13 +167,10 @@ def logout():
 
     user = User.query.filter_by(email=session['user']).first()
 
-    message = Markup('Thanks for being a part of Clipadvisor, {} <i class="fas fa-cut"></i></br>You have logged out successfully.<br>We hope to see you again soon!'.format(user.firstname))
-    flash(message, 'success')
-
     # Remove/Destroy session cookie associated with user
     session.pop('user')
 
-    return render_template('logout.html')
+    return render_template('logout.html', user=user)
 
 
 # route to view all barbers
@@ -245,7 +242,15 @@ def review_submit():
         'review-submit.html', user=user)
 
 
-# route to view all reviews
+# route to view all reviews as visiting user
+@app.route('/reviews_')
+def reviews_():
+
+    reviews = Review.query.all()
+    return render_template('reviews.html', reviews=reviews)
+
+
+# route to view all reviews as logged-in user
 @app.route('/reviews')
 def reviews():
 
