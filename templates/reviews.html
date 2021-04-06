@@ -31,10 +31,9 @@
 
         <!-- review cards -->
         <div class="row">
-            {% if reviews|length > 0 %}
 
             <!-- review card -->
-            {% for review in reviews|sort(attribute='id', reverse = True) %}
+            {% for review in reviews.items %}
             <div class="col-12 review-card-wrapper mb-3">
                 <div class="card z-depth-5">
                     <!-- review card header -->
@@ -67,7 +66,7 @@
                                 <blockquote class="blockquote pb-0 font-weight-light mb-0">
                                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ review.comments }}</p>
                                     <footer class="blockquote-footer mt-3 barber-blue-text">
-                                        {{ review.customername|title }}
+                                        {{ review.customername }}
                                         visited @ <span class="time-span">{{ review.time }}</span> on <span
                                             class="date-span">{{ review.date }}</span></footer>
                                 </blockquote>
@@ -99,12 +98,6 @@
                                 id="review-delete-modal-trigger" data-toggle="modal"
                                 data-target="#review-card-are-you-sure-modal_{{ review.id }}">Delete
                                 Review <i class="fas fa-cut"></i></a>
-                            <!-- /review card Are You Sure? modal trigger button -->
-                            <!-- review card Are You Sure? modal trigger button -->
-                            <!-- <button type="button" href="{{ url_for('review_delete', review_id=review.id) }}" class="btn white-text mt-0 mb-3 btn-more-info barber-blue px-3"
-                                data-toggle="modal" data-target="#review-card-modal_{{ review.id }}">
-                                More info <i class="fas fa-cut"></i>
-                            </button> -->
                             <!-- /review card Are You Sure? modal trigger button -->
 
                         </div>
@@ -250,11 +243,19 @@
             </div>
             {% endfor %}
             <!-- /review card -->
-
-            {% else %}
+            {% for page_num in reviews.iter_pages() %}
+                {% if page_num %}
+                    {% if not session.user %}
+                    <a class="btn btn-outline-info mb-4" href="{{ url_for('reviews_', page=page_num) }}">{{ page_num }}</a>
+                    {% else %}
+                    <a class="btn btn-outline-info mb-4" href="{{ url_for('reviews', page=page_num) }}">{{ page_num }}</a>
+                    {% endif %}
+                {% else %}
+                {% endif %}
+            {% endfor %}
 
             <!-- fallback alert displays if no reviews in DB -->
-            <div class="well container message-container">
+            <!-- <div class="well container message-container">
                 <div class="alert alert-danger py-2_5 pl-3 pr-4 my-3 mb-0 text-center fade show alert-dismissible flash-msg-box-top"
                     role="alert">
                     <strong>Sorry, no reviews found! Please try again.</strong>
@@ -263,10 +264,9 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-            </div>
+            </div> -->
             <!-- /fallback alert displays if no reviews in DB -->
 
-            {% endif %}
         </div>
         <!-- /review cards -->
 

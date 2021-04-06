@@ -176,7 +176,9 @@ def logout():
 # route to view all barbers
 @app.route('/barbers')
 def barbers():
-    return render_template('barbers.html')
+    
+    reviews = Review.query.all()
+    return render_template('barbers.html', reviews=reviews)
 
 
 # route to submit a review
@@ -245,8 +247,9 @@ def review_submit():
 # route to view all reviews as visiting user
 @app.route('/reviews_')
 def reviews_():
-
-    reviews = Review.query.all()
+    page = request.args.get('page', 1, type=int)
+    reviews = Review.query.order_by(
+        Review.id.desc()).paginate(page=page, per_page=10)
     return render_template('reviews.html', reviews=reviews)
 
 

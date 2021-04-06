@@ -18,6 +18,14 @@ $(document).ready(function () {
         $(this).prev().prev().removeClass("barber-red");
     });
 
+    // Flexible-height textarea (adjusts up and down to accommodate user-inputted text content) as suggested here: https://stackoverflow.com/questions/454202/creating-a-textarea-with-auto-resize
+    $("textarea").each(function () {
+        this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
+    }).on("input", function () {
+        this.style.height = "auto";
+        this.style.height = (this.scrollHeight) + "px";
+    });
+
     // jQuery DateTimePicker with dark theme source code: https://github.com/xdan/datetimepicker
 
     var today = new Date();
