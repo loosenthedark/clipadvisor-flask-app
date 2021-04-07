@@ -174,8 +174,10 @@ def logout():
 # route to view all barbers
 @app.route('/barbers')
 def barbers():
-
-    reviews = Review.query.all()
+    # barbers displayed in alphabetical order
+    page = request.args.get('page', 1, type=int)
+    reviews = Review.query.order_by(
+        Review.barbershopname.asc()).paginate(page=page, per_page=10)
     return render_template('barbers.html', reviews=reviews)
 
 
@@ -322,7 +324,8 @@ def review_update(review_id):
 # route to view all reviews as visiting user
 @app.route('/reviews_')
 def reviews_():
-
+    # reviews displayed in descending order of recency (
+    # i.e. most recent reviews first)
     page = request.args.get('page', 1, type=int)
     reviews = Review.query.order_by(
         Review.id.desc()).paginate(page=page, per_page=10)
@@ -332,8 +335,9 @@ def reviews_():
 # route to view all reviews as logged-in user
 @app.route('/reviews')
 def reviews():
-
     current_user = User.query.filter_by(email=session['user']).first()
+    # reviews displayed in descending order of recency (
+    # i.e. most recent reviews first)
     page = request.args.get('page', 1, type=int)
     reviews = Review.query.order_by(
         Review.id.desc()).paginate(page=page, per_page=10)

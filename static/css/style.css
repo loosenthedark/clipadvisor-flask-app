@@ -531,7 +531,7 @@ blockquote:after {
     background-color: #E08888;
 }
 
-.reviews-card-header .fa-star {
+.card-header .fa-star {
     font-size: 1.5rem;
 }
 
@@ -711,4 +711,21 @@ blockquote:after {
 
 .pagination-wrapper > i {
     width: 6%;
+}
+
+/* Barbers page */
+
+.dancefloor-text {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.green-text,
+.brown-text,
+.purple-text,
+.orange-text,
+.col-md-4.barber-blue-text > .grey-text,
+.dancefloor-text,
+.cyan-text,
+.teal-text {
+    font-size: 1.25rem;
 }
