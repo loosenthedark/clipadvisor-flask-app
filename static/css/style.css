@@ -520,7 +520,7 @@ blockquote p {
 blockquote:after {
     content: close-quote;
     right: 1.5rem;
-    bottom: -1.5rem;
+    bottom: -1.8rem;
 }
 
 .blockquote-footer {
@@ -539,38 +539,38 @@ blockquote:after {
     background-color: #fdfdfd;
 }
 
-.review-card-wrapper:first-of-type .card-header {
+.review-card-wrapper.my-reviews .card-header {
     background-color: #fe0100;
 }
 
-.review-card-wrapper:first-of-type .card-body {
+.review-card-wrapper.my-reviews .card-body {
     background-color: #fff;
     font-weight: 400;
 }
 
-.review-card-wrapper:first-of-type .card-body blockquote.font-weight-light {
+.review-card-wrapper.my-reviews .card-body blockquote.font-weight-light {
     font-weight: 400!important;
     color: #303030;
 }
 
-.review-card-wrapper:first-of-type .card-body .h2.font-weight-normal {
+.review-card-wrapper.my-reviews .card-body .h2.font-weight-normal {
     font-weight: 500!important;
 }
 
-.review-card-wrapper:first-of-type .card-body .h5.font-weight-light {
+.review-card-wrapper.my-reviews .card-body .h5.font-weight-light {
     font-weight: 400!important;
 }
 
-.review-card-wrapper:first-of-type .card-body .blockquote-footer {
+.review-card-wrapper.my-reviews .card-body .blockquote-footer {
     font-weight: 500;
 }
 
-.review-card-wrapper:first-of-type .card-body .blockquote {
+.review-card-wrapper.my-reviews .card-body .blockquote {
     border-left: .25rem solid #d1dbff;
 }
 
-.review-card-wrapper:first-of-type .card-body .blockquote:before,
-.review-card-wrapper:first-of-type .card-body .blockquote:after {
+.review-card-wrapper.my-reviews .card-body .blockquote:before,
+.review-card-wrapper.my-reviews .card-body .blockquote:after {
     color: #b5b3b3;
 }
 
@@ -588,7 +588,7 @@ blockquote:after {
     min-width: 160px;
 }
 
-.review-card-wrapper:not(:first-of-type) .btn-more-info {
+.review-card-wrapper:not(.my-reviews) .btn-more-info {
     filter: opacity(0.9);
 }
 
@@ -678,4 +678,37 @@ blockquote:after {
 .logout-alert {
     position: relative;
     top: -20px;
+}
+
+/* Pagination */
+
+.pagination-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination-wrapper > .btn,
+.pagination-wrapper > i {
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-wrapper > .btn:not(:last-of-type),
+.pagination-wrapper > i {
+    margin-right: 3%;
+}
+
+.pagination-wrapper > .btn:last-of-type {
+    margin-right: 0;
+}
+
+.pagination-wrapper > .btn {
+    width: 14%;
+}
+
+.pagination-wrapper > i {
+    width: 6%;
 }

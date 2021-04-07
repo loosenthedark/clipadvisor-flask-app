@@ -27,3 +27,5 @@
 * Font Awesome SVG attribution [ link to licence](https://fontawesome.com/license)
 
 * I got some help with using the appropriate Jinja syntax when trying to display reviews in descending order of recency (i.e. sorting the list returned from my database by id in reverse order) from [this Stack Overflow thread](https://stackoverflow.com/questions/1959386/how-do-you-sort-a-list-in-jinja2)
+
+* Flask-SQLAlchemy Pagination tutorial: https://www.youtube.com/watch?v=PSWf2TjTGNY

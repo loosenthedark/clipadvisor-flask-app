@@ -1,5 +1,4 @@
 import os
-import datetime
 from flask import (
     Flask, flash, render_template, request, url_for,
     redirect, session, Markup)
@@ -8,7 +7,6 @@ from werkzeug.security import (
     generate_password_hash, check_password_hash)
 from flask_sqlalchemy import SQLAlchemy
 from models import User, Review, Vibe
-from sqlalchemy.sql import func
 if os.path.exists('env.py'):
     import env
 
@@ -176,7 +174,7 @@ def logout():
 # route to view all barbers
 @app.route('/barbers')
 def barbers():
-    
+
     reviews = Review.query.all()
     return render_template('barbers.html', reviews=reviews)
 
@@ -247,6 +245,7 @@ def review_submit():
 # route to view all reviews as visiting user
 @app.route('/reviews_')
 def reviews_():
+
     page = request.args.get('page', 1, type=int)
     reviews = Review.query.order_by(
         Review.id.desc()).paginate(page=page, per_page=10)
@@ -258,7 +257,9 @@ def reviews_():
 def reviews():
 
     current_user = User.query.filter_by(email=session['user']).first()
-    reviews = Review.query.all()
+    page = request.args.get('page', 1, type=int)
+    reviews = Review.query.order_by(
+        Review.id.desc()).paginate(page=page, per_page=10)
     return render_template('reviews.html', user=current_user, reviews=reviews)
 
 
