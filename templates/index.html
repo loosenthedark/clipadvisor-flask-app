@@ -13,8 +13,13 @@
     <p class="lead">Then tell us below!</p>
     <hr class="my-2">
     <p>Submit your review today to be in with a chance of winning a €100 barbershop voucher</p>
+    {% if not session.user %}
     <a class="btn barber-blue white-text btn-lg" href="{{ url_for('register') }}" role="button">Rate your
         barber</a>
+    {% else %}
+    <a class="btn barber-blue white-text btn-lg" href="{{ url_for('review_submit') }}" role="button">Rate your
+        barber</a>
+    {% endif %}
 </div>
 <!-- end of CTA jumbotron -->
 {% endblock %}
