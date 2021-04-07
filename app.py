@@ -226,9 +226,9 @@ def review_submit():
             flash(message, 'warning')
         
         if len(customername) >= 4 and len(customername) <= 50 and len(barbershopname) >= 3 and len(barbershopname) <= 50 and date != '' and time != '' and len(comments) >= 10 and len(comments) <= 1000 and rating != '':
-
             # flash msg here to confirm review submission upon redirect
-            message = Markup('Thanks for rating your barber!<br><i class="fas thanks-for-reviewing-icon fa-cut pt-1"></i>')
+            message = Markup(
+                'Thanks for rating your barber!<br><i class="fas thanks-for-reviewing-icon fa-cut pt-1"></i>')
             flash(message, 'success')
 
             new_review = Review(
@@ -240,6 +240,83 @@ def review_submit():
 
     return render_template(
         'review-submit.html', user=user)
+
+
+# route to update a review
+@app.route('/review_update/<review_id>', methods=['GET', 'POST'])
+def review_update(review_id):
+
+    user = User.query.filter_by(email=session['user']).first()
+    user_id = user.id
+
+    if request.method == 'POST':
+
+        data = request.form
+        updated_review = db.session.query(
+            Review).filter(Review.id == review_id).first()
+        updated_review.customername = data.get(
+            'review-update-form-customer-name')
+        updated_review.barbershopname = data.get(
+            'review-update-form-barbershop-name')
+        updated_review.date = data.get('review-update-form-date-picker')
+        updated_review.time = data.get('review-update-form-time-picker')
+        updated_review.cash = data.get(
+            'review-update-form-payment-cash-checkbox')
+        updated_review.card = data.get(
+            'review-update-form-payment-card-checkbox')
+        updated_review.vibe = data.get('review-update-form-vibe')
+        updated_review.rating = data.get('review-update-form-star-rating')
+        updated_review.comments = data.get('review-update-form-comments')
+        updated_review.user_id = user_id
+        updated_review.phone = data.get(
+            'review-update-form-booking-phone-checkbox')
+        updated_review.online = data.get(
+            'review-update-form-booking-online-checkbox')
+        updated_review.walkin = data.get(
+            'review-update-form-booking-walkin-checkbox')
+
+        # Update Review form validation and categorised flash messaging conditional logic
+        if updated_review.customername == '' or updated_review.barbershopname == '' or updated_review.date == '' or updated_review.time == '' or updated_review.phone == '' and updated_review.online == '' and updated_review.walkin == '' or updated_review.cash == '' and updated_review.card == '' or updated_review.vibe == '' or updated_review.comments == ''  or updated_review.rating == '':
+            message = Markup(
+                'Please fill out all fields!<br><i class="fas all-fields-icon fa-cut pt-1"></i>')
+            flash(message, 'warning')
+        if len(
+            updated_review.customername) > 0 and len(
+                updated_review.customername) < 4:
+            message = Markup(
+                'Your name is too short!</br>Please try again <i class="fas fa-cut"></i>')
+            flash(message, 'warning')
+        if len(updated_review.customername) > 50:
+            message = Markup('Your name is too long!</br>Please try again <i class="fas fa-cut"></i>')
+            flash(message, 'warning')
+        if len(updated_review.barbershopname) > 0 and len(updated_review.barbershopname) < 3:
+            message = Markup('Your barber\'s name is too short!</br>Please try again <i class="fas fa-cut"></i>')
+            flash(message, 'warning')
+        if len(updated_review.barbershopname) > 50:
+            message = Markup('Your barber\'s name is too long!</br>Please try again <i class="fas fa-cut"></i>')
+            flash(message, 'warning')
+        if len(updated_review.comments) > 0 and len(updated_review.comments) < 10:
+            message = Markup('Your comment is too short!</br>Please try again <i class="fas fa-cut"></i>')
+            flash(message, 'warning')
+        if len(updated_review.comments) > 1000:
+            message = Markup('Your comment is too long!</br>Please try again <i class="fas fa-cut"></i>')
+            flash(message, 'warning')
+
+        if len(updated_review.customername) >= 4 and len(updated_review.customername) <= 50 and len(updated_review.barbershopname) >= 3 and len(updated_review.barbershopname) <= 50 and updated_review.date != '' and updated_review.time != '' and len(updated_review.comments) >= 10 and len(updated_review.comments) <= 1000 and updated_review.rating != '':
+
+            db.session.commit()
+
+            # flash msg here to confirm review resubmission upon redirect
+            message = Markup('Review updated successfully!<br><i class="fas thanks-for-reviewing-icon fa-cut pt-1"></i>')
+            flash(message, 'success')
+
+            return redirect(url_for('reviews'))
+
+    current_review = Review.query.get(review_id)
+    vibes = Vibe.query.all()
+
+    return render_template(
+        'review-update.html', review=current_review, vibes=vibes)
 
 
 # route to view all reviews as visiting user
@@ -261,45 +338,6 @@ def reviews():
     reviews = Review.query.order_by(
         Review.id.desc()).paginate(page=page, per_page=10)
     return render_template('reviews.html', user=current_user, reviews=reviews)
-
-
-# route to update a review
-@app.route('/review_update/<review_id>', methods=['GET', 'POST'])
-def review_update(review_id):
-
-    user = User.query.filter_by(email=session['user']).first()
-    user_id = user.id
-
-    if request.method == 'POST':
-
-        data = request.form
-        updated_review = db.session.query(Review).filter(Review.id == review_id).first()
-        updated_review.customername = data.get('review-update-form-customer-name')
-        updated_review.barbershopname = data.get('review-update-form-barbershop-name')
-        updated_review.date = data.get('review-update-form-date-picker')
-        updated_review.time = data.get('review-update-form-time-picker')
-        updated_review.cash = data.get('review-update-form-payment-cash-checkbox')
-        updated_review.card = data.get('review-update-form-payment-card-checkbox')
-        updated_review.vibe = data.get('review-update-form-vibe')
-        updated_review.rating = data.get('review-update-form-star-rating')
-        updated_review.comments = data.get('review-update-form-comments')
-        updated_review.user_id = user_id
-        updated_review.phone = data.get('review-update-form-booking-phone-checkbox')
-        updated_review.online = data.get('review-update-form-booking-online-checkbox')
-        updated_review.walkin = data.get('review-update-form-booking-walkin-checkbox')
-
-        db.session.commit()
-
-        message = Markup('Review updated successfully!<br><i class="fas thanks-for-reviewing-icon fa-cut pt-1"></i>')
-        flash(message, 'success')
-
-        return redirect(url_for('reviews'))
-
-    current_review = Review.query.get(review_id)
-    vibes = Vibe.query.all()
-
-    return render_template(
-        'review-update.html', review=current_review, vibes=vibes)
 
 
 # route to delete a review
