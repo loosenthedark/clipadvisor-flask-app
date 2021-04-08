@@ -19,6 +19,11 @@ h4 {
     font-size: 1.7rem;
 }
 
+h5 {
+    font-weight: 500;
+    font-size: 1.55rem;
+}
+
 h6 {
     font-size: 1.4rem;
     font-weight: 400;
@@ -460,7 +465,8 @@ nav,
 }
 
 #review-submit-form-heading,
-#review-update-form-heading {
+#review-update-form-heading,
+#_barbers-heading {
     font-weight: 400;
     font-family: 'Roboto Condensed', sans-serif;
     position: relative;
@@ -723,9 +729,45 @@ blockquote:after {
 .brown-text,
 .purple-text,
 .orange-text,
-.col-md-4.barber-blue-text > .grey-text,
+.col-md-4.barber-blue-text .grey-text,
 .dancefloor-text,
 .cyan-text,
 .teal-text {
     font-size: 1.25rem;
+}
+
+#_barbers-heading {
+    font-size: 1.85rem;
+    display: inline-block;
+    max-width: 80%;
+    top: 3px;
+}
+
+.nav-tabs .nav-link {
+    font-size: .75rem;
+    border-radius: 0;
+}
+
+.nav-tabs .nav-link:not(.active) {
+    background-color: #263c92;
+    color: #fff;
+}
+
+.nav-tabs .nav-link.active {
+    color: #263c92;
+    font-weight: 400;
+}
+
+.nav-tabs{
+    display: flex;
+}
+.nav-tabs li {
+    display: flex;
+    flex: 1;
+}
+
+.nav-tabs li  a {
+    flex: 1;
+    display: flex;
+    align-items: center;
 }

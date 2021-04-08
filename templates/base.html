@@ -57,6 +57,11 @@
                     {% endif %}
                 </li>
                 {% endblock %}
+                {% if session.user%}
+                {% block navbarnavmyreviews %}
+                <li class="nav-item"><a href="{{ url_for('my_reviews') }}" class="nav-link">My Reviews</a></li>
+                {% endblock %}
+                {% endif %}
                 {% block navbarnavsubmitareview %}
                 <li class="nav-item">
                     {% if not session.user %}
@@ -114,7 +119,7 @@
         {% endblock %}
     </div>
     <!-- /main content container -->
-    
+
     <!-- jQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
