@@ -308,7 +308,7 @@ def review_submit():
         if len(customername) >= 4 and len(customername) <= 50 and len(barbershopname) >= 3 and len(barbershopname) <= 50 and date != '' and time != '' and len(comments) >= 10 and len(comments) <= 1000 and rating != '':
             # flash msg here to confirm review submission upon redirect
             message = Markup(
-                'Thanks for rating your barber!<br><i class="fas thanks-for-reviewing-icon fa-cut pt-1"></i>')
+                'Thanks for rating your barber!<br>Your name will be entered into a draw at the end of the month to win a €100 barbershop voucher.<br><i class="fas thanks-for-reviewing-icon fa-cut pt-1"></i>')
             flash(message, 'success')
 
             new_review = Review(

@@ -76,7 +76,8 @@ nav,
 .form-card.review-submit-form-card,
 .form-card.review-update-form-card,
 .form-card.reviews-card,
-.form-card.login-form-card {
+.form-card.login-form-card,
+.form-card.contact-form-card {
     width: 100%;
 }
 
@@ -212,7 +213,8 @@ nav,
 
 /* Login page */
 
-.login-form-card {
+.login-form-card,
+.contact-form-card {
     position: relative;
     top: -20px;
 }
@@ -785,4 +787,14 @@ blockquote:after {
     font-size: 1.3rem;
     padding-top: .5rem;
     padding-bottom: .25rem;
+}
+
+/* Contact Page */
+
+#form-contact > .form-group:nth-of-type(1) {
+    margin-bottom: .5rem;
+}
+
+.btn.btn-contact.mt-4_5 {
+    margin-top: 36px;
 }
