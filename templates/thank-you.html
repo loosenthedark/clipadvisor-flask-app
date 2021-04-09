@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Thank You | Clipadvisor: Rate Your Barber!{% endblock %}
+
+{% block content %}
+<!-- thank you panel -->
+<div class="form-card thank-you-alert alert alert-success text-center">
+    <h4 class="mt-3 mb-4">Thanks for getting in touch &#128135;&#8205;&#9794;&#65039;</h4>
+    <p>A member of the Clipadvisor team will respond to your message as soon as possible...</p>
+    <hr class="my-2 logout-divider">
+    <p class="mt-3">Have a great day!</p>
+    <i class="fas thanks-for-reviewing-icon fa-cut pt-1"></i>
+</div>
+<!-- /thank you panel -->
+{% endblock %}
+
+{% block scripts %}
+
+<!-- custom script to redirect logged-out user back to Home page after 5 seconds -->
+<script src="{{ url_for('static', filename='js/redirect.js') }}"></script>
+
+{% endblock %}

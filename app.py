@@ -8,6 +8,8 @@ from werkzeug.security import (
 from flask_sqlalchemy import SQLAlchemy
 from models import User, Review, Vibe
 from sqlalchemy import create_engine
+import smtplib
+from email.message import EmailMessage
 if os.path.exists('env.py'):
     import env
 
@@ -462,9 +464,38 @@ def review_delete(review_id):
 
 
 # route to contact site owner
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
+    EMAIL_ADDRESS = os.environ.get('EMAIL_USERNAME')
+    EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+    if request.method == 'POST':
+        msg = EmailMessage()
+        data = request.form
+        sender_name = data.get('contact-form-name')
+        sender_email = data.get('contact-form-email')
+        category = data.get('contact-form-category')
+        message = data.get('contact-form-message')
+        msg['Subject'] = 'You have a new message from a Clipadvisor user'
+        msg['From'] = EMAIL_ADDRESS
+        msg['To'] = 'hello@loosenthedark.tech'
+        msg.set_content('This is a plain text email')
+        msg.add_alternative(
+            f"<ul><li><strong>Message category:</strong> {category}</li><li><strong>Message:</strong> {message}</li><li><strong>Message sender:</strong> {sender_name}</li><li><strong>Sender's email:</strong> {sender_email}</li></ul><br>&#128513;", subtype='html')
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+            smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+
+            smtp.send_message(msg)
+        
+        return redirect(url_for('thank_you'))
+
     return render_template('contact.html')
+
+
+# route to thank user for submitting contact form
+@app.route('/thank-you')
+def thank_you():
+
+    return render_template('thank-you.html')
 
 
 # SANDBOX

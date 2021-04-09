@@ -20,7 +20,7 @@
         <!-- name input field -->
         <div class="form-group">
             <input type="text" name="contact-form-name" id="contact-form-name" class="form-control" placeholder="Name"
-                minlength="4" maxlength="50" required>
+                minlength="4" maxlength="50">
         </div>
         <!-- /name input field -->
 
@@ -29,19 +29,20 @@
             <input type="email" id="contact-form-email" name="contact-form-email" class="form-control mb-2"
                 placeholder="Email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 title="You have entered an invalid email. Please try again with the following format: example@example.com"
-                minlength="6" maxlength="100" required>
+                minlength="6" maxlength="100">
         </div>
         <!-- /email input field -->
 
         <!-- message category select -->
         <div class="form-group mb-0">
             <label class="font-weight-bold">Subject:</label>
-            <select class="browser-default custom-select mb-2">
+            <select class="browser-default custom-select mb-2" id="contact-form-category"
+            name="contact-form-category">
                 <option disabled>Choose a category:</option>
-                <option value="feedback" selected>Feedback</option>
-                <option value="query">General query</option>
-                <option value="suggestion">Feature suggestion</option>
-                <option value="bug">Report a bug/error message</option>
+                <option value="Feedback" selected>Feedback</option>
+                <option value="General query">General query</option>
+                <option value="Feature suggestion">Feature suggestion</option>
+                <option value="Bug/Error detected">Report a bug/error message</option>
             </select>
         </div>
         <!-- /message category select -->
@@ -50,7 +51,7 @@
         <div class="form-group">
             <textarea id="contact-form-message" name="contact-form-message"
             class="rounded-0 shadow-sm form-control md-textarea" rows="4" minlength="10"
-            maxlength="2000" placeholder="Please post your message here..." required></textarea>
+            maxlength="2000" placeholder="Please post your message here..."></textarea>
         </div>
         <!-- /message textarea -->
 
@@ -63,4 +64,8 @@
 </div>
 <!-- /contact form card container -->
 <!-- Default form contact -->
+{% endblock %}
+
+{% block scripts %}
+<script src="https://smtpjs.com/v3/smtp.js"></script>
 {% endblock %}
