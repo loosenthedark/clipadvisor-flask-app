@@ -207,6 +207,39 @@ def barbers():
     return render_template('barbers.html', reviews=reviews)
 
 
+# route to view top-rated barbers
+@app.route('/barbers-top')
+def top_barbers():
+    # barbers displayed in alphabetical order
+    page = request.args.get('page', 1, type=int)
+    reviews = Review.query.filter_by(rating=5)\
+        .order_by(Review.barbershopname.asc())\
+        .paginate(page=page, per_page=10)
+    return render_template('barbers-top.html', reviews=reviews)
+
+
+# route to view walk-in barbers
+@app.route('/barbers-walkin')
+def walkin_barbers():
+    # barbers displayed in alphabetical order
+    page = request.args.get('page', 1, type=int)
+    reviews = Review.query.filter_by(walkin='walk-in')\
+        .order_by(Review.barbershopname.asc())\
+        .paginate(page=page, per_page=10)
+    return render_template('barbers-walkin.html', reviews=reviews)
+
+
+# route to view cash-friendly barbers
+@app.route('/barbers-cash')
+def cash_barbers():
+    # barbers displayed in alphabetical order
+    page = request.args.get('page', 1, type=int)
+    reviews = Review.query.filter_by(cash='cash')\
+        .order_by(Review.barbershopname.asc())\
+        .paginate(page=page, per_page=10)
+    return render_template('barbers-cash.html', reviews=reviews)
+
+
 # route to view barbers filtered by vibe
 @app.route('/_barbers/<string:vibe>')
 def _barbers(vibe):
@@ -216,7 +249,6 @@ def _barbers(vibe):
     reviews = Review.query.filter_by(vibe=vibe.vibe_name)\
         .order_by(Review.barbershopname.asc())\
         .paginate(page=page, per_page=10)
-    print(reviews.total)
     return render_template('_barbers.html', reviews=reviews, vibe=vibe)
 
 

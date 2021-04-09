@@ -744,18 +744,25 @@ blockquote:after {
 }
 
 .nav-tabs .nav-link {
-    font-size: .75rem;
+    font-size: .7rem;
     border-radius: 0;
+    text-transform: uppercase;
+    border-top: .05rem solid #4f7398;
+}
+
+.nav-tabs .nav-item:not(:last-child) .nav-link {
+    border-right: .05rem solid #4f7398;
 }
 
 .nav-tabs .nav-link:not(.active) {
     background-color: #263c92;
-    color: #fff;
+    color: #fdfdfd;
 }
 
 .nav-tabs .nav-link.active {
     color: #263c92;
     font-weight: 400;
+    background-color: #fdfdfd;
 }
 
 .nav-tabs{
@@ -770,4 +777,12 @@ blockquote:after {
     flex: 1;
     display: flex;
     align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.barbers-tabs-icon {
+    font-size: 1.3rem;
+    padding-top: .5rem;
+    padding-bottom: .25rem;
 }

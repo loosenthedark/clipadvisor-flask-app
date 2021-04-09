@@ -23,7 +23,7 @@
             </h4>
             <ul class="nav barbers-tabs nav-tabs nav-justified" id="barbers-tab">
                 <li class="nav-item">
-                    <a class="nav-link active p-2" id="all-barbers-tab" href="{{ url_for('barbers') }}" aria-controls="all-barbers-container" aria-selected="true">All Barbers<i
+                    <a class="nav-link p-2" id="all-barbers-tab" href="{{ url_for('barbers') }}" aria-controls="all-barbers-container" aria-selected="true">All Barbers<i
                             class="fas barbers-tabs-icon fa-cut"></i></a>
                 </li>
                 <li class="nav-item">
@@ -35,7 +35,7 @@
                             class="fas barbers-tabs-icon fa-walking"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link p-2" id="cash-barbers-tab" href="{{ url_for('cash_barbers') }}" aria-controls="cash-barbers-container" aria-selected="false">Cash Accepted<i
+                    <a class="nav-link active p-2" id="cash-barbers-tab" href="{{ url_for('cash_barbers') }}" aria-controls="cash-barbers-container" aria-selected="false">Cash Accepted<i
                             class="fas barbers-tabs-icon fa-money-bill"></i></a>
                 </li>
             </ul>
@@ -307,10 +307,10 @@
                 {% if page_num %}
                 {% if reviews.page == page_num %}
                 <a class="p-0 my-0 ml-0 btn pagination-tab barber-blue-outline barber-blue white-text"
-                    href="{{ url_for('barbers', page=page_num) }}">{{ page_num }}</a>
+                    href="{{ url_for('cash_barbers', page=page_num) }}">{{ page_num }}</a>
                 {% else %}
                 <a class="p-0 my-0 ml-0 btn pagination-tab barber-blue-outline white-text"
-                    href="{{ url_for('barbers', page=page_num) }}">{{ page_num }}</a>
+                    href="{{ url_for('cash_barbers', page=page_num) }}">{{ page_num }}</a>
                 {% endif %}
                 {% else %}
                 <i class="p-0 my-0 ml-0 pagination-icon fas fa-cut white-text"></i>
