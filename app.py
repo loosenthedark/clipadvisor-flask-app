@@ -474,19 +474,50 @@ def contact():
         sender_name = data.get('contact-form-name')
         sender_email = data.get('contact-form-email')
         category = data.get('contact-form-category')
-        message = data.get('contact-form-message')
-        msg['Subject'] = 'You have a new message from a Clipadvisor user'
-        msg['From'] = EMAIL_ADDRESS
-        msg['To'] = 'hello@loosenthedark.tech'
-        msg.set_content('This is a plain text email')
-        msg.add_alternative(
-            f"<ul><li><strong>Message category:</strong> {category}</li><li><strong>Message:</strong> {message}</li><li><strong>Message sender:</strong> {sender_name}</li><li><strong>Sender's email:</strong> {sender_email}</li></ul><br>&#128513;", subtype='html')
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
-            smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+        sender_message = data.get('contact-form-message')
 
-            smtp.send_message(msg)
-        
-        return redirect(url_for('thank_you'))
+        # Contact form validation and categorised flash messaging conditional logic
+        if sender_name == '' or sender_email == '' or category == '' or sender_message == '':
+            message = Markup(
+                'Please fill out all fields!<br><i class="fas all-fields-icon fa-cut pt-1"></i>')
+            flash(message, 'warning')
+        if len(sender_name) > 0 and len(sender_name) < 4:
+            message = Markup(
+                'Your name is too short!</br>Please try again <i class="fas fa-cut"></i>')
+            flash(message, 'warning')
+        if len(sender_name) > 50:
+            message = Markup(
+                'Your name is too long!</br>Please try again <i class="fas fa-cut"></i>')
+            flash(message, 'warning')
+        if len(sender_email) > 0 and len(sender_email) < 6:
+            message = Markup(
+                'Your email address is too short!</br>Please try again <i class="fas fa-cut"></i>')
+            flash(message, 'warning')
+        if len(sender_email) > 50:
+            message = Markup(
+                'Your email address is too long!</br>Please try again <i class="fas fa-cut"></i>')
+            flash(message, 'warning')
+        if len(sender_message) > 0 and len(sender_message) < 10:
+            message = Markup(
+                'Your message is too short!</br>Please try again <i class="fas fa-cut"></i>')
+            flash(message, 'warning')
+        if len(sender_message) > 2000:
+            message = Markup(
+                'Your message is too long!</br>Please try again <i class="fas fa-cut"></i>')
+            flash(message, 'warning')
+        if len(sender_name) >= 4 and len(sender_name) <= 50 and len(sender_email) >= 6 and len(sender_email) <= 50 and category != '' and len(sender_message) >= 10 and len(sender_message) <= 2000:
+            msg['Subject'] = 'You have a new message from a Clipadvisor user'
+            msg['From'] = EMAIL_ADDRESS
+            msg['To'] = 'hello@loosenthedark.tech'
+            msg.set_content('This is a plain text email')
+            msg.add_alternative(
+                f"<ul><li><strong>Message category:</strong> {category}</li><li><strong>Message:</strong> {sender_message}</li><li><strong>Message sender:</strong> {sender_name}</li><li><strong>Sender's email:</strong> {sender_email}</li></ul><br>&#128513;", subtype='html')
+            with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+                smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+
+                smtp.send_message(msg)
+
+            return redirect(url_for('thank_you'))
 
     return render_template('contact.html')
 

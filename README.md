@@ -14,6 +14,8 @@
 
 * `sqlalchemy.exc.NoSuchModuleError: Can't load plugin: sqlalchemy.dialects:postgres` [fix](sqlalchemy.exc.NoSuchModuleError: Can't load plugin: sqlalchemy.dialects:postgres)
 
+* Flask-SQLAlchemy Pagination tutorial: https://www.youtube.com/watch?v=PSWf2TjTGNY
+
 * I was able to make flash messages more visually appealing by adding some basic markup (for line breaks etc.) using the [`flask.Markup` extension](https://tedboy.github.io/flask/generated/generated/flask.Markup.html) after following advice posted on [this Stack Overflow thread](https://stackoverflow.com/questions/18225713/how-to-display-html-content-through-flask-messages)
 
 * Material Design 'block' components for Reviews page adapted from [Marta Wierzbicka's original design](https://mdbootstrap.com/snippets/jquery/marta-szymanska/1343674)
@@ -28,4 +30,4 @@
 
 * I got some help with using the appropriate Jinja syntax when trying to display reviews in descending order of recency (i.e. sorting the list returned from my database by id in reverse order) from [this Stack Overflow thread](https://stackoverflow.com/questions/1959386/how-do-you-sort-a-list-in-jinja2)
 
-* Flask-SQLAlchemy Pagination tutorial: https://www.youtube.com/watch?v=PSWf2TjTGNY
+* I received pointers for generating email from contact form user input in Python from [this video tutorial](https://www.youtube.com/watch?v=JRCJ6RtE3xU) 
