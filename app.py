@@ -183,14 +183,22 @@ def login():
             message = Markup(
                 'You have entered an invalid email address/password!</br>Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')
-
-    return render_template('login.html')
+    # Check to see whether user is already logged in
+    if 'user' in session:
+        # retrieve stored user from session cookie
+        already_logged_in_user = User.query.filter_by(
+            email=session['user']).first()
+        if already_logged_in_user:
+            return redirect(url_for('my_reviews'))
+    else:
+        return render_template('login.html')
 
 
 # route to log user out
 @app.route('/logout')
 def logout():
 
+    # retrieve stored user from session cookie
     user = User.query.filter_by(email=session['user']).first()
 
     # Remove/Destroy session cookie associated with user
@@ -258,6 +266,7 @@ def _barbers(vibe):
 @app.route('/review-submit', methods=['GET', 'POST'])
 def review_submit():
 
+    # retrieve stored user from session cookie
     user = User.query.filter_by(email=session['user']).first()
     user_id = user.id
 
@@ -329,6 +338,7 @@ def review_submit():
 @app.route('/review-update/<review_id>', methods=['GET', 'POST'])
 def review_update(review_id):
 
+    # retrieve stored user from session cookie
     user = User.query.filter_by(email=session['user']).first()
     current_review = Review.query.get(review_id)
 
@@ -423,6 +433,7 @@ def reviews_():
 # route to view all reviews as logged-in user
 @app.route('/reviews')
 def reviews():
+    # retrieve stored user from session cookie
     current_user = User.query.filter_by(email=session['user']).first()
     # reviews displayed in descending order of recency (
     # i.e. most recent reviews first)
@@ -435,6 +446,7 @@ def reviews():
 # route to view all reviews as logged-in user
 @app.route('/my-reviews')
 def my_reviews():
+    # retrieve stored user from session cookie
     current_user = User.query.filter_by(email=session['user']).first()
     # reviews displayed in descending order of recency (
     # i.e. most recent reviews first)

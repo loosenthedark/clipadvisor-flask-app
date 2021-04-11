@@ -85,11 +85,11 @@
 
                             <!-- Update Review button -->
                             <a href="{{ url_for('review_update', review_id=review.id) }}"
-                                class="btn mb-3 rounded-top px-3 btn-update-review-btn barber-blue-text barber-blue-outline m-0">Update
+                                class="btn mb-3 rounded-top px-3 btn-update-review-btn btn-success success-outline m-0">Update
                                 Review <i class="fas fa-cut"></i></a>
                             <!-- /Update Review button -->
                             <!-- review card Are You Sure? modal trigger button -->
-                            <a class="btn mb-3 rounded-bottom px-3 btn-delete-review-btn barber-red-outline m-0"
+                            <a class="btn mb-3 rounded-bottom px-3 btn-delete-review-btn barber-red-outline barber-red white-text m-0"
                                 id="review-delete-modal-trigger" data-toggle="modal"
                                 data-target="#review-card-are-you-sure-modal_{{ review.id }}">Delete
                                 Review <i class="fas fa-cut"></i></a>

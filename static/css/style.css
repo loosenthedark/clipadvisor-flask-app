@@ -118,6 +118,10 @@ nav,
     border: .1rem solid #263c92;
 }
 
+.success-outline {
+    border: .1rem solid #00c851;
+}
+
 .barber-red-outline {
     border: .1rem solid #fe0100;
 }
@@ -806,4 +810,9 @@ blockquote:after {
 
 .error-redirect-link {
     font-weight: 400;
+}
+
+.error-alert {
+    position: relative;
+    top: -20px;
 }
