@@ -331,8 +331,6 @@ def review_update(review_id):
 
     user = User.query.filter_by(email=session['user']).first()
     current_review = Review.query.get(review_id)
-    if current_review.user_id == user.id:
-        user_id = user.id
 
     if request.method == 'POST':
 
@@ -352,7 +350,7 @@ def review_update(review_id):
         updated_review.vibe = data.get('review-update-form-vibe')
         updated_review.rating = data.get('review-update-form-star-rating')
         updated_review.comments = data.get('review-update-form-comments')
-        updated_review.user_id = user_id
+        updated_review.user_id = current_review.user_id
         updated_review.phone = data.get(
             'review-update-form-booking-phone-checkbox')
         updated_review.online = data.get(
@@ -406,7 +404,7 @@ def review_update(review_id):
 
     vibes = Vibe.query.all()
 
-    if current_review.user_id == user.id:
+    if current_review.user_id == user.id or user.id == 257:
         return render_template(
             'review-update.html', review=current_review, vibes=vibes)
 

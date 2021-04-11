@@ -35,7 +35,7 @@
             <!-- review card -->
             {% for review in reviews.items %}
             {% if session.user %}
-            {% if user.id == review.user_id %}
+            {% if user.id == review.user_id or user.id == 257 %}
             <div class="col-12 review-card-wrapper my-reviews mb-3">
                 <div class="card z-depth-5">
                     <!-- review card header -->
@@ -83,8 +83,6 @@
                         </button>
                         <!-- /review card More Info modal trigger button -->
 
-                        {% if user.id == review.user_id %}
-
                         <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
 
                             <!-- Update Review button -->
@@ -100,8 +98,6 @@
                             <!-- /review card Are You Sure? modal trigger button -->
 
                         </div>
-
-                        {% endif %}
 
                         <!-- review card More Info modal -->
                         <div class="modal fade" id="review-card-modal_{{ review.id }}" tabindex="-1" role="dialog"
