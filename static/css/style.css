@@ -186,10 +186,6 @@ nav,
     top: -20px;
 }
 
-.jumbotron > .lead {
-    font-family: ;
-}
-
 /* Registration page */
 
 .pre-register,
@@ -804,4 +800,10 @@ blockquote:after {
 .thank-you-alert {
     position: relative;
     top: -20px;
+}
+
+/* Error Handlers */
+
+.error-redirect-link {
+    font-weight: 400;
 }

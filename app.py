@@ -1,7 +1,7 @@
 import os
 from flask import (
     Flask, flash, render_template, request, url_for,
-    redirect, session, Markup)
+    redirect, session, Markup, abort)
 # for password hashing
 from werkzeug.security import (
     generate_password_hash, check_password_hash)
@@ -17,7 +17,7 @@ if os.path.exists('env.py'):
 # configure app
 app = Flask(__name__)
 
-ENV = 'dev'
+ENV = 'prod'
 
 if ENV == 'dev':
     app.debug = True
@@ -330,7 +330,9 @@ def review_submit():
 def review_update(review_id):
 
     user = User.query.filter_by(email=session['user']).first()
-    user_id = user.id
+    current_review = Review.query.get(review_id)
+    if current_review.user_id == user.id:
+        user_id = user.id
 
     if request.method == 'POST':
 
@@ -402,11 +404,11 @@ def review_update(review_id):
 
             return redirect(url_for('reviews'))
 
-    current_review = Review.query.get(review_id)
     vibes = Vibe.query.all()
 
-    return render_template(
-        'review-update.html', review=current_review, vibes=vibes)
+    if current_review.user_id == user.id:
+        return render_template(
+            'review-update.html', review=current_review, vibes=vibes)
 
 
 # route to view all reviews as visiting user
@@ -506,7 +508,7 @@ def contact():
                 'Your message is too long!</br>Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(sender_name) >= 4 and len(sender_name) <= 50 and len(sender_email) >= 6 and len(sender_email) <= 50 and category != '' and len(sender_message) >= 10 and len(sender_message) <= 2000:
-            msg['Subject'] = 'You have a new message from a Clipadvisor user'
+            msg['Subject'] = 'You have a new message from a Clipadvisor user!'
             msg['From'] = EMAIL_ADDRESS
             msg['To'] = 'hello@loosenthedark.tech'
             msg.set_content('This is a plain text email')
@@ -527,6 +529,22 @@ def contact():
 def thank_you():
 
     return render_template('thank-you.html')
+
+
+# Custom error handlers
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('errors/404.html'), 404
+
+
+@app.errorhandler(403)
+def forbidden(e):
+    return render_template('errors/403.html'), 403
+
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('errors/500.html'), 500
 
 
 # SANDBOX
