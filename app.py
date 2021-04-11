@@ -189,6 +189,12 @@ def login():
         already_logged_in_user = User.query.filter_by(
             email=session['user']).first()
         if already_logged_in_user:
+            # flash msg here to inform user they're already logged in, then\
+            # redirect them to their reviews page
+            message = Markup(
+                'You\'re logged-in already!<br>\
+                    <i class="fas thanks-for-reviewing-icon fa-cut pt-1"></i>')
+            flash(message, 'success')
             return redirect(url_for('my_reviews'))
     else:
         return render_template('login.html')

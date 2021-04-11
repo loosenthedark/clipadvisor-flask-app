@@ -86,14 +86,44 @@ $(document).ready(function () {
         };
     });
 
+    $("#review-update-form").submit(function () {
+        if ($('#review-update-form-customer-name').val().length >= 4 && $('#review-update-form-customer-name').val().length <= 50 && $('#review-update-form-barbershop-name').val().length >= 3 && $('#review-update-form-barbershop-name').val().length <= 50 && $('#review-update-form-date-picker').val() != '' && $('#review-update-form-time-picker').val() != '' && $('#review-update-form-comments').val().length >= 10 && $('#review-update-form-comments').val().length <= 1000 && $('.booking-checkbox').filter(':checked').length < 1) {
+            // customised Flash message
+            $('.flash-message-container').html('<div class="alert alert-warning py-2_5 pl-3 pr-4 my-3 mb-0 text-center fade show alert-dismissible flash-msg-box-top" role="alert"><strong>Please provide at least one booking option <i class="fas fa-cut"></i></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close" id="flash-message-dismiss"><span aria-hidden="true">&times;</span></button></div>');
+
+            // reposition Update Review form container
+            $('.flash-message-container').next().addClass('pull-content-up');
+            $('.review-update-form-card').removeClass('mt-3');
+            return false;
+        };
+        if ($('#review-update-form-customer-name').val().length >= 4 && $('#review-update-form-customer-name').val().length <= 50 && $('#review-update-form-barbershop-name').val().length >= 3 && $('#review-update-form-barbershop-name').val().length <= 50 && $('#review-update-form-date-picker').val() != '' && $('#review-update-form-time-picker').val() != '' && $('#review-update-form-comments').val().length >= 10 && $('#review-update-form-comments').val().length <= 1000 && $('.payment-checkbox').filter(':checked').length < 1) {
+            // customised Flash message
+            $('.flash-message-container').html('<div class="alert alert-warning py-2_5 pl-3 pr-4 my-3 mb-0 text-center fade show alert-dismissible flash-msg-box-top" role="alert"><strong>Please provide at least one payment option <i class="fas fa-cut"></i></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close" id="flash-message-dismiss"><span aria-hidden="true">&times;</span></button></div>');
+
+            // reposition Update Review form container
+            $('.flash-message-container').next().addClass('pull-content-up');
+            $('.review-update-form-card').removeClass('mt-3');
+            return false;
+        };
+        if ($('#review-update-form-customer-name').val().length >= 4 && $('#review-update-form-customer-name').val().length <= 50 && $('#review-update-form-barbershop-name').val().length >= 3 && $('#review-update-form-barbershop-name').val().length <= 50 && $('#review-update-form-date-picker').val() != '' && $('#review-update-form-time-picker').val() != '' && $('#review-update-form-comments').val().length >= 10 && $('#review-update-form-comments').val().length <= 1000 && !$('input[name="review-update-form-star-rating"]').is(':checked')) {
+            // customised Flash message
+            $('.flash-message-container').html('<div class="alert alert-warning py-2_5 pl-3 pr-4 my-3 mb-0 text-center fade show alert-dismissible flash-msg-box-top" role="alert"><strong>You forgot to give your barber a star rating!</br>Please try again <i class="fas fa-cut"></i></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close" id="flash-message-dismiss"><span aria-hidden="true">&times;</span></button></div>');
+
+            // reposition Update Review form container
+            $('.flash-message-container').next().addClass('pull-content-up');
+            $('.review-update-form-card').removeClass('mt-3');
+            return false;
+        };
+    });
+
     // Move form card container(s) upwards (collapse space) if alert appears
     if ($('.flash-message-container').height() > 10) {
         $('.flash-message-container').next().addClass('pull-content-up');
-        $('.register-form-card, .review-submit-form-card, .reviews-card').removeClass('mt-3');
+        $('.register-form-card, .review-submit-form-card, .review-update-form-card, .reviews-card').removeClass('mt-3');
     }
     if ($('.flash-message-container').height() < 10) {
         $('.flash-message-container').next().removeClass('pull-content-up');
-        $('.register-form-card, .review-submit-form-card, .reviews-card').addClass('mt-3');
+        $('.register-form-card, .review-submit-form-card, .review-update-form-card, .reviews-card').addClass('mt-3');
     }
 
     // Undo this action when alert is dismissed
