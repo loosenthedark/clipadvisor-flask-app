@@ -17,7 +17,7 @@ if os.path.exists('env.py'):
 # configure app
 app = Flask(__name__)
 
-ENV = 'prod'
+ENV = 'dev'
 
 if ENV == 'dev':
     app.debug = True
@@ -547,12 +547,9 @@ def internal_server_error(e):
     return render_template('errors/500.html'), 500
 
 
-# SANDBOX
-@app.route('/sandbox')
-def sandbox():
-    return render_template('sandbox.html')
-
-
+# conditional check to see whether the app is being run directly or as an
+# import
+# ---> if it's the former, the app will be launched
 if __name__ == "__main__":
     app.run(
         host=os.environ.get('IP'), port=5000)
