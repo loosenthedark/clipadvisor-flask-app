@@ -25,12 +25,19 @@
         <!-- /name input field -->
 
         <!-- email input field -->
+        {% if not session.user %}
         <div class="form-group">
             <input type="email" id="contact-form-email" name="contact-form-email" class="form-control mb-2"
                 placeholder="Email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 title="You have entered an invalid email. Please try again with the following format: example@example.com"
                 minlength="6" maxlength="100" required>
         </div>
+        {% else %}
+        <div class="form-group d-none">
+            <input type="email" id="contact-form-email" name="contact-form-email" class="form-control mb-2"
+                value="{{ session.user }}" required>
+        </div>
+        {% endif %}
         <!-- /email input field -->
 
         <!-- message category select -->

@@ -1,7 +1,7 @@
 import os
 from flask import (
     Flask, flash, render_template, request, url_for,
-    redirect, session, Markup, abort)
+    redirect, session, Markup)
 # for password hashing
 from werkzeug.security import (
     generate_password_hash, check_password_hash)
@@ -478,7 +478,8 @@ def contact():
         category = data.get('contact-form-category')
         sender_message = data.get('contact-form-message')
 
-        # Contact form validation and categorised flash messaging conditional logic
+        # Contact form validation and categorised flash messaging conditional\
+        #  logic
         if sender_name == '' or sender_email == '' or category == '' or sender_message == '':
             message = Markup(
                 'Please fill out all fields!<br><i class="fas all-fields-icon fa-cut pt-1"></i>')
