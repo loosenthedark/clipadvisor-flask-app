@@ -155,7 +155,7 @@ nav,
 
 .mb-4_5,
 .mb-md-4_5 {
-  margin-bottom: 36px!important;
+  margin-bottom: 36px !important;
 }
 
 .pr-4_5 {
@@ -892,7 +892,7 @@ blockquote:after {
 
   #form-login.p-5,
   #form-registration.p-5 {
-    padding: 3rem 5rem!important;
+    padding: 3rem 5rem !important;
   }
 
   #form-login > h3,
@@ -913,6 +913,15 @@ blockquote:after {
     font-size: 3rem;
   }
 
+  h3 {
+    font-size: 2.6rem;
+  }
+
+  .form-card.register-form-card,
+  .form-card.login-form-card {
+    max-width: 46%;
+  }
+
   .lead {
     font-size: 1.5rem;
   }
@@ -925,5 +934,17 @@ blockquote:after {
 
   #navbar-nav-list .nav-item > .nav-link {
     font-size: 1.1rem;
+  }
+
+  /* Registration */
+
+  #form-registration.p-5 {
+    padding: 2rem 5rem !important;
+  }
+
+  .pre-register,
+  .post-register,
+  #form-registration small {
+    font-size: .85rem;
   }
 }
