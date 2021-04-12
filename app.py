@@ -125,7 +125,21 @@ def register():
                 'There is already an account associated with that email! Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')
 
-    return render_template('register.html')
+    # Check to see whether user is already logged in
+    if 'user' in session:
+        # retrieve stored user from session cookie
+        already_logged_in_user = User.query.filter_by(
+            email=session['user']).first()
+        if already_logged_in_user:
+            # flash msg here to inform user they're already logged in, then\
+            # redirect them to their reviews page
+            message = Markup(
+                'You\'re already logged-in!<br>\
+                    <i class="fas thanks-for-reviewing-icon fa-cut pt-1"></i>')
+            flash(message, 'success')
+            return redirect(url_for('my_reviews'))
+    else:
+        return render_template('register.html')
 
 
 # route to log user in
@@ -173,9 +187,9 @@ def login():
                             'You have entered an invalid email address/password!</br>Please try again <i class="fas fa-cut"></i>')
                         flash(message, 'warning')
             else:
-                # Another deliberately ambiguous message to guard against malicious brute-force login attempts
+                # Prompt unregistered user to register before trying to log in
                 message = Markup(
-                    'You have entered an invalid email address/password!</br>Please try again <i class="fas fa-cut"></i>')
+                    'You haven\'t registered yet!</br>You can do so right now by clicking the button below <i class="fas fa-cut"></i>')
                 flash(message, 'warning')
 
         else:
@@ -192,7 +206,7 @@ def login():
             # flash msg here to inform user they're already logged in, then\
             # redirect them to their reviews page
             message = Markup(
-                'You\'re logged-in already!<br>\
+                'You\'re already logged-in!<br>\
                     <i class="fas thanks-for-reviewing-icon fa-cut pt-1"></i>')
             flash(message, 'success')
             return redirect(url_for('my_reviews'))
@@ -209,6 +223,8 @@ def logout():
 
     # Remove/Destroy session cookie associated with user
     session.pop('user')
+    # Clear the session
+    session.clear()
 
     return render_template('logout.html', user=user)
 
@@ -544,7 +560,6 @@ def contact():
 # route to thank user for submitting contact form
 @app.route('/thank-you')
 def thank_you():
-
     return render_template('thank-you.html')
 
 
