@@ -40,53 +40,53 @@
             <ul class="navbar-nav pt-2" id="navbar-nav-list">
                 {% block navbarnavhome %}
                 <li class="nav-item">
-                    <a class="nav-link px-md-2" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link px-md-2 px-xl-3" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 {% endblock %}
                 {% block navbarnavbarbers %}
                 <li class="nav-item">
-                    <a class="nav-link px-md-2" href="{{ url_for('barbers') }}">Barbers</a>
+                    <a class="nav-link px-md-2 px-xl-3" href="{{ url_for('barbers') }}">Barbers</a>
                 </li>
                 {% endblock %}
                 {% block navbarnavreviews %}
                 <li class="nav-item">
                     {% if not session.user %}
-                    <a class="nav-link px-md-2" href="{{ url_for('reviews_') }}">Recent Reviews</a>
+                    <a class="nav-link px-md-2 px-xl-3" href="{{ url_for('reviews_') }}">Recent Reviews</a>
                     {% else %}
-                    <a class="nav-link px-md-2" href="{{ url_for('reviews') }}">Recent Reviews</a>
+                    <a class="nav-link px-md-2 px-xl-3" href="{{ url_for('reviews') }}">Recent Reviews</a>
                     {% endif %}
                 </li>
                 {% endblock %}
                 {% if session.user%}
                 {% block navbarnavmyreviews %}
-                <li class="nav-item"><a href="{{ url_for('my_reviews') }}" class="nav-link px-md-2">My Reviews</a></li>
+                <li class="nav-item"><a href="{{ url_for('my_reviews') }}" class="nav-link px-md-2 px-xl-3">My Reviews</a></li>
                 {% endblock %}
                 {% endif %}
                 {% block navbarnavsubmitareview %}
                 <li class="nav-item">
                     {% if not session.user %}
-                    <a class="nav-link px-md-2" href="{{ url_for('register') }}">Submit A Review</a>
+                    <a class="nav-link px-md-2 px-xl-3" href="{{ url_for('register') }}">Submit A Review</a>
                     {% else %}
-                    <a class="nav-link px-md-2" href="{{ url_for('review_submit') }}">Submit A Review</a>
+                    <a class="nav-link px-md-2 px-xl-3" href="{{ url_for('review_submit') }}">Submit A Review</a>
                     {% endif %}
                 </li>
                 {% endblock %}
                 {% if not session.user %}
                 {% block navbarnavlogin %}
                 <li class="nav-item">
-                    <a class="nav-link px-md-2" href="{{ url_for('login') }}">Log In</a>
+                    <a class="nav-link px-md-2 px-xl-3" href="{{ url_for('login') }}">Log In</a>
                 </li>
                 {% endblock %}
                 {% else %}
                 {% block navbarnavlogout %}
                 <li class="nav-item">
-                    <a class="nav-link px-md-2" href="{{ url_for('logout') }}">Log Out</a>
+                    <a class="nav-link px-md-2 px-xl-3" href="{{ url_for('logout') }}">Log Out</a>
                 </li>
                 {% endblock %}
                 {% endif %}
                 {% block navbarnavcontact %}
                 <li class="nav-item">
-                    <a class="nav-link px-md-2" href="{{ url_for('contact') }}">Contact</a>
+                    <a class="nav-link px-md-2 px-xl-3" href="{{ url_for('contact') }}">Contact</a>
                 </li>
                 {% endblock %}
             </ul>

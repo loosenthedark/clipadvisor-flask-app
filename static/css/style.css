@@ -858,3 +858,25 @@ blockquote:after {
     top: -40px;
   }
 }
+
+@media only screen and (min-width: 1200px) {
+  /* global styles/base template components */
+
+  h2.h1-responsive {
+    font-size: 3rem;
+  }
+
+  .lead {
+    font-size: 1.5rem;
+  }
+
+  .jumbotron > hr + p {
+    font-size: 1.25rem;
+  }
+
+  /* Home (landing) page */
+
+  #navbar-nav-list .nav-item > .nav-link {
+    font-size: 1.1rem;
+  }
+}
