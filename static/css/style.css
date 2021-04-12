@@ -153,8 +153,9 @@ nav,
   margin-top: 36px;
 }
 
-.mb-4_5 {
-  margin-bottom: 36px;
+.mb-4_5,
+.mb-md-4_5 {
+  margin-bottom: 36px!important;
 }
 
 .pr-4_5 {
@@ -850,12 +851,58 @@ blockquote:after {
     border-radius: unset;
   }
 
+  .form-card.register-form-card,
+  .form-card.login-form-card {
+    max-width: 70%;
+  }
+
   /* Home (landing) page */
 
   .jumbotron {
     max-width: 80%;
     padding: 5rem 3.5rem;
     top: -40px;
+  }
+
+  /* Registration page */
+
+  #form-registration > h3,
+  #form-registration > h3 + p,
+  #form-registration > .form-group,
+  #form-registration > .pre-register,
+  #form-registration > button,
+  #form-registration > hr,
+  #form-registration > .already-a-member {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #form-registration > .post-register {
+    max-width: 260px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Login page */
+
+  .form-card.login-form-card {
+    top: -40px;
+  }
+
+  #form-login.p-5,
+  #form-registration.p-5 {
+    padding: 3rem 5rem!important;
+  }
+
+  #form-login > h3,
+  #form-login > .form-group,
+  #form-login > .form-group + div,
+  #form-login > .not-a-member,
+  #form-login > button {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
