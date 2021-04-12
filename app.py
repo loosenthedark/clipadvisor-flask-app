@@ -40,9 +40,8 @@ DATABASE_CONNECTION = os.environ.get(
     'SQLALCHEMY_DATABASE_URI')
 engine = create_engine(DATABASE_CONNECTION, pool_size=50, max_overflow=100)
 
+
 # Home route (landing page)
-
-
 @app.route('/')
 def home():
     return render_template('index.html')

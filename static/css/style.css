@@ -1,75 +1,77 @@
-/* global styles */
+/* global styles/base template components */
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 h2.h1-responsive,
 h3 {
-    font-weight: 700;
-    color: #262626;
-    font-family: 'Roboto Condensed', sans-serif;
-    font-size: 2.2rem;
+  font-weight: 700;
+  color: #262626;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 2.2rem;
 }
 
 h4 {
-    font-weight: 500;
-    font-size: 1.7rem;
+  font-weight: 500;
+  font-size: 1.7rem;
 }
 
 h5 {
-    font-weight: 500;
-    font-size: 1.55rem;
+  font-weight: 500;
+  font-size: 1.55rem;
 }
 
 h6 {
-    font-size: 1.4rem;
-    font-weight: 400;
+  font-size: 1.4rem;
+  font-weight: 400;
 }
 
 body::before {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("../images/barbers-tools_background.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: grayscale(50%);
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/barbers-tools_background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: grayscale(50%);
 }
 
 body,
 .main-container {
-    min-height: calc(100vh - 56px);
-    position: relative;
+  min-height: calc(100vh - 56px);
+  position: relative;
 }
 
 nav,
-.well.container {position: relative;}
-
-.navbar-brand {
-    font-family: 'Roboto Condensed', sans-serif;
-    font-weight: 400;
+.well.container {
+  position: relative;
 }
 
-#navbar-nav-list .nav-item.active>.nav-link {
-    background-color: #263c92;
-    border-radius: 3px;  
+.navbar-brand {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 400;
+}
+
+#navbar-nav-list .nav-item.active > .nav-link {
+  background-color: #263c92;
+  border-radius: 3px;
 }
 
 .btn {
-    border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 
 .main-container {
-    align-items: center;
-    justify-content: center;
-    position: relative;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .form-card.register-form-card,
@@ -78,149 +80,146 @@ nav,
 .form-card.reviews-card,
 .form-card.login-form-card,
 .form-card.contact-form-card {
-    width: 100%;
+  width: 100%;
 }
 
 /* colour scheme */
 
 .barber-red {
-    background-color: #FE0100;
+  background-color: #fe0100;
 }
 
 .barber-blue {
-    background-color: #263C92;
+  background-color: #263c92;
 }
 
 .barber-blue-text {
-    color: #263c92;
+  color: #263c92;
 }
 
 .barber-red-text {
-    color: #fe0100;
+  color: #fe0100;
 }
 
 #review-submit-form .prefix.barber-blue,
-#review-update-form .prefix.barber-blue
- {
-    color: #263c92;
-    background-color: unset;
+#review-update-form .prefix.barber-blue {
+  color: #263c92;
+  background-color: unset;
 }
 
 .barber-blue-text i {
-    color: #263C92;
+  color: #263c92;
 }
 
 .barber-blue-text i.barber-red-text {
-    color: #fe0100;
+  color: #fe0100;
 }
 
 .barber-blue-outline {
-    border: .1rem solid #263c92;
+  border: 0.1rem solid #263c92;
 }
 
 .success-outline {
-    border: .1rem solid #00c851;
+  border: 0.1rem solid #00c851;
 }
 
 .barber-red-outline {
-    border: .1rem solid #fe0100;
+  border: 0.1rem solid #fe0100;
 }
 
 .text-very-muted {
-    color: rgb(209, 209, 209);
+  color: rgb(209, 209, 209);
 }
 
 /* headings */
 
 .card-body h5.barber-blue-text {
-    font-weight: 300;
-    font-size: 18px;
+  font-weight: 300;
+  font-size: 18px;
 }
 
 .card-body h5.barber-blue-text.thumbs {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 /* spacing/utility classes */
 
 .my-4_5 {
-    margin-top: 36px;
-    margin-bottom: 36px;
+  margin-top: 36px;
+  margin-bottom: 36px;
 }
 
 .mt-4_5 {
-    margin-top: 36px;
+  margin-top: 36px;
 }
 
 .mb-4_5 {
-    margin-bottom: 36px;
+  margin-bottom: 36px;
 }
 
 .pr-4_5 {
-    padding-right: 42px;
+  padding-right: 42px;
 }
 
 .py-2_5 {
-    padding-top: 12px;
-    padding-bottom: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .px-4_5 {
-    padding-left: 30px;
-    padding-right: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .pull-content-up {
-    justify-content: flex-start;
-    align-items: flex-start;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .time-span,
 .date-span {
-    white-space: nowrap;
+  white-space: nowrap;
 }
-
-/* Flash messaging */
 
 /* Home (landing) page */
 
 .jumbotron {
-    margin-bottom: 0;
-    position: relative;
-    top: -20px;
+  margin-bottom: 0;
+  position: relative;
+  top: -20px;
 }
 
 /* Registration page */
 
 .pre-register,
 .post-register {
-    font-size: 12px;
-    line-height: 1.2;
+  font-size: 12px;
+  line-height: 1.2;
 }
 
 .pre-register {
-    font-weight: 300;
+  font-weight: 300;
 }
 
 #form-registration > .form-group:nth-of-type(1),
 #form-registration > .form-group:nth-of-type(2) {
-    margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .all-fields-icon {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 /* Login page */
 
 .login-form-card,
 .contact-form-card {
-    position: relative;
-    top: -20px;
+  position: relative;
+  top: -20px;
 }
 
 #form-login > .form-group:nth-of-type(1) {
-    margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .btn-login-register-btn.waves-effect,
@@ -229,24 +228,24 @@ nav,
 .btn-delete-review-btn,
 .btn-yes-delete-btn,
 .btn-no-keep-btn {
-    text-transform: uppercase;
-    text-decoration: none;
-    display: block;
-    padding: .72rem 2.14rem;
-    font-size: .81rem;
-    border-radius: .25rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: block;
+  padding: 0.72rem 2.14rem;
+  font-size: 0.81rem;
+  border-radius: 0.25rem;
 }
 
 .btn-login-register-btn.waves-effect,
 .btn-register-login-btn.waves-effect,
 .btn-yes-delete-btn,
 .btn-no-keep-btn {
-    box-shadow: unset;
+  box-shadow: unset;
 }
 
 .btn-yes-delete-btn,
 .btn-no-keep-btn {
-    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
 }
 
 .btn-login-register-btn.waves-effect:hover,
@@ -255,143 +254,145 @@ nav,
 .btn-register-login-btn.waves-effect:hover,
 .btn-register-login-btn.waves-effect:focus,
 .btn-register-login-btn.waves-effect:active {
-    box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
+  box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
 }
 
 .forgot-password,
 .not-a-member p,
 .already-a-member p {
-    font-size: .85rem;
+  font-size: 0.85rem;
 }
 
 /* Review Submit page */
 
-.md-form textarea.md-textarea:focus:not([readonly])+label.barber-blue {
-    color: #fe0100;
+.md-form textarea.md-textarea:focus:not([readonly]) + label.barber-blue {
+  color: #fe0100;
 }
 
 .md-form textarea.md-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid #fe0100;
-    box-shadow: 0 1px 0 0 #fe0100;
+  border-bottom: 1px solid #fe0100;
+  box-shadow: 0 1px 0 0 #fe0100;
 }
 
 #review-submit-form,
 #review-update-form {
-    color: #757575
+  color: #757575;
 }
 
 #review-submit-form label.barber-blue,
 #review-update-form label.barber-blue {
-    color: #263c92;
-    background-color: unset;
+  color: #263c92;
+  background-color: unset;
 }
 
 #review-submit-form label.barber-red,
 #review-update-form label.barber-red {
-    color: #fe0100;
+  color: #fe0100;
 }
 
 #review-submit-form .prefix.barber-blue,
 #review-update-form .prefix.barber-blue {
-    color: #263c92;
-    background-color: unset;
+  color: #263c92;
+  background-color: unset;
 }
 
 #review-submit-form .prefix.barber-red,
 #review-update-form .prefix.barber-red {
-    color: #fe0100;
+  color: #fe0100;
 }
 
-#review-submit-form input[type="text"]:not(.browser-default):focus:not([read-only]),
+#review-submit-form
+  input[type="text"]:not(.browser-default):focus:not([read-only]),
 #review-submit-form select:focus,
-#review-update-form input[type="text"]:not(.browser-default):focus:not([read-only]),
+#review-update-form
+  input[type="text"]:not(.browser-default):focus:not([read-only]),
 #review-update-form select:focus {
-    border-bottom: 1px solid #fe0100;
-    box-shadow: 0 1px 0 0 #fe0100;
+  border-bottom: 1px solid #fe0100;
+  box-shadow: 0 1px 0 0 #fe0100;
 }
 
 #review-submit-form select:focus,
 #review-update-form select:focus {
-    color: #fe0100;
+  color: #fe0100;
 }
 
 .md-form .review-submit-form-label,
 .md-form .review-update-form-label {
-    top: -16px;
+  top: -16px;
 }
 
 .md-form .prefix ~ .checkbox-container {
-    width: calc(100% - 2.5rem);
-    margin-left: 2.5rem;
+  width: calc(100% - 2.5rem);
+  margin-left: 2.5rem;
 }
 
 .md-form .prefix ~ .checkbox-container > .checkbox-box {
-    width: calc(33% - 0.84rem);
-    min-height: 50px;
+  width: calc(33% - 0.84rem);
+  min-height: 50px;
 }
 
 .md-form .prefix ~ .checkbox-container > .checkbox-box > .form-check-input,
 .md-form .prefix ~ .checkbox-container > .checkbox-box > .form-check-label {
-    position: relative;
-    line-height: 1.1;
-    font-size: .8rem;
+  position: relative;
+  line-height: 1.1;
+  font-size: 0.8rem;
 }
 
 .md-form .prefix ~ .checkbox-container > .checkbox-box > .form-check-label {
-    top: -10px;
-    left: 3px;
+  top: -10px;
+  left: 3px;
 }
 
 .form-check-input.booking-checkbox,
 .form-check-input.payment-checkbox {
-    height: 18px;
-    width: 18px;
+  height: 18px;
+  width: 18px;
 }
 
 .booking-options-span,
 .payment-options-span {
-    margin-left: 2.5rem;
-    font-weight: 300;
+  margin-left: 2.5rem;
+  font-weight: 300;
 }
 
 .thumbs {
-    line-height: 40px;
+  line-height: 40px;
 }
 
 .card-body h5.barber-blue-text > i {
-    font-size: 22px;
+  font-size: 22px;
 }
 
 .fa-star {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .fa-thumbs-up,
 .fa-thumbs-down {
-    position: relative;
+  position: relative;
 }
 
 .fa-thumbs-up {
-    top: -6px;
+  top: -6px;
 }
 
 .md-form .prefix ~ select {
-    width: calc(100% - 2.5rem);
-    margin-left: 2.5rem;
-    border-left: none;
-    border-top: none;
-    border-right: none;
-    font-size: 20px;
+  width: calc(100% - 2.5rem);
+  margin-left: 2.5rem;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+  font-size: 20px;
 }
 
 .md-form .review-submit-form-label.vibe-label,
 .md-form .review-update-form-label.vibe-label {
-    top: -30px;
+  top: -30px;
 }
 
 #review-submit-form > .form-group:nth-last-of-type(2),
 #review-update-form > .form-group:nth-last-of-type(2) {
-    margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 /* pure CSS 'star rating' custom code adapted from https://codepen.io/hesguru/pen/BaybqXv */
@@ -403,334 +404,333 @@ nav,
 }
 
 .rate {
-    float: left;
-    width: 100%;
-    clear: both;
+  float: left;
+  width: 100%;
+  clear: both;
 }
 
 .star-wrapper {
-    display: block;
-    width: 100%;
-    transform: translateX(-50%) translateX(5.4em);
+  display: block;
+  width: 100%;
+  transform: translateX(-50%) translateX(5.4em);
 }
 
 .rate:not(:checked) > .star-wrapper > input {
-    position: absolute;
-    display: none;
+  position: absolute;
+  display: none;
 }
 .rate:not(:checked) > .star-wrapper > label {
-    float: right;
-    width: 1em;
-    overflow: hidden;
-    white-space: nowrap;
-    cursor: pointer;
-    font-size: 26px;
-    color: #ccc;
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 26px;
+  color: #ccc;
 }
 .rate:not(:checked) > .star-wrapper > label:before {
-    content: '★ ';
+  content: "★ ";
 }
 .rate > .star-wrapper > input:checked ~ label {
-    color: #ffc700;    
+  color: #ffc700;
 }
 .rate:not(:checked) > .star-wrapper > label:hover,
 .rate:not(:checked) > .star-wrapper > label:hover ~ label {
-    color: #deb217;  
+  color: #deb217;
 }
 .rate > .star-wrapper > input:checked + label:hover,
 .rate > .star-wrapper > input:checked + label:hover ~ label,
 .rate > .star-wrapper > input:checked ~ label:hover,
 .rate > .star-wrapper > input:checked ~ label:hover ~ label,
 .rate > .star-wrapper > label:hover ~ input:checked ~ label {
-    color: #c59b08;
+  color: #c59b08;
 }
 
 #review-submit-form-comments,
 #review-update-form-comments {
-    background-color: #dddddd5c;
-    border-radius: 5px;
+  background-color: #dddddd5c;
+  border-radius: 5px;
 }
 
-#review-submit-form textarea.md-textarea+label,
-#review-update-form textarea.md-textarea+label {
-    top: -0.3rem;
-    left: 0.3rem;
+#review-submit-form textarea.md-textarea + label,
+#review-update-form textarea.md-textarea + label {
+  top: -0.3rem;
+  left: 0.3rem;
 }
 
 #barbers-pole-heading-img {
-    position: relative;
-    left: -18px;
+  position: relative;
+  left: -18px;
 }
 
 #barbers-pole-heading-img-white-background {
-    background-color: #fff;
-    display: inline-block;
-    width: 1.35rem;
-    height: 60px;
-    vertical-align: middle;
-    position: relative;
-    left: 7px;
+  background-color: #fff;
+  display: inline-block;
+  width: 1.35rem;
+  height: 60px;
+  vertical-align: middle;
+  position: relative;
+  left: 7px;
 }
 
 #review-submit-form-heading,
 #review-update-form-heading,
 #_barbers-heading {
-    font-weight: 400;
-    font-family: 'Roboto Condensed', sans-serif;
-    position: relative;
-    top: 6px;
-    left: -8px;
+  font-weight: 400;
+  font-family: "Roboto Condensed", sans-serif;
+  position: relative;
+  top: 6px;
+  left: -8px;
 }
 
 #review-submit-form-heading {
-    font-size: 1.85rem;
+  font-size: 1.85rem;
 }
 
 #review-update-form-heading {
-    font-size: 1.6rem;
+  font-size: 1.6rem;
 }
 
 #review-submit-form-vibe,
 #review-update-form-vibe {
-    font-size: 1rem;
-    font-weight: 300;
+  font-size: 1rem;
+  font-weight: 300;
 }
 
 #review-submit-form-vibe {
-    color: #263C92;
+  color: #263c92;
 }
 
 /* Reviews page */
 
 blockquote {
-    line-height: 1.25;
-    border-left: .25rem solid #e5e9f8;
+  line-height: 1.25;
+  border-left: 0.25rem solid #e5e9f8;
 }
 
 blockquote:before,
 blockquote:after {
-    font-size: 4em;
-    color: #ccc;
-    line-height: 0.1em;
-    vertical-align: 0em;
-    display: inline;
-    position: absolute;
-    height: 80px;
-}    
-    
+  font-size: 4em;
+  color: #ccc;
+  line-height: 0.1em;
+  vertical-align: 0em;
+  display: inline;
+  position: absolute;
+  height: 80px;
+}
 
 blockquote:before {
-    content: open-quote;
-    left: 2rem;
-    top: 2rem;
+  content: open-quote;
+  left: 2rem;
+  top: 2rem;
 }
 
 blockquote p {
-    display: inline;
-    line-height: 1.25;
-    /* font-style: italic; */
+  display: inline;
+  line-height: 1.25;
+  /* font-style: italic; */
 }
 
 blockquote:after {
-    content: close-quote;
-    right: 1.5rem;
-    bottom: -1.8rem;
+  content: close-quote;
+  right: 1.5rem;
+  bottom: -1.8rem;
 }
 
 .blockquote-footer {
-    font-weight: 400;
+  font-weight: 400;
 }
 
 .reviews-card-header {
-    background-color: #E08888;
+  background-color: #e08888;
 }
 
 .card-header .fa-star {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .reviews-section .card {
-    background-color: #fdfdfd;
+  background-color: #fdfdfd;
 }
 
 .review-card-wrapper.my-reviews .card-header {
-    background-color: #fe0100;
+  background-color: #fe0100;
 }
 
 .review-card-wrapper.my-reviews .card-body {
-    background-color: #fff;
-    font-weight: 400;
+  background-color: #fff;
+  font-weight: 400;
 }
 
 .review-card-wrapper.my-reviews .card-body blockquote.font-weight-light {
-    font-weight: 400!important;
-    color: #303030;
+  font-weight: 400 !important;
+  color: #303030;
 }
 
 .review-card-wrapper.my-reviews .card-body .h2.font-weight-normal {
-    font-weight: 500!important;
+  font-weight: 500 !important;
 }
 
 .review-card-wrapper.my-reviews .card-body .h5.font-weight-light {
-    font-weight: 400!important;
+  font-weight: 400 !important;
 }
 
 .review-card-wrapper.my-reviews .card-body .blockquote-footer {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .review-card-wrapper.my-reviews .card-body .blockquote {
-    border-left: .25rem solid #d1dbff;
+  border-left: 0.25rem solid #d1dbff;
 }
 
 .review-card-wrapper.my-reviews .card-body .blockquote:before,
 .review-card-wrapper.my-reviews .card-body .blockquote:after {
-    color: #b5b3b3;
+  color: #b5b3b3;
 }
 
 .btn > .fa-cut {
-    font-size: 1rem;
-    position: relative;
-    padding-left: 3px;
+  font-size: 1rem;
+  position: relative;
+  padding-left: 3px;
 }
 
 .btn-more-info,
 .btn-group-vertical {
-    width: 50%;
-    margin-left: 25%;
-    margin-right: 25%;
-    min-width: 160px;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  min-width: 160px;
 }
 
 .review-card-wrapper:not(.my-reviews) .btn-more-info {
-    filter: opacity(0.9);
+  filter: opacity(0.9);
 }
 
 #review-delete-modal-trigger {
-    color: #fe0100;
+  color: #fe0100;
 }
 
 .modal-header {
-    display: block;
-    position: relative;
-    font-size: 1.5rem;
+  display: block;
+  position: relative;
+  font-size: 1.5rem;
 }
 
 .modal-header .close {
-    margin-left: 0;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+  margin-left: 0;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 
 .modal-header h5 {
-    font-weight: 400;
+  font-weight: 400;
 }
 
 .modal-title {
-    line-height: 1.8rem;
-    font-size: 1.4rem;
+  line-height: 1.8rem;
+  font-size: 1.4rem;
 }
 
 .modal-list-group > .list-group-item:first-child {
-    border-top-color: #263c92;
-    font-size: 1.125rem;
-    font-weight: 300;
+  border-top-color: #263c92;
+  font-size: 1.125rem;
+  font-weight: 300;
 }
 
 .modal-list-group > .list-group-item {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .modal-list-group > .list-group-item:nth-of-type(2),
 .modal-list-group > .list-group-item:nth-of-type(3),
 .modal-list-group > .list-group-item:nth-of-type(4) {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .modal-header {
-    border-bottom-color: #263c92;
+  border-bottom-color: #263c92;
 }
 
 .modal-header-customer-name {
-    margin-left: -15px;
+  margin-left: -15px;
 }
 
 .modal-footer {
-    border-top: none;
+  border-top: none;
 }
 
 .modal-body .fas,
 .modal-icon-wrapper {
-    height: 40px;
-    width: 40px;
-    display: flex;
+  height: 40px;
+  width: 40px;
+  display: flex;
 }
 
 .modal-body .fas {
-    align-items: center;
-    justify-content: center;
-    font-size: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
 }
 
 .card-footer {
-    border-top: none;
-    background-color: unset;
+  border-top: none;
+  background-color: unset;
 }
 
 .thanks-for-reviewing-icon {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 #are-you-sure-modal-header {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 /* Logout page */
 
 .logout-alert {
-    position: relative;
-    top: -20px;
+  position: relative;
+  top: -20px;
 }
 
 /* Pagination */
 
 .pagination-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .pagination-wrapper > .btn,
 .pagination-wrapper > i {
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pagination-wrapper > .btn:not(:last-of-type),
 .pagination-wrapper > i {
-    margin-right: 3%;
+  margin-right: 3%;
 }
 
 .pagination-wrapper > .btn:last-of-type {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .pagination-wrapper > .btn {
-    width: 14%;
+  width: 14%;
 }
 
 .pagination-wrapper > i {
-    width: 6%;
+  width: 6%;
 }
 
 /* Barbers page */
 
 .dancefloor-text {
-    color: rgba(0, 0, 0, 0.7);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .green-text,
@@ -741,84 +741,120 @@ blockquote:after {
 .dancefloor-text,
 .cyan-text,
 .teal-text {
-    font-size: 1.25rem;
+  font-size: 1.25rem;
 }
 
 #_barbers-heading {
-    font-size: 1.85rem;
-    display: inline-block;
-    max-width: 80%;
-    top: 3px;
+  font-size: 1.85rem;
+  display: inline-block;
+  max-width: 80%;
+  top: 3px;
 }
 
 .nav-tabs .nav-link {
-    font-size: .7rem;
-    border-radius: 0;
-    text-transform: uppercase;
-    border-top: .05rem solid #4f7398;
+  font-size: 0.7rem;
+  border-radius: 0;
+  text-transform: uppercase;
+  border-top: 0.05rem solid #4f7398;
 }
 
 .nav-tabs .nav-item:not(:last-child) .nav-link {
-    border-right: .05rem solid #4f7398;
+  border-right: 0.05rem solid #4f7398;
 }
 
 .nav-tabs .nav-link:not(.active) {
-    background-color: #263c92;
-    color: #fdfdfd;
+  background-color: #263c92;
+  color: #fdfdfd;
 }
 
 .nav-tabs .nav-link.active {
-    color: #263c92;
-    font-weight: 400;
-    background-color: #fdfdfd;
+  color: #263c92;
+  font-weight: 400;
+  background-color: #fdfdfd;
 }
 
-.nav-tabs{
-    display: flex;
+.nav-tabs {
+  display: flex;
 }
 .nav-tabs li {
-    display: flex;
-    flex: 1;
+  display: flex;
+  flex: 1;
 }
 
-.nav-tabs li  a {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-around;
+.nav-tabs li a {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .barbers-tabs-icon {
-    font-size: 1.3rem;
-    padding-top: .5rem;
-    padding-bottom: .25rem;
+  font-size: 1.3rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.25rem;
 }
 
 /* Contact Page */
 
 #form-contact > .form-group:nth-of-type(1) {
-    margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .btn.btn-contact.mt-4_5 {
-    margin-top: 36px;
+  margin-top: 36px;
 }
 
 /* Thank You page */
 
 .thank-you-alert {
-    position: relative;
-    top: -20px;
+  position: relative;
+  top: -20px;
 }
 
 /* Error Handlers */
 
 .error-redirect-link {
-    font-weight: 400;
+  font-weight: 400;
 }
 
 .error-alert {
+  position: relative;
+  top: -20px;
+}
+
+/* Media Queries */
+
+@media only screen and (min-width: 768px) {
+  /* global styles/base template components */
+
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+
+  .navbar-nav {
     position: relative;
-    top: -20px;
+    top: -4px;
+    right: 0;
+    margin-left: auto;
+  }
+
+  #navbar-nav-list .nav-item > .nav-link {
+    font-size: 0.9rem;
+  }
+
+  #navbar-nav-list .nav-item.active > .nav-link {
+    background-color: unset;
+    color: #263c92;
+    font-weight: 500;
+    border-radius: unset;
+  }
+
+  /* Home (landing) page */
+
+  .jumbotron {
+    max-width: 80%;
+    padding: 5rem 3.5rem;
+    top: -40px;
+  }
 }
