@@ -502,7 +502,7 @@ nav,
   color: #263c92;
 }
 
-/* Reviews page */
+/* Recent Reviews page */
 
 blockquote {
   line-height: 1.25;
@@ -833,6 +833,10 @@ blockquote:after {
     min-height: 100vh;
   }
 
+  h6 {
+    font-size: 1.6rem;
+  }
+
   .main-container {
     min-height: calc(100vh - 62px);
     margin-top: auto;
@@ -871,15 +875,18 @@ blockquote:after {
   .pull-content-up {
     justify-content: center;
     align-items: center;
+    top: -122px;
+  }
+
+  .push-down {
+    position: relative;
+    top: 122px;
   }
 
   /* Flash message container */
 
   .well.container.flash-message-container {
-    position: absolute;
-    max-width: 63%;
-    left: 18.5%;
-    padding: 0;
+    z-index: 99;
   }
 
   /* Home (landing) page */
@@ -971,9 +978,9 @@ blockquote:after {
 
   .btn-more-info,
   .btn-group-vertical {
-    width: 70%;
-    margin-left: 15%;
-    margin-right: 15%;
+    width: 86%;
+    margin-left: 7%;
+    margin-right: 7%;
     min-width: unset;
   }
 
@@ -1030,6 +1037,14 @@ blockquote:after {
     padding-bottom: .5rem;
   }
 
+  /* Recent Reviews page */
+
+  .modal .btn-group-vertical {
+    max-width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   /* Review Submit page */
 
   #review-submit-form-heading {
@@ -1065,15 +1080,14 @@ blockquote:after {
 
   /* Flash message container */
 
-  .well.container.flash-message-container {
-    position: absolute;
+  /* .well.container.flash-message-container {
     z-index: 2;
     max-width: 40vw;
     left: 0;
     right: 0;
     top: 50px;
     padding: 0;
-  }
+  } */
 
   /* Home (landing) page */
 

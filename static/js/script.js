@@ -238,6 +238,12 @@ $(document).ready(function () {
     $(
       ".register-form-card, .review-submit-form-card, .review-update-form-card, .reviews-card, #alert-info-review-update"
     ).removeClass("mt-3");
+    $(
+      ".reviews-card"
+    ).addClass("push-down");
+    $(
+      ".reviews-card"
+    ).removeClass("mt-md-4");
   }
   if ($(".flash-message-container").height() < 10) {
     $(".flash-message-container").next().removeClass("pull-content-up");
@@ -250,6 +256,12 @@ $(document).ready(function () {
   $(".flash-message-container").on("click", "#flash-message-dismiss",function(){
     $(".flash-message-container").next().removeClass("pull-content-up");
     $(".review-submit-form-card, .review-update-form-card, .register-form-card, .reviews-card, #alert-info-review-update").addClass("mt-3");
+    $(
+      ".reviews-card"
+    ).removeClass("push-down");
+    $(
+      ".reviews-card"
+    ).addClass("mt-md-4");
   });
   $("#flash-message-review-update-dismiss").click(function () {
     $(".flash-message-container").next().removeClass("pull-content-up");

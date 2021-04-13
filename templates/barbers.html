@@ -523,10 +523,10 @@
                 left_current=1, right_current=2) %}
                 {% if page_num %}
                 {% if reviews.page == page_num %}
-                <a class="p-0 my-0 ml-0 btn pagination-tab barber-blue-outline barber-blue white-text"
+                <a class="p-0 my-0 ml-0 btn pagination-tab barber-red-outline barber-red white-text"
                     href="{{ url_for('barbers', page=page_num) }}">{{ page_num }}</a>
                 {% else %}
-                <a class="p-0 my-0 ml-0 btn pagination-tab barber-blue-outline white-text"
+                <a class="p-0 my-0 ml-0 btn pagination-tab barber-red-outline white-text"
                     href="{{ url_for('barbers', page=page_num) }}">{{ page_num }}</a>
                 {% endif %}
                 {% else %}

@@ -98,7 +98,7 @@
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
         {% for message in messages %}
-        <div class="alert alert-{{ message[0] }} py-2_5 pl-3 pr-4 my-3 mb-0 text-center fade show alert-dismissible flash-msg-box-top"
+        <div class="alert alert-{{ message[0] }} py-2_5 pl-3 pr-4 my-3 mb-0 my-md-4 text-center fade show alert-dismissible flash-msg-box-top"
             role="alert">
             <strong>{{ message[1] }}</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close" id="flash-message-dismiss">
