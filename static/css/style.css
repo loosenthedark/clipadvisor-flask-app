@@ -937,6 +937,104 @@ blockquote:after {
     max-width: 70%;
     top: -40px;
   }
+
+  /* Pagination */
+
+  .pagination-wrapper {
+    width: 70%;
+  }
+
+  .pagination-wrapper > .btn,
+  .pagination-wrapper > i {
+    height: 4rem;
+    font-size: 1rem;
+  }
+
+  .pagination-wrapper > .btn:not(:last-of-type),
+  .pagination-wrapper > i {
+    margin-right: 2.1%;
+  }
+
+  .pagination-wrapper > .btn:last-of-type {
+    margin-right: 0;
+  }
+
+  .pagination-wrapper > .btn {
+    width: 9.8%;
+  }
+
+  .pagination-wrapper > i {
+    width: 4.2%;
+  }
+
+  /* Barbers page */
+
+  .btn-more-info,
+  .btn-group-vertical {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    min-width: unset;
+  }
+
+  blockquote:before,
+  blockquote:after {
+    display: none;
+  }
+
+  .blockquote-even {
+    border-left: 0;
+    border-right: 0.25rem solid #eceeef;
+  }
+
+  .blockquote-paragraph {
+    position: relative;
+  }
+
+  .blockquote-paragraph:before,
+  .blockquote-paragraph:after {
+    font-size: 4em;
+    color: #ccc;
+    line-height: 1em;
+    vertical-align: 0em;
+    position: absolute;
+    display: inline;
+    height: 80px;
+  }
+
+  .blockquote-paragraph:before {
+    content: open-quote;
+    top: -0.1rem;
+  }
+
+  .blockquote-paragraph:after {
+    content: close-quote;
+    padding-left: 0.75rem;
+    bottom: -3rem;
+  }
+
+  .barbers-vibe {
+    line-height: 1.2;
+  }
+
+  #_barbers-heading {
+    font-size: 2.2rem;
+  }
+
+  .nav-tabs .nav-link {
+    font-size: .85rem;
+  }
+
+  .barbers-tabs-icon {
+    font-size: 1.5rem;
+    padding-bottom: .5rem;
+  }
+
+  /* Review Submit page */
+
+  #review-submit-form-heading {
+    font-size: 2.2rem;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -961,8 +1059,8 @@ blockquote:after {
 
   #navbar-nav-list .nav-item > .nav-link {
     font-size: 1.1rem;
-    padding-top: .25rem;
-    padding-bottom: .25rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
   }
 
   /* Flash message container */
