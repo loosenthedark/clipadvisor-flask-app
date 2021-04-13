@@ -1,4 +1,4 @@
-// Redirect logged-out user back to Home page after 5 seconds
+// Redirect logged-out user/contact form submitter back to Home page after 5 seconds
 setTimeout(function(){
         window.location.href = "/";
     }, 5000);

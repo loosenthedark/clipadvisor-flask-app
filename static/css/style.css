@@ -829,6 +829,16 @@ blockquote:after {
 @media only screen and (min-width: 768px) {
   /* global styles/base template components */
 
+  body {
+    min-height: 100vh;
+  }
+
+  .main-container {
+    min-height: calc(100vh - 62px);
+    margin-top: auto;
+    display: block;
+  }
+
   .navbar-brand {
     font-size: 1.5rem;
   }
@@ -856,11 +866,27 @@ blockquote:after {
     max-width: 70%;
   }
 
+  /* spacing/utility classes */
+
+  .pull-content-up {
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Flash message container */
+
+  .well.container.flash-message-container {
+    position: absolute;
+    max-width: 63%;
+    left: 18.5%;
+    padding: 0;
+  }
+
   /* Home (landing) page */
 
   .jumbotron {
-    max-width: 80%;
-    padding: 5rem 3.5rem;
+    max-width: 70%;
+    padding: 2.5rem 3.4rem 3rem;
     top: -40px;
   }
 
@@ -892,7 +918,7 @@ blockquote:after {
 
   #form-login.p-5,
   #form-registration.p-5 {
-    padding: 3rem 5rem !important;
+    padding: 2.5rem 3.4rem 3rem !important;
   }
 
   #form-login > h3,
@@ -903,6 +929,13 @@ blockquote:after {
     max-width: 300px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  /* Logout page */
+
+  .logout-alert {
+    max-width: 70%;
+    top: -40px;
   }
 }
 
@@ -917,34 +950,69 @@ blockquote:after {
     font-size: 2.6rem;
   }
 
+  .main-container {
+    min-height: calc(100vh - 66px);
+  }
+
   .form-card.register-form-card,
   .form-card.login-form-card {
     max-width: 46%;
   }
 
+  #navbar-nav-list .nav-item > .nav-link {
+    font-size: 1.1rem;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+  }
+
+  /* Flash message container */
+
+  .well.container.flash-message-container {
+    position: absolute;
+    z-index: 2;
+    max-width: 40vw;
+    left: 0;
+    right: 0;
+    top: 50px;
+    padding: 0;
+  }
+
+  /* Home (landing) page */
+
   .lead {
     font-size: 1.5rem;
+  }
+
+  .jumbotron {
+    top: -10px;
   }
 
   .jumbotron > hr + p {
     font-size: 1.25rem;
   }
 
-  /* Home (landing) page */
-
-  #navbar-nav-list .nav-item > .nav-link {
-    font-size: 1.1rem;
-  }
-
-  /* Registration */
+  /* Registration page */
 
   #form-registration.p-5 {
-    padding: 2rem 5rem !important;
+    padding: 2.5rem 3.4rem 3rem !important;
   }
 
   .pre-register,
   .post-register,
   #form-registration small {
-    font-size: .85rem;
+    font-size: 0.85rem;
+  }
+
+  /* Login page */
+
+  .form-card.login-form-card {
+    top: 5px;
+  }
+
+  /* Logout page */
+
+  .logout-alert {
+    max-width: 46%;
+    top: -20px;
   }
 }
