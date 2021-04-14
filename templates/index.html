@@ -9,16 +9,16 @@
 {% block content %}
 <!-- CTA jumbotron -->
 <div class="jumbotron form-card text-center">
-    <h2 class="h1-responsive">Know a good barber?</h2>
-    <p class="lead">Then tell us below!</p>
-    <hr class="my-2">
-    <p class="mt-xl-4 mb-xl-5">Submit your review today to be in with a chance of winning a €100 barbershop voucher</p>
+    <h2 class="h1-responsive mt-xl-4 mx-xl-5">Know a good barber?</h2>
+    <p class="lead mx-xl-5">Then tell us below!</p>
+    <hr class="my-2 mx-xl-5">
+    <p class="mx-xl-5">Submit your review today to be in with a chance of winning a €100 barbershop voucher</p>
     {% if not session.user %}
-    <a class="btn barber-blue white-text btn-lg" href="{{ url_for('register') }}" role="button">Rate your
-        barber</a>
+    <a class="btn barber-blue white-text btn-lg mx-xl-auto mb-xl-4" href="{{ url_for('register') }}" role="button">Rate your
+        barber <i class="fas fa-cut white-text pt-1"></i></a>
     {% else %}
-    <a class="btn barber-blue white-text btn-lg" href="{{ url_for('review_submit') }}" role="button">Rate your
-        barber <i class="fas fa-cut pt-1"></i></a>
+    <a class="btn barber-blue white-text btn-lg mx-xl-auto mb-xl-4" href="{{ url_for('review_submit') }}" role="button">Rate your
+        barber <i class="fas fa-cut white-text pt-1"></i></a>
     {% endif %}
 </div>
 <!-- end of CTA jumbotron -->

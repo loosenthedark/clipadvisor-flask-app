@@ -286,15 +286,6 @@ $(document).ready(function () {
     }
   });
 
-  // if ($(".flash-message-container").height() < 10) {
-  //   $(".flash-message-container").next().removeClass("pull-content-up");
-  //   $(".register-form-card, .review-submit-form-card, .reviews-card, #alert-info-review-update").addClass(
-  //     "mt-3"
-  //   );
-  // }
-
-  // Undo this action when alert is dismissed
-
   // Darken vibe select menu text on Review Update page once user clicks to change selected value
   $(".review-update-form-field").focus(function () {
     $(this).removeClass("text-very-muted").addClass("barber-blue-text");

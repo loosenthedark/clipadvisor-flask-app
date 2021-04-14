@@ -1079,76 +1079,49 @@ blockquote:after {
 @media only screen and (min-width: 1200px) {
   /* global styles/base template components */
 
-  h2.h1-responsive {
-    font-size: 3rem;
-  }
-
-  h3 {
-    font-size: 2.6rem;
-  }
-
-  .main-container {
-    min-height: calc(100vh - 66px);
-  }
-
-  .form-card.register-form-card,
-  .form-card.login-form-card {
-    max-width: 46%;
-  }
-
   #navbar-nav-list .nav-item > .nav-link {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
+  .navbar-brand {
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
   }
 
-  /* Flash message container */
-
-  /* .well.container.flash-message-container {
-    z-index: 2;
-    max-width: 40vw;
-    left: 0;
-    right: 0;
-    top: 50px;
-    padding: 0;
-  } */
+  .main-container {
+    min-height: calc(100vh - 60px);
+  }
 
   /* Home (landing) page */
 
-  .lead {
-    font-size: 1.5rem;
-  }
-
   .jumbotron {
-    top: -10px;
+    top: 0;
+    max-width: unset;
+    margin-bottom: unset;
+    position: relative;
+    padding: unset;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 45vw;
+    height: 25vw;
+    max-height: 320px;
+    max-width: 580px;
   }
 
-  .jumbotron > hr + p {
-    font-size: 1.25rem;
+  h2.h1-responsive {
+    font-size: 2.6rem;
   }
 
-  /* Registration page */
-
-  #form-registration.p-5 {
-    padding: 2.5rem 3.4rem 3rem !important;
+  .jumbotron hr,
+  .jumbotron hr + p {
+    max-width: 450px;
   }
 
-  .pre-register,
-  .post-register,
-  #form-registration small {
-    font-size: 0.85rem;
+  .jumbotron .btn {
+    max-width: 250px;
   }
-
-  /* Login page */
-
-  .form-card.login-form-card {
-    top: 5px;
-  }
-
-  /* Logout page */
-
-  .logout-alert {
-    max-width: 46%;
-    top: -20px;
-  }
+  
 }
