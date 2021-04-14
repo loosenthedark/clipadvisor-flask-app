@@ -887,6 +887,7 @@ blockquote:after {
 
   .well.container.flash-message-container {
     z-index: 99;
+    max-width: calc((100% - 78px) * 0.7);
   }
 
   /* Home (landing) page */
@@ -1079,6 +1080,10 @@ blockquote:after {
 @media only screen and (min-width: 1200px) {
   /* global styles/base template components */
 
+  h3 {
+    font-size: 2.4rem;
+  }
+
   #navbar-nav-list .nav-item > .nav-link {
     font-size: 1rem;
     padding-top: 6px;
@@ -1094,19 +1099,32 @@ blockquote:after {
     min-height: calc(100vh - 60px);
   }
 
+  /* spacing/utility classes */
+
+  .pull-content-up {
+    top: -106px;
+  }
+
+  /* Flash message container */
+
+  .flash-message-container > .alert {
+    max-width: 580px;
+    border: none;
+    left: 1px;
+  }
+
   /* Home (landing) page */
 
   .jumbotron {
     top: 0;
-    max-width: unset;
     margin-bottom: unset;
     position: relative;
     padding: unset;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 45vw;
-    height: 25vw;
+    min-width: 45vw;
+    min-height: 25vw;
     max-height: 320px;
     max-width: 580px;
   }
@@ -1123,5 +1141,27 @@ blockquote:after {
   .jumbotron .btn {
     max-width: 250px;
   }
-  
+
+  /* Login page */
+
+  .form-card.login-form-card {
+    top: 0;
+    min-width: 45vw;
+    max-width: 580px;
+  }
+
+  #form-login {
+    min-width: 45vw;
+    min-height: 32vw;
+    max-height: 410px;
+    max-width: 580px;
+  }
+
+  #form-login > h3,
+  #form-login > .form-group,
+  #form-login > .form-group + div,
+  #form-login > .not-a-member,
+  #form-login > button {
+    max-width: 340px;
+  }
 }
