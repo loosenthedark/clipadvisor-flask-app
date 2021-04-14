@@ -11,7 +11,7 @@
 {% block content %}
 
 <!-- Submit A Review form card container -->
-<div class="card form-card review-submit-form-card mt-3 mb-5">
+<div class="card form-card review-submit-form-card mt-3 mt-md-4 mb-5">
 
     <!-- Submit A Review form heading -->
     <div class="review-submit-form-card-heading text-center">
@@ -27,172 +27,168 @@
     <div class="card-body p-4 px-lg-5 pt-0">
         <!-- Submit A Review form -->
         <form id="review-submit-form" action="{{ url_for('review_submit') }}" method="POST">
-
-            <!-- customer name input -->
-            <div class="form-group">
-                <div class="md-form my-5">
-                    <i class="fas fa-user barber-blue prefix"></i>
-                    <input type="text" class="form-control review-submit-form-field"
-                        id="review-submit-form-customer-name" name="review-submit-form-customer-name"
-                        value="{{ user.firstname }} {{ user.lastname }}" minlength="4" maxlength="50" required>
-                    <label for="review-submit-form-customer-name" class="review-submit-form-label barber-blue">Customer
-                        Name</label>
+            <div class="row">
+                <!-- customer name input -->
+                <div class="col-md-6 form-group">
+                    <div class="md-form my-5 my-md-4">
+                        <i class="fas fa-user barber-blue prefix"></i>
+                        <input type="text" class="form-control review-submit-form-field" id="review-submit-form-customer-name"
+                            name="review-submit-form-customer-name" value="{{ user.firstname }} {{ user.lastname }}" minlength="4"
+                            maxlength="50" required>
+                        <label for="review-submit-form-customer-name" class="review-submit-form-label barber-blue">Customer
+                            Name</label>
+                    </div>
                 </div>
-            </div>
-            <!-- /customer name input -->
-
-            <!-- barbershop name input -->
-            <div class="form-group">
-                <div class="md-form my-5">
-                    <i class="fas fa-building barber-blue prefix"></i>
-                    <input type="text" class="form-control review-submit-form-field" minlength="3" maxlength="50"
-                        id="review-submit-form-barbershop-name" name="review-submit-form-barbershop-name" required>
-                    <label for="review-submit-form-barbershop-name"
-                        class="review-submit-form-label barber-blue">Barber</label>
+                <!-- /customer name input -->
+                <!-- barbershop name input -->
+                <div class="col-md-6 form-group">
+                    <div class="md-form my-5 my-md-4">
+                        <i class="fas fa-building barber-blue prefix"></i>
+                        <input type="text" class="form-control review-submit-form-field" minlength="3" maxlength="50"
+                            id="review-submit-form-barbershop-name" name="review-submit-form-barbershop-name" required>
+                        <label for="review-submit-form-barbershop-name"
+                            class="review-submit-form-label barber-blue">Barber</label>
+                    </div>
                 </div>
-            </div>
-            <!-- /barbershop name input -->
-
-            <!-- date of visit input -->
-            <div class="form-group">
-                <div class="md-form my-5">
-                    <i class="fas fa-calendar-day barber-blue prefix"></i>
-                    <input type="text" id="review-submit-form-date-picker" name="review-submit-form-date-picker"
-                        class="form-control review-submit-form-field" required>
-                    <label for="review-submit-form-date-picker" class="review-submit-form-label barber-blue">What date
-                        did you visit?</label>
+                <!-- /barbershop name input -->
+                <!-- date of visit input -->
+                <div class="col-md-6 form-group">
+                    <div class="md-form my-5 my-md-4">
+                        <i class="fas fa-calendar-day barber-blue prefix"></i>
+                        <input type="text" id="review-submit-form-date-picker" name="review-submit-form-date-picker"
+                            class="form-control review-submit-form-field" required>
+                        <label for="review-submit-form-date-picker" class="review-submit-form-label barber-blue">What date
+                            did you visit?</label>
+                    </div>
                 </div>
-            </div>
-            <!-- /date of visit input -->
+                <!-- /date of visit input -->
 
-            <!-- time of visit input -->
-            <div class="form-group">
-                <div class="md-form my-5">
-                    <i class="fas fa-clock barber-blue prefix"></i>
-                    <input type="text" id="review-submit-form-time-picker" name="review-submit-form-time-picker"
-                        class="form-control review-submit-form-field" required>
-                    <label for="review-submit-form-time-picker" class="review-submit-form-label barber-blue">What time
-                        did you visit?</label>
+                <!-- time of visit input -->
+                <div class="col-md-6 form-group">
+                    <div class="md-form my-5 my-md-4">
+                        <i class="fas fa-clock barber-blue prefix"></i>
+                        <input type="text" id="review-submit-form-time-picker" name="review-submit-form-time-picker"
+                            class="form-control review-submit-form-field" required>
+                        <label for="review-submit-form-time-picker" class="review-submit-form-label barber-blue">What time
+                            did you visit?</label>
+                    </div>
                 </div>
-            </div>
-            <!-- /time of visit input -->
+                <!-- /time of visit input -->
 
-            <!-- booking options checkboxes -->
-            <div class="form-group">
-                <div class="md-form my-4">
-                    <i class="fas fa-user-clock barber-blue prefix"></i>
-                    <span class="booking-options-span barber-blue-text">Booking options:</span>
-                    <div class="checkbox-container">
-                        <div class="form-check form-check-inline checkbox-box ml-2 mr-2">
-                            <input class="form-check-input booking-checkbox" type="checkbox"
-                                id="review-submit-form-booking-phone-checkbox"
-                                name="review-submit-form-booking-phone-checkbox" value="by phone">
-                            <label class="form-check-label" for="review-submit-form-booking-phone-checkbox">by
-                                phone</label>
-                        </div>
-                        <div class="form-check form-check-inline checkbox-box mr-2">
-                            <input class="form-check-input booking-checkbox" type="checkbox"
-                                id="review-submit-form-booking-online-checkbox"
-                                name="review-submit-form-booking-online-checkbox" value="online">
-                            <label class="form-check-label"
-                                for="review-submit-form-booking-online-checkbox">online</label>
-                        </div>
-                        <div class="form-check form-check-inline checkbox-box mr-2">
-                            <input class="form-check-input booking-checkbox" type="checkbox"
-                                id="review-submit-form-booking-walkin-checkbox"
-                                name="review-submit-form-booking-walkin-checkbox" value="walk-in">
-                            <label class="form-check-label"
-                                for="review-submit-form-booking-walkin-checkbox">walk-in</label>
+                <!-- booking options checkboxes -->
+                <div class="col-md-6 form-group mb-md-0">
+                    <div class="md-form my-4 my-md-3">
+                        <i class="fas fa-user-clock barber-blue prefix"></i>
+                        <span class="booking-options-span barber-blue-text">Booking options:</span>
+                        <div class="checkbox-container">
+                            <div class="form-check form-check-inline checkbox-box ml-2 mr-2">
+                                <input class="form-check-input booking-checkbox" type="checkbox"
+                                    id="review-submit-form-booking-phone-checkbox"
+                                    name="review-submit-form-booking-phone-checkbox" value="by phone">
+                                <label class="form-check-label" for="review-submit-form-booking-phone-checkbox">by
+                                    phone</label>
+                            </div>
+                            <div class="form-check form-check-inline checkbox-box mr-2">
+                                <input class="form-check-input booking-checkbox" type="checkbox"
+                                    id="review-submit-form-booking-online-checkbox"
+                                    name="review-submit-form-booking-online-checkbox" value="online">
+                                <label class="form-check-label"
+                                    for="review-submit-form-booking-online-checkbox">online</label>
+                            </div>
+                            <div class="form-check form-check-inline checkbox-box mr-2">
+                                <input class="form-check-input booking-checkbox" type="checkbox"
+                                    id="review-submit-form-booking-walkin-checkbox"
+                                    name="review-submit-form-booking-walkin-checkbox" value="walk-in">
+                                <label class="form-check-label"
+                                    for="review-submit-form-booking-walkin-checkbox">walk-in</label>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- /booking options checkboxes -->
+                <!-- /booking options checkboxes -->
 
-            <!-- payment options checkboxes -->
-            <div class="form-group">
-                <div class="md-form my-4">
-                    <i class="fas fa-euro-sign barber-blue prefix"></i>
-                    <span class="payment-options-span barber-blue-text">Payment options:</span>
-                    <div class="checkbox-container">
-                        <div class="form-check form-check-inline checkbox-box ml-2 mr-2">
-                            <input class="form-check-input payment-checkbox" type="checkbox"
-                                id="review-submit-form-payment-cash-checkbox"
-                                name="review-submit-form-payment-cash-checkbox" value="cash">
-                            <label class="form-check-label" for="review-submit-form-payment-cash-checkbox">cash</label>
-                        </div>
-                        <div class="form-check form-check-inline checkbox-box mr-2">
-                            <input class="form-check-input payment-checkbox" type="checkbox"
-                                id="review-submit-form-payment-card-checkbox"
-                                name="review-submit-form-payment-card-checkbox" value="card">
-                            <label class="form-check-label" for="review-submit-form-payment-card-checkbox">card</label>
+                <!-- payment options checkboxes -->
+                <div class="col-md-6 form-group mb-md-0">
+                    <div class="md-form my-4 my-md-3">
+                        <i class="fas fa-euro-sign barber-blue prefix"></i>
+                        <span class="payment-options-span barber-blue-text">Payment options:</span>
+                        <div class="checkbox-container">
+                            <div class="form-check form-check-inline checkbox-box ml-2 mr-2">
+                                <input class="form-check-input payment-checkbox" type="checkbox"
+                                    id="review-submit-form-payment-cash-checkbox"
+                                    name="review-submit-form-payment-cash-checkbox" value="cash">
+                                <label class="form-check-label" for="review-submit-form-payment-cash-checkbox">cash</label>
+                            </div>
+                            <div class="form-check form-check-inline checkbox-box mr-2">
+                                <input class="form-check-input payment-checkbox" type="checkbox"
+                                    id="review-submit-form-payment-card-checkbox"
+                                    name="review-submit-form-payment-card-checkbox" value="card">
+                                <label class="form-check-label" for="review-submit-form-payment-card-checkbox">card</label>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- /payment options checkboxes -->
-
-            <!-- vibe select -->
-            <div class="form-group">
-                <div class="md-form mt-4_5 mb-5">
-                    <i class="fas fa-grin-squint barber-blue prefix"></i>
-                    <label for="review-submit-form-vibe"
-                        class="review-submit-form-label vibe-label barber-blue">Vibe</label>
-                    <select class="form-control review-submit-form-field pt-3 pb-2" id="review-submit-form-vibe"
-                        name="review-submit-form-vibe" required>
-                        <option selected disabled>Please select one:</option>
-                        <option value="old school">old school</option>
-                        <option value="work commute">work commute</option>
-                        <option value="hipster">hipster</option>
-                        <option value="cookie cutter">cookie cutter</option>
-                        <option value="cheap and cheerful">cheap & cheerful</option>
-                        <option value="dancefloor">dancefloor</option>
-                        <option value="silence is golden">silence is golden</option>
-                        <option value="sweatbox">sweatbox</option>
-                    </select>
-                </div>
-            </div>
-            <!-- /vibe select -->
-
-            <!-- customer comments textarea -->
-            <div class="form-group">
-                <div class="md-form mt-5 mb-4">
-                    <textarea id="review-submit-form-comments" name="review-submit-form-comments"
-                        class="p-2 shadow-sm form-control md-textarea review-submit-form-field rounded-0" rows="3" minlength="10"
-                        maxlength="1000" required></textarea>
-                    <label for="review-submit-form-comments" class="barber-blue">Tell us what you liked and/or did not
-                        like...</label>
-                </div>
-            </div>
-            <!-- /customer comments textarea -->
-
-            <!-- star rating radio buttons: custom component adapted from https://codepen.io/hesguru/pen/BaybqXv -->
-            <div class="form-group clearfix">
-                <div class="rate text-center">
-                    <h5 class="barber-blue-text thumbs"><i class="fas fa-thumbs-up mr-1"></i> <i
-                            class="ml-1 fas fa-thumbs-down barber-red-text"></i></h5>
-                    <h5 class="barber-blue-text">Overall Rating</h5>
-                    <div class="star-wrapper text-center">
-                        <input type="radio" id="star-5" name="review-submit-form-star-rating" value="5">
-                        <label class="mx-1" for="star-5" title="Awesome!">5 stars</label>
-                        <input type="radio" id="star-4" name="review-submit-form-star-rating" value="4">
-                        <label class="mx-1" for="star-4" title="Good">4 stars</label>
-                        <input type="radio" id="star-3" name="review-submit-form-star-rating" value="3">
-                        <label class="mx-1" for="star-3" title="OK">3 stars</label>
-                        <input type="radio" id="star-2" name="review-submit-form-star-rating" value="2">
-                        <label class="mx-1" for="star-2" title="Poor">2 stars</label>
-                        <input type="radio" id="star-1" name="review-submit-form-star-rating" value="1">
-                        <label class="mx-1" for="star-1" title="Terrible!">1 star</label>
+                <!-- /payment options checkboxes -->
+                <!-- vibe select -->
+                <div class="col-md-8 offset-md-2 form-group mb-md-0">
+                    <div class="md-form mt-4_5 mb-5 mb-md-4">
+                        <i class="fas fa-grin-squint barber-blue prefix"></i>
+                        <label for="review-submit-form-vibe"
+                            class="review-submit-form-label vibe-label barber-blue">Vibe</label>
+                        <select class="form-control review-submit-form-field pt-3 pb-2" id="review-submit-form-vibe"
+                            name="review-submit-form-vibe" required>
+                            <option selected disabled>Please select one:</option>
+                            <option value="old school">old school</option>
+                            <option value="work commute">work commute</option>
+                            <option value="hipster">hipster</option>
+                            <option value="cookie cutter">cookie cutter</option>
+                            <option value="cheap and cheerful">cheap & cheerful</option>
+                            <option value="dancefloor">dancefloor</option>
+                            <option value="silence is golden">silence is golden</option>
+                            <option value="sweatbox">sweatbox</option>
+                        </select>
                     </div>
                 </div>
+                <!-- /vibe select -->
+                <!-- customer comments textarea -->
+                <div class="col-md-8 offset-md-2 form-group">
+                    <div class="md-form mt-5 mb-4 my-md-3">
+                        <textarea id="review-submit-form-comments" name="review-submit-form-comments"
+                            class="p-2 shadow-sm form-control md-textarea review-submit-form-field rounded-0" rows="3" minlength="10"
+                            maxlength="1000" required></textarea>
+                        <label for="review-submit-form-comments" class="barber-blue">Tell us what you liked and/or did not
+                            like...</label>
+                    </div>
+                </div>
+                <!-- /customer comments textarea -->
+                <!-- star rating radio buttons: custom component adapted from https://codepen.io/hesguru/pen/BaybqXv -->
+                <div class="col-md-6 offset-md-3 form-group clearfix">
+                    <div class="rate text-center">
+                        <h5 class="barber-blue-text thumbs"><i class="fas fa-thumbs-up mr-1"></i> <i
+                                class="ml-1 fas fa-thumbs-down barber-red-text"></i></h5>
+                        <h5 class="barber-blue-text">Overall Rating</h5>
+                        <div class="star-wrapper text-center">
+                            <input type="radio" id="star-5" name="review-submit-form-star-rating" value="5">
+                            <label class="mx-1" for="star-5" title="Awesome!">5 stars</label>
+                            <input type="radio" id="star-4" name="review-submit-form-star-rating" value="4">
+                            <label class="mx-1" for="star-4" title="Good">4 stars</label>
+                            <input type="radio" id="star-3" name="review-submit-form-star-rating" value="3">
+                            <label class="mx-1" for="star-3" title="OK">3 stars</label>
+                            <input type="radio" id="star-2" name="review-submit-form-star-rating" value="2">
+                            <label class="mx-1" for="star-2" title="Poor">2 stars</label>
+                            <input type="radio" id="star-1" name="review-submit-form-star-rating" value="1">
+                            <label class="mx-1" for="star-1" title="Terrible!">1 star</label>
+                        </div>
+                    </div>
+                </div>
+                <!-- /star rating radio buttons -->
+                <!-- review submit button -->
+                <div class="col-md-6 offset-md-3">
+                    <button class="btn btn-success btn-lg btn-block btn-pills z-depth-0 mt-3 mt-md-0 mb-4 mb-md-3 ml-md-0 waves-effect"
+                    type="submit">Submit Review</button>
+                </div>
+                <!-- /review submit button -->
             </div>
-            <!-- /star rating radio buttons -->
-
-            <!-- review submit button -->
-            <button class="btn btn-success btn-lg btn-block btn-pills z-depth-0 mt-3 mb-4 waves-effect"
-                type="submit">Submit
-                Review</button>
-            <!-- /review submit button -->
         </form>
         <!-- /Submit A Review form -->
     </div>

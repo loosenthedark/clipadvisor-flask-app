@@ -121,7 +121,7 @@ def register():
                 return redirect(url_for('review_submit'))
 
             message = Markup(
-                'There is already an account associated with that email!<br> Please try again <i class="fas fa-cut"></i>')
+                'There is already an account associated with that email address!<br>Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')
 
     # Check to see whether user is already logged in

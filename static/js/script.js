@@ -111,12 +111,14 @@ $(document).ready(function () {
     ) {
       // customised Flash message
       $(".flash-message-container").html(
-        '<div class="alert alert-warning py-2_5 pl-3 pr-4 my-3 mb-0 text-center fade show alert-dismissible flash-msg-box-top" role="alert"><strong>Please provide at least one booking option <i class="fas fa-cut"></i></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close" id="flash-message-dismiss"><span aria-hidden="true">&times;</span></button></div>'
+        '<div class="alert alert-warning py-2_5 pl-3 pr-4 my-3 mb-0 my-md-4 text-center fade show alert-dismissible flash-msg-box-top" role="alert"><strong>Please provide at least one booking option <i class="fas fa-cut"></i></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close" id="flash-message-dismiss"><span aria-hidden="true">&times;</span></button></div>'
       );
 
       // reposition Submit A Review form container
       $(".flash-message-container").next().addClass("pull-content-up");
-      $(".review-submit-form-card").removeClass("mt-3");
+      $(".review-submit-form-card")
+        .removeClass("mt-3 mt-md-4")
+        .addClass("push-down");
       return false;
     }
     if (
@@ -132,12 +134,14 @@ $(document).ready(function () {
     ) {
       // customised Flash message
       $(".flash-message-container").html(
-        '<div class="alert alert-warning py-2_5 pl-3 pr-4 my-3 mb-0 text-center fade show alert-dismissible flash-msg-box-top" role="alert"><strong>Please provide at least one payment option <i class="fas fa-cut"></i></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close" id="flash-message-dismiss"><span aria-hidden="true">&times;</span></button></div>'
+        '<div class="alert alert-warning py-2_5 pl-3 pr-4 my-3 mb-0 my-md-4 text-center fade show alert-dismissible flash-msg-box-top" role="alert"><strong>Please provide at least one payment option <i class="fas fa-cut"></i></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close" id="flash-message-dismiss"><span aria-hidden="true">&times;</span></button></div>'
       );
 
       // reposition Submit A Review form container
       $(".flash-message-container").next().addClass("pull-content-up");
-      $(".review-submit-form-card").removeClass("mt-3");
+      $(".review-submit-form-card")
+        .removeClass("mt-3 mt-md-4")
+        .addClass("push-down");
       return false;
     }
     if (
@@ -153,12 +157,14 @@ $(document).ready(function () {
     ) {
       // customised Flash message
       $(".flash-message-container").html(
-        '<div class="alert alert-warning py-2_5 pl-3 pr-4 my-3 mb-0 text-center fade show alert-dismissible flash-msg-box-top" role="alert"><strong>You forgot to give your barber a star rating!</br>Please try again <i class="fas fa-cut"></i></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close" id="flash-message-dismiss"><span aria-hidden="true">&times;</span></button></div>'
+        '<div class="alert alert-warning py-2_5 pl-3 pr-4 my-3 mb-0 my-md-4 text-center fade show alert-dismissible flash-msg-box-top" role="alert"><strong>You forgot to give your barber a star rating!</br>Please try again <i class="fas fa-cut"></i></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close" id="flash-message-dismiss"><span aria-hidden="true">&times;</span></button></div>'
       );
 
       // reposition Submit A Review form container
       $(".flash-message-container").next().addClass("pull-content-up");
-      $(".review-submit-form-card").removeClass("mt-3");
+      $(".review-submit-form-card")
+        .removeClass("mt-3 mt-md-4")
+        .addClass("push-down");
       return false;
     }
   });
@@ -177,13 +183,16 @@ $(document).ready(function () {
     ) {
       // customised Flash message
       $(".flash-message-container").html(
-        '<div class="alert alert-warning py-2_5 pl-3 pr-4 my-3 mb-0 text-center fade show alert-dismissible flash-msg-box-top" role="alert"><strong>Please provide at least one booking option <i class="fas fa-cut"></i></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close" id="flash-message-dismiss"><span aria-hidden="true">&times;</span></button></div>'
+        '<div class="alert alert-warning py-2_5 pl-3 pr-4 my-3 mb-0 my-md-4 text-center fade show alert-dismissible flash-msg-box-top" role="alert"><strong>Please provide at least one booking option <i class="fas fa-cut"></i></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close" id="flash-message-dismiss"><span aria-hidden="true">&times;</span></button></div>'
       );
 
       // reposition Update Review form container
       $(".flash-message-container").next().addClass("pull-content-up");
-      $("#alert-info-review-update").removeClass("mt-3");
-      $(".review-update-form-card").removeClass("mt-3");
+      $("#alert-info-review-update").removeClass("mt-3 mt-md-4");
+      $("#alert-info-review-update-container").addClass("push-down");
+      $(".review-update-form-card")
+        .removeClass("mt-3 mt-md-4")
+        .addClass("push-down");
       return false;
     }
     if (
@@ -199,13 +208,16 @@ $(document).ready(function () {
     ) {
       // customised Flash message
       $(".flash-message-container").html(
-        '<div class="alert alert-warning py-2_5 pl-3 pr-4 my-3 mb-0 text-center fade show alert-dismissible flash-msg-box-top" role="alert"><strong>Please provide at least one payment option <i class="fas fa-cut"></i></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close" id="flash-message-dismiss"><span aria-hidden="true">&times;</span></button></div>'
+        '<div class="alert alert-warning py-2_5 pl-3 pr-4 my-3 mb-0 my-md-4 text-center fade show alert-dismissible flash-msg-box-top" role="alert"><strong>Please provide at least one payment option <i class="fas fa-cut"></i></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close" id="flash-message-dismiss"><span aria-hidden="true">&times;</span></button></div>'
       );
 
       // reposition Update Review form container
       $(".flash-message-container").next().addClass("pull-content-up");
-      $("#alert-info-review-update").removeClass("mt-3");
-      $(".review-update-form-card").removeClass("mt-3");
+      $("#alert-info-review-update").removeClass("mt-3 mt-md-4");
+      $("#alert-info-review-update-container").addClass("push-down");
+      $(".review-update-form-card")
+        .removeClass("mt-3 mt-md-4")
+        .addClass("push-down");
       return false;
     }
     if (
@@ -221,52 +233,67 @@ $(document).ready(function () {
     ) {
       // customised Flash message
       $(".flash-message-container").html(
-        '<div class="alert alert-warning py-2_5 pl-3 pr-4 my-3 mb-0 text-center fade show alert-dismissible flash-msg-box-top" role="alert"><strong>You forgot to give your barber a star rating!</br>Please try again <i class="fas fa-cut"></i></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close" id="flash-message-dismiss"><span aria-hidden="true">&times;</span></button></div>'
+        '<div class="alert alert-warning py-2_5 pl-3 pr-4 my-3 mb-0 my-md-4 text-center fade show alert-dismissible flash-msg-box-top" role="alert"><strong>You forgot to give your barber a star rating!</br>Please try again <i class="fas fa-cut"></i></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close" id="flash-message-dismiss"><span aria-hidden="true">&times;</span></button></div>'
       );
 
       // reposition Update Review form container
       $(".flash-message-container").next().addClass("pull-content-up");
-      $("#alert-info-review-update").removeClass("mt-3");
-      $(".review-update-form-card").removeClass("mt-3");
+      $("#alert-info-review-update").removeClass("mt-3 mt-md-4");
+      $("#alert-info-review-update-container").addClass("push-down");
+      $(".review-update-form-card")
+        .removeClass("mt-3 mt-md-4")
+        .addClass("push-down");
       return false;
     }
   });
 
   // Move form card container(s) upwards (collapse space) if alert appears
+
   if ($(".flash-message-container").height() > 10) {
-    $(".flash-message-container").next().addClass("pull-content-up");
     $(
       ".register-form-card, .review-submit-form-card, .review-update-form-card, .reviews-card, #alert-info-review-update"
-    ).removeClass("mt-3");
+    ).removeClass("mt-3 mt-md-4");
+    $(".flash-message-container").next().addClass("pull-content-up");
     $(
-      ".reviews-card"
+      ".reviews-card, .review-submit-form-card, .review-update-form-card"
     ).addClass("push-down");
-    $(
-      ".reviews-card"
-    ).removeClass("mt-md-4");
-  }
-  if ($(".flash-message-container").height() < 10) {
-    $(".flash-message-container").next().removeClass("pull-content-up");
-    $(".register-form-card, .review-submit-form-card, .reviews-card, #alert-info-review-update").addClass(
-      "mt-3"
-    );
   }
 
   // Undo this action when alert is dismissed
-  $(".flash-message-container").on("click", "#flash-message-dismiss",function(){
-    $(".flash-message-container").next().removeClass("pull-content-up");
-    $(".review-submit-form-card, .review-update-form-card, .register-form-card, .reviews-card, #alert-info-review-update").addClass("mt-3");
-    $(
-      ".reviews-card"
-    ).removeClass("push-down");
-    $(
-      ".reviews-card"
-    ).addClass("mt-md-4");
-  });
+
+  $(".flash-message-container").on(
+    "click",
+    "#flash-message-dismiss",
+    function () {
+      $(".flash-message-container").next().removeClass("pull-content-up");
+      $(
+        ".review-submit-form-card, .register-form-card, .reviews-card, #alert-info-review-update"
+      ).addClass("mt-3 mt-md-4");
+      if ($("#alert-info-review-update-container").height() < 10) {
+        $(".review-update-form-card").addClass("mt-3 mt-md-4");
+      }
+      $(
+        ".reviews-card, .review-submit-form-card, .review-update-form-card, #alert-info-review-update-container"
+      ).removeClass("push-down");
+    }
+  );
+
+  // Keep review update form from pressing up against navbar when alert is dismissed
+
   $("#flash-message-review-update-dismiss").click(function () {
-    $(".flash-message-container").next().removeClass("pull-content-up");
-    $(".review-update-form-card").addClass("mt-3");
+    if ($(".flash-message-container").height() < 10) {
+      $(".review-update-form-card").addClass("mt-3 mt-md-4");
+    }
   });
+
+  // if ($(".flash-message-container").height() < 10) {
+  //   $(".flash-message-container").next().removeClass("pull-content-up");
+  //   $(".register-form-card, .review-submit-form-card, .reviews-card, #alert-info-review-update").addClass(
+  //     "mt-3"
+  //   );
+  // }
+
+  // Undo this action when alert is dismissed
 
   // Darken vibe select menu text on Review Update page once user clicks to change selected value
   $(".review-update-form-field").focus(function () {

@@ -924,7 +924,8 @@ blockquote:after {
   }
 
   #form-login.p-5,
-  #form-registration.p-5 {
+  #form-registration.p-5,
+  #form-contact.p-5 {
     padding: 2.5rem 3.4rem 3rem !important;
   }
 
@@ -1029,12 +1030,12 @@ blockquote:after {
   }
 
   .nav-tabs .nav-link {
-    font-size: .85rem;
+    font-size: 0.85rem;
   }
 
   .barbers-tabs-icon {
     font-size: 1.5rem;
-    padding-bottom: .5rem;
+    padding-bottom: 0.5rem;
   }
 
   /* Recent Reviews page */
@@ -1047,8 +1048,31 @@ blockquote:after {
 
   /* Review Submit page */
 
-  #review-submit-form-heading {
+  #review-submit-form-heading,
+  #review-update-form-heading {
     font-size: 2.2rem;
+  }
+
+  .form-card.review-submit-form-card,
+  .form-card.review-update-form-card {
+    width: 90%;
+  }
+
+  /* Contact page */
+
+  #form-contact > h3,
+  #form-contact > .form-group,
+  #form-contact > button {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Thank You page */
+
+  .thank-you-alert {
+    top: -40px;
+    max-width: 70%;
   }
 }
 
