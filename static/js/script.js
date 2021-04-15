@@ -291,6 +291,17 @@ $(document).ready(function () {
     $(this).removeClass("text-very-muted").addClass("barber-blue-text");
   });
 
+  // Dynamic-width Flash message alert
+  $(".flash-message-container > .alert").css({
+    width: $(".main-container > div:first-child").width() + "px",
+  });
+  // augmented by alert resize on screen resize
+  $(window).resize(function () {
+    $(".flash-message-container > .alert").css({
+      width: $(".main-container > div:first-child").width() + "px",
+    });
+  });
+
   // // Tooltips Initialization
   // $('[data-toggle="tooltip"]').tooltip()
 });

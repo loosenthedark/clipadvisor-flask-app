@@ -8,69 +8,73 @@
 <div class="card register-form-card form-card mt-3 mt-md-0 mb-5 mb-md-0 my-xl-5">
 
     <!-- register form -->
-    <form class="border border-light p-5" id="form-registration" action="{{ url_for('register') }}"
-        method="POST">
-        <h3 class="mb-2 text-center">Register</h3>
+    <form class="border border-light p-5" id="form-registration" action="{{ url_for('register') }}" method="POST">
+        <h3 class="mb-2 mb-xl-1 text-center">Register</h3>
         <p class="text-center mx-1 mx-md-auto mb-4 pre-register">Please take a few seconds to register your details with
-            us before
-            submitting your review</p>
+            us before submitting your review</p>
 
-        <!-- first name input field -->
-        <div class="form-group">
-            <input type="text" id="register-form-first-name" name="register-form-first-name" class="form-control"
-                placeholder="First name" minlength="2" maxlength="50" required>
+        <div class="row">
+            <div class="col-xl-6">
+                <!-- first name input field -->
+                <div class="form-group mb-2">
+                    <input type="text" id="register-form-first-name" name="register-form-first-name"
+                        class="form-control" placeholder="First name" minlength="2" maxlength="50" required>
+                </div>
+                <!-- /first name input field -->
+
+                <!-- last name input field -->
+                <div class="form-group mb-2">
+                    <input type="text" id="register-form-last-name" name="register-form-last-name"
+                        class="form-control mb-2" placeholder="Last name" minlength="2" maxlength="50" required>
+                </div>
+                <!-- /last name input field -->
+
+                <!-- email input field -->
+                <div class="form-group">
+                    <input type="email" id="register-form-email" name="register-form-email" class="form-control mb-4"
+                        placeholder="Email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                        title="You have entered an invalid email. Please try again with the following format: example@example.com"
+                        minlength="6" maxlength="100" required>
+                </div>
+                <!-- /email input field -->
+
+                <div class="form-group">
+                    <!-- password input field #1 -->
+                    <input type="password" id="register-form-password1" name="register-form-password1"
+                        class="form-control mb-2" minlength="8" maxlength="100" placeholder="Password"
+                        aria-describedby="register-form-password-help-block" required>
+                    <!-- /password input field #1 -->
+                    <!-- password input field #2 -->
+                    <input type="password" id="register-form-password2" name="register-form-password2"
+                        class="form-control" minlength="8" placeholder="Confirm password"
+                        aria-describedby="register-form-password-help-block" required>
+                    <!-- /password input field #2 -->
+                    <small id="register-form-password-help-block" class="form-text text-muted mb-4">Minimum 8
+                        characters</small>
+                </div>
+            </div>
+
+            <div class="col-xl-6 d-xl-flex flex-xl-column justify-content-xl-center" id="register-btn-column">
+                <!-- register form submit button -->
+                <button class="btn barber-blue mt-1 mt-xl-0 mb-2 btn-block white-text" type="submit">Register</button>
+                <!-- /register form submit button -->
+
+                <!-- login form redirect link -->
+                <div class="text-center already-a-member">
+                    <p class="text-muted mb-2">Already a member?:</p>
+                    <a href="{{ url_for('login') }}"
+                        class="btn btn-register-login-btn barber-blue-text barber-blue-outline m-0">Log In Here</a>
+                </div>
+                <!-- /login form redirect link -->
+                <hr class="my-md-3">
+                <!-- Ts&Cs disclaimer-->
+                <p class="post-register text-center mb-xl-0">By registering you agree to our
+                    <a href="#">Terms of Service</a> and
+                    <a href="#">Privacy Agreement</a>.
+                </p>
+                <!-- Ts&Cs disclaimer-->
+            </div>
         </div>
-        <!-- /first name input field -->
-
-        <!-- last name input field -->
-        <div class="form-group">
-            <input type="text" id="register-form-last-name" name="register-form-last-name" class="form-control mb-2"
-                placeholder="Last name" minlength="2" maxlength="50" required>
-        </div>
-        <!-- /last name input field -->
-
-        <!-- email input field -->
-        <div class="form-group">
-            <input type="email" id="register-form-email" name="register-form-email" class="form-control mb-4"
-                placeholder="Email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                title="You have entered an invalid email. Please try again with the following format: example@example.com"
-                minlength="6" maxlength="100" required>
-        </div>
-        <!-- /email input field -->
-
-        <div class="form-group">
-            <!-- password input field #1 -->
-            <input type="password" id="register-form-password1" name="register-form-password1" class="form-control mb-2"
-                minlength="8" maxlength="100" placeholder="Password"
-                aria-describedby="register-form-password-help-block" required>
-            <!-- /password input field #1 -->
-            <!-- password input field #2 -->
-            <input type="password" id="register-form-password2" name="register-form-password2" class="form-control"
-                minlength="8" placeholder="Confirm password" aria-describedby="register-form-password-help-block"
-                required>
-            <!-- /password input field #2 -->
-            <small id="register-form-password-help-block" class="form-text text-muted mb-4">Minimum 8 characters</small>
-        </div>
-
-        <!-- register form submit button -->
-        <button class="btn barber-blue mt-4 mb-2 btn-block white-text" type="submit">Register</button>
-        <!-- /register form submit button -->
-
-        <!-- login form redirect link -->
-        <div class="text-center already-a-member">
-            <p class="text-muted mb-2">Already a member?:</p>
-            <a href="{{ url_for('login') }}"
-                class="btn btn-register-login-btn barber-blue-text barber-blue-outline m-0">Log In Here</a>
-        </div>
-        <!-- /login form redirect link -->
-        <hr class="my-md-3">
-        <!-- Ts&Cs disclaimer-->
-        <p class="post-register text-center">By registering you agree to our
-            <a href="#">Terms of Service</a> and
-            <a href="#">Privacy Agreement</a>.
-        </p>
-        <!-- Ts&Cs disclaimer-->
-
     </form>
     <!-- /register form -->
 

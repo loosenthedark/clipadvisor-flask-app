@@ -902,17 +902,17 @@ blockquote:after {
 
   #form-registration > h3,
   #form-registration > h3 + p,
-  #form-registration > .form-group,
+  #form-registration .form-group,
   #form-registration > .pre-register,
-  #form-registration > button,
-  #form-registration > hr,
-  #form-registration > .already-a-member {
+  #form-registration button,
+  #form-registration hr,
+  #form-registration .already-a-member {
     max-width: 300px;
     margin-left: auto;
     margin-right: auto;
   }
 
-  #form-registration > .post-register {
+  #form-registration .post-register {
     max-width: 260px;
     margin-left: auto;
     margin-right: auto;
@@ -1108,9 +1108,7 @@ blockquote:after {
   /* Flash message container */
 
   .flash-message-container > .alert {
-    max-width: 580px;
     border: none;
-    left: 1px;
   }
 
   /* Home (landing) page */
@@ -1146,6 +1144,7 @@ blockquote:after {
 
   .form-card.login-form-card {
     top: 0;
+    right: 1px;
     min-width: 45vw;
     max-width: 580px;
   }
@@ -1163,5 +1162,25 @@ blockquote:after {
   #form-login > .not-a-member,
   #form-login > button {
     max-width: 340px;
+  }
+
+  /* Registration page */
+
+  #form-registration {
+    min-height: 34vw;
+    max-height: 460px;
+  }
+  #form-registration hr,
+  #form-registration .already-a-member {
+    width: 100%;
+  }
+
+  #form-registration > .pre-register {
+    max-width: unset;
+    font-size: .85rem;
+  }
+
+  #register-btn-column {
+    top: -2px;
   }
 }
