@@ -54,6 +54,10 @@ nav,
   position: relative;
 }
 
+nav {
+  z-index: 50;
+}
+
 .navbar-brand {
   font-family: "Roboto Condensed", sans-serif;
   font-weight: 400;
@@ -457,6 +461,7 @@ nav,
 #review-update-form textarea.md-textarea + label {
   top: -0.3rem;
   left: 0.3rem;
+  font-size: 0.9rem;
 }
 
 #barbers-pole-heading-img {
@@ -887,7 +892,6 @@ blockquote:after {
 
   .well.container.flash-message-container {
     z-index: 99;
-    max-width: calc((100% - 78px) * 0.7);
   }
 
   /* Home (landing) page */
@@ -996,6 +1000,10 @@ blockquote:after {
     border-right: 0.25rem solid #eceeef;
   }
 
+  .blockquote-odd {
+    border-left: 0.25rem solid #eceeef;
+  }
+
   .blockquote-paragraph {
     position: relative;
   }
@@ -1047,6 +1055,27 @@ blockquote:after {
     margin-right: auto;
   }
 
+  .review-card-wrapper.my-reviews .card-body .blockquote {
+    border-left: unset;
+  }
+
+  .blockquote-even {
+    border-left: 0;
+    border-right: 0.25rem solid #eceeef;
+  }
+
+  .blockquote-odd {
+    border-left: 0.25rem solid #eceeef;
+  }
+
+  .review-card-wrapper.my-reviews .card-body .blockquote.blockquote-odd {
+    border-left: 0.25rem solid #d1dbff;
+  }
+
+  .review-card-wrapper.my-reviews .card-body .blockquote.blockquote-even {
+    border-right: 0.25rem solid #d1dbff;
+  }
+
   /* Review Submit page */
 
   #review-submit-form-heading,
@@ -1055,7 +1084,8 @@ blockquote:after {
   }
 
   .form-card.review-submit-form-card,
-  .form-card.review-update-form-card {
+  .form-card.review-update-form-card,
+  #alert-info-review-update-container {
     width: 90%;
   }
 
@@ -1103,6 +1133,10 @@ blockquote:after {
 
   .pull-content-up {
     top: -106px;
+  }
+
+  .push-down {
+    top: 106px;
   }
 
   /* Flash message container */
@@ -1177,10 +1211,27 @@ blockquote:after {
 
   #form-registration > .pre-register {
     max-width: unset;
-    font-size: .85rem;
+    font-size: 0.85rem;
   }
 
   #register-btn-column {
     top: -2px;
+  }
+
+  /* Review Submit page */
+
+  /* Review Update page */
+
+  #review-update-form-comments {
+    max-height: 6rem;
+  }
+
+  /* Reviews page */
+
+  .btn-more-info,
+  .btn-group-vertical {
+    width: 94%;
+    margin-left: 3%;
+    margin-right: 3%;
   }
 }

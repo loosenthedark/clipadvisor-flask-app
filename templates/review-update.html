@@ -4,14 +4,16 @@
 
 {% block content %}
 
+<!-- Dismissible informational landing alert -->
 <div class="well container px-0" id="alert-info-review-update-container">
-    <div class="alert alert-info py-2_5 pl-3 pr-4 mt-3 mb-3 mt-md-4 mb-md-4 text-center fade show alert-dismissible flash-msg-box-top"
+    <div class="alert alert-info py-2_5 pl-3 pr-4 mt-3 mb-3 mt-md-4 mt-xl-3 mb-md-4 mb-xl-3 text-center fade show alert-dismissible flash-msg-box-top"
         id="alert-info-review-update" role="alert"><strong>You can update your review using the form below!<br>When
             you've made your changes, click the 'Update Review' button to save them <i
                 class="fas fa-cut"></i></strong><button type="button" class="close" data-dismiss="alert"
             aria-label="Close" id="flash-message-review-update-dismiss"><span aria-hidden="true">&times;</span></button>
     </div>
 </div>
+<!-- /Dismissible informational landing alert -->
 
 <!-- Update Review form card container -->
 <div class="card form-card review-update-form-card mb-5">
@@ -35,54 +37,58 @@
 
             <div class="row">
                 <!-- customer name input -->
-                <div class="col-md-6 form-group">
+                <div class="col-md-6 col-xl-4 order-xl-1 mt-xl-3 form-group">
                     <div class="md-form my-5 my-md-4">
                         <i class="fas fa-user barber-blue prefix"></i>
                         <input type="text" class="form-control review-update-form-field text-very-muted"
                             id="review-update-form-customer-name" name="review-update-form-customer-name"
                             value="{{ review.customername }}" minlength="4" maxlength="50" required>
-                        <label for="review-update-form-customer-name" class="review-update-form-label barber-blue">Customer
+                        <label for="review-update-form-customer-name"
+                            class="review-update-form-label barber-blue">Customer
                             Name</label>
                     </div>
                 </div>
                 <!-- /customer name input -->
                 <!-- barbershop name input -->
-                <div class="col-md-6 form-group">
+                <div class="col-md-6 col-xl-4 order-xl-2 mt-xl-3 form-group">
                     <div class="md-form my-5 my-md-4">
                         <i class="fas fa-building barber-blue prefix"></i>
                         <input type="text" class="form-control review-update-form-field text-very-muted" minlength="3"
-                            maxlength="50" id="review-update-form-barbershop-name" name="review-update-form-barbershop-name"
-                            value="{{ review.barbershopname }}" required>
-                        <label for="review-update-form-barbershop-name" class="review-update-form-label barber-blue">Barber</label>
+                            maxlength="50" id="review-update-form-barbershop-name"
+                            name="review-update-form-barbershop-name" value="{{ review.barbershopname }}" required>
+                        <label for="review-update-form-barbershop-name"
+                            class="review-update-form-label barber-blue">Barber</label>
                     </div>
                 </div>
                 <!-- /barbershop name input -->
                 <!-- date of visit input -->
-                <div class="col-md-6 form-group">
+                <div class="col-md-6 col-xl-4 order-xl-4 mt-xl-3 form-group">
                     <div class="md-form my-5 my-md-4">
                         <i class="fas fa-calendar-day barber-blue prefix"></i>
                         <input type="text" id="review-update-form-date-picker" name="review-update-form-date-picker"
-                            class="form-control review-update-form-field text-very-muted" value="{{ review.date }}" required>
-                        <label for="review-update-form-date-picker" class="review-update-form-label barber-blue">What date
+                            class="form-control review-update-form-field text-very-muted" value="{{ review.date }}"
+                            required>
+                        <label for="review-update-form-date-picker" class="review-update-form-label barber-blue">What
+                            date
                             did you visit?</label>
                     </div>
                 </div>
                 <!-- /date of visit input -->
-            
                 <!-- time of visit input -->
-                <div class="col-md-6 form-group">
+                <div class="col-md-6 col-xl-4 order-xl-5 mt-xl-3 form-group">
                     <div class="md-form my-5 my-md-4">
                         <i class="fas fa-clock barber-blue prefix"></i>
                         <input type="text" id="review-update-form-time-picker" name="review-update-form-time-picker"
-                            class="form-control review-update-form-field text-very-muted" value="{{ review.time }}" required>
-                        <label for="review-update-form-time-picker" class="review-update-form-label barber-blue">What time
+                            class="form-control review-update-form-field text-very-muted" value="{{ review.time }}"
+                            required>
+                        <label for="review-update-form-time-picker" class="review-update-form-label barber-blue">What
+                            time
                             did you visit?</label>
                     </div>
                 </div>
                 <!-- /time of visit input -->
-            
                 <!-- booking options checkboxes -->
-                <div class="col-md-6 form-group mb-md-0">
+                <div class="col-md-6 col-xl-4 order-xl-3 mt-xl-3 form-group mb-md-0">
                     <div class="md-form my-4 my-md-3">
                         <i class="fas fa-user-clock barber-blue prefix"></i>
                         <span class="booking-options-span barber-blue-text">Booking options:</span>
@@ -90,12 +96,12 @@
                             <div class="form-check form-check-inline checkbox-box ml-2 mr-2">
                                 {% if review.phone == 'by phone' %}
                                 <input class="form-check-input booking-checkbox" type="checkbox"
-                                    id="review-update-form-booking-phone-checkbox" name="review-update-form-booking-phone-checkbox"
-                                    value="by phone" checked>
+                                    id="review-update-form-booking-phone-checkbox"
+                                    name="review-update-form-booking-phone-checkbox" value="by phone" checked>
                                 {% else %}
                                 <input class="form-check-input booking-checkbox" type="checkbox"
-                                    id="review-update-form-booking-phone-checkbox" name="review-update-form-booking-phone-checkbox"
-                                    value="by phone">
+                                    id="review-update-form-booking-phone-checkbox"
+                                    name="review-update-form-booking-phone-checkbox" value="by phone">
                                 {% endif %}
                                 <label class="form-check-label" for="review-update-form-booking-phone-checkbox">by
                                     phone</label>
@@ -110,7 +116,8 @@
                                     id="review-update-form-booking-online-checkbox"
                                     name="review-update-form-booking-online-checkbox" value="online">
                                 {% endif %}
-                                <label class="form-check-label" for="review-update-form-booking-online-checkbox">online</label>
+                                <label class="form-check-label"
+                                    for="review-update-form-booking-online-checkbox">online</label>
                             </div>
                             <div class="form-check form-check-inline checkbox-box mr-2">
                                 {% if review.walkin == 'walk-in' %}
@@ -122,15 +129,15 @@
                                     id="review-update-form-booking-walkin-checkbox"
                                     name="review-update-form-booking-walkin-checkbox" value="walk-in">
                                 {% endif %}
-                                <label class="form-check-label" for="review-update-form-booking-walkin-checkbox">walk-in</label>
+                                <label class="form-check-label"
+                                    for="review-update-form-booking-walkin-checkbox">walk-in</label>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- /booking options checkboxes -->
-            
                 <!-- payment options checkboxes -->
-                <div class="col-md-6 form-group mb-md-0">
+                <div class="col-md-6 col-xl-4 order-xl-6 mt-xl-3 form-group mb-md-0">
                     <div class="md-form my-4 my-md-3">
                         <i class="fas fa-euro-sign barber-blue prefix"></i>
                         <span class="payment-options-span barber-blue-text">Payment options:</span>
@@ -138,38 +145,41 @@
                             <div class="form-check form-check-inline checkbox-box ml-2 mr-2">
                                 {% if review.cash == 'cash' %}
                                 <input class="form-check-input payment-checkbox" type="checkbox"
-                                    id="review-update-form-payment-cash-checkbox" name="review-update-form-payment-cash-checkbox"
-                                    value="cash" checked>
+                                    id="review-update-form-payment-cash-checkbox"
+                                    name="review-update-form-payment-cash-checkbox" value="cash" checked>
                                 {% else %}
                                 <input class="form-check-input payment-checkbox" type="checkbox"
-                                    id="review-update-form-payment-cash-checkbox" name="review-update-form-payment-cash-checkbox"
-                                    value="cash">
+                                    id="review-update-form-payment-cash-checkbox"
+                                    name="review-update-form-payment-cash-checkbox" value="cash">
                                 {% endif %}
-                                <label class="form-check-label" for="review-update-form-payment-cash-checkbox">cash</label>
+                                <label class="form-check-label"
+                                    for="review-update-form-payment-cash-checkbox">cash</label>
                             </div>
                             <div class="form-check form-check-inline checkbox-box mr-2">
                                 {% if review.card == 'card' %}
                                 <input class="form-check-input payment-checkbox" type="checkbox"
-                                    id="review-update-form-payment-card-checkbox" name="review-update-form-payment-card-checkbox"
-                                    value="card" checked>
+                                    id="review-update-form-payment-card-checkbox"
+                                    name="review-update-form-payment-card-checkbox" value="card" checked>
                                 {% else %}
                                 <input class="form-check-input payment-checkbox" type="checkbox"
-                                    id="review-update-form-payment-card-checkbox" name="review-update-form-payment-card-checkbox"
-                                    value="card">
+                                    id="review-update-form-payment-card-checkbox"
+                                    name="review-update-form-payment-card-checkbox" value="card">
                                 {% endif %}
-                                <label class="form-check-label" for="review-update-form-payment-card-checkbox">card</label>
+                                <label class="form-check-label"
+                                    for="review-update-form-payment-card-checkbox">card</label>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- /payment options checkboxes -->
                 <!-- vibe select -->
-                <div class="col-md-8 offset-md-2 form-group mb-md-0">
-                    <div class="md-form mt-4_5 mb-5 mb-md-4">
+                <div class="col-md-8 offset-md-2 col-xl-4 offset-xl-0 order-xl-7 mt-xl-3 form-group mb-md-0">
+                    <div class="md-form mt-4_5 mb-5 mb-md-4 my-xl-4">
                         <i class="fas fa-grin-squint barber-blue prefix"></i>
-                        <label for="review-update-form-vibe" class="review-update-form-label vibe-label barber-blue">Vibe</label>
-                        <select class="form-control review-update-form-field pt-3 pb-2 text-very-muted" id="review-update-form-vibe"
-                            name="review-update-form-vibe" required>
+                        <label for="review-update-form-vibe"
+                            class="review-update-form-label vibe-label barber-blue">Vibe</label>
+                        <select class="form-control review-update-form-field pt-3 pb-2 text-very-muted"
+                            id="review-update-form-vibe" name="review-update-form-vibe" required>
                             <option value="{{ review.vibe }}" selected>{{ review.vibe }}</option>
                             {% for vibe in vibes %}
                             {% if review.vibe != vibe.vibe_name %}
@@ -181,25 +191,27 @@
                 </div>
                 <!-- /vibe select -->
                 <!-- customer comments textarea -->
-                <div class="col-md-8 offset-md-2 form-group">
-                    <div class="md-form mt-5 mb-4 my-md-3">
+                <div class="col-md-8 offset-md-2 col-xl-4 offset-xl-0 order-xl-9 mt-xl-3 form-group">
+                    <div class="md-form mt-5 mb-4 my-md-3 mb-xl-0 mt-xl-3">
                         <textarea id="review-update-form-comments" name="review-update-form-comments"
-                            class="p-2 shadow-sm form-control md-textarea review-update-form-field text-very-muted" rows="3"
-                            minlength="10" maxlength="1000" required>{{ review.comments }}</textarea>
-                        <label for="review-update-form-comments" class="barber-blue">Tell us what you liked and/or did not
+                            class="p-2 shadow-sm form-control md-textarea review-update-form-field text-very-muted"
+                            rows="3" minlength="10" maxlength="1000" required>{{ review.comments }}</textarea>
+                        <label for="review-update-form-comments" class="barber-blue">Tell us what you liked and/or did
+                            not
                             like...</label>
                     </div>
                 </div>
                 <!-- /customer comments textarea -->
                 <!-- star rating radio buttons: custom component adapted from https://codepen.io/hesguru/pen/BaybqXv -->
-                <div class="col-md-6 offset-md-3 form-group clearfix">
+                <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-0 order-xl-8 my-xl-2 form-group clearfix">
                     <div class="rate text-center">
                         <h5 class="barber-blue-text thumbs"><i class="fas fa-thumbs-up mr-1"></i> <i
                                 class="ml-1 fas fa-thumbs-down barber-red-text"></i></h5>
                         <h5 class="barber-blue-text">Overall Rating</h5>
                         <div class="star-wrapper text-center">
                             {% if review.rating == 5 %}
-                            <input type="radio" id="star-5" name="review-update-form-star-rating" value="5" checked required>
+                            <input type="radio" id="star-5" name="review-update-form-star-rating" value="5" checked
+                                required>
                             <label class="mx-1" for="star-5" title="Awesome!">5 stars</label>
                             <input type="radio" id="star-4" name="review-update-form-star-rating" value="4">
                             <label class="mx-1" for="star-4" title="Good">4 stars</label>
@@ -259,7 +271,7 @@
                 </div>
                 <!-- /star rating radio buttons -->
                 <!-- review submit button -->
-                <div class="col-md-6 offset-md-3">
+                <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4 order-xl-10 mt-xl-3">
                     <button
                         class="btn btn-success btn-lg btn-block btn-pills z-depth-0 mt-3 mt-md-0 mb-4 mb-md-3 ml-md-0 waves-effect"
                         type="submit">Update
@@ -273,4 +285,5 @@
     </div>
 </div>
 <!-- /Update Review form card container -->
+
 {% endblock %}

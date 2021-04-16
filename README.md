@@ -35,3 +35,5 @@
 * I received pointers for generating email from contact form user input in Python from [this video tutorial](https://www.youtube.com/watch?v=JRCJ6RtE3xU)
 
 * Customer error handling has been put in place to deal with three of the most common error codes [in keeping with best practices](https://flask.palletsprojects.com/en/1.1.x/patterns/errorpages/)
+
+* https://stackoverflow.com/questions/17797921/jinja2-create-new-row-for-every-3-items | https://jinja.palletsprojects.com/en/2.11.x/templates/#batch
