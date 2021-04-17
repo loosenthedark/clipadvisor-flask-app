@@ -13,11 +13,11 @@
 {% if reviews.total > 0 %}
 
 <!-- reviews card container -->
-<div class="reviews-card form-card mt-3 mt-md-4 mb-5">
+<div class="reviews-card form-card mt-3 mt-md-4 mt-xl-3 mb-5">
     <div class="reviews-section">
 
         <!-- reviews heading -->
-        <div class="reviews-section-heading mb-3 mb-md-4 text-center">
+        <div class="reviews-section-heading mb-3 mb-md-4 mb-xl-3 text-center">
             <h4 class="card-header barber-blue white-text py-3"><span
                     id="barbers-pole-heading-img-white-background"></span><img
                     src="../static/images/barbers-pole_icon-white.png" id="barbers-pole-heading-img" height="100"
@@ -27,13 +27,13 @@
         </div>
         <!-- /reviews heading -->
 
-        <!-- review cards -->
-        <div class="row">
+        <!-- review cards (mobile and tablet) -->
+        <div class="row d-xl-none">
 
             <!-- review card -->
             {% for review in reviews.items %}
             {% if user.id == review.user_id %}
-            <div class="col-12 review-card-wrapper my-reviews mb-3 mb-md-4">
+            <div class="col-12 review-card-wrapper my-reviews mb-3 mb-md-4 mb-xl-3">
                 <div class="card z-depth-5">
                     <!-- review card header -->
                     <div class="card-header reviews-card-header font-weight-light white-text">
@@ -206,7 +206,7 @@
                                 <!-- /review card Are You Sure? modal (tablet+) -->
                             </div>
                             <div class="col-md-8 d-md-flex flex-md-column align-items-md-center justify-content-md-center lighten-5 rounded-left pt-2 pb-4 pr-md-5 pt-md-4">
-                                <blockquote class="blockquote pb-0 font-weight-light mb-0">
+                                <blockquote class="blockquote blockquote-odd pb-0 font-weight-light mb-0">
                                     <p class="blockquote-paragraph">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ review.comments }}</p>
                                     <footer class="blockquote-footer mt-3 barber-blue-text">
                                         {{ review.customername }}
@@ -368,7 +368,7 @@
                                 <!-- /review card Are You Sure? modal -->
                             </div>
                             <div class="col-md-8 order-md-1 d-md-flex flex-md-column align-items-md-center justify-content-md-center lighten-5 rounded-left pt-2 pb-4 pl-md-5 pt-md-4">
-                                <blockquote class="blockquote blockquote-even pb-0 font-weight-light mb-0">
+                                <blockquote class="blockquote blockquote-even pr-xl-4 pb-0 font-weight-light mb-0">
                                     <p class="blockquote-paragraph">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ review.comments }}</p>
                                     <footer class="blockquote-footer mt-3 barber-blue-text">
                                         {{ review.customername }}
@@ -550,21 +550,11 @@
                 {% for page_num in reviews.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
                 {% if page_num %}
                 {% if reviews.page == page_num %}
-                {% if not session.user %}
                 <a class="p-0 my-0 ml-0 btn pagination-tab barber-blue-outline barber-blue white-text"
-                    href="{{ url_for('reviews_', page=page_num) }}">{{ page_num }}</a>
-                {% else %}
-                <a class="p-0 my-0 ml-0 btn pagination-tab barber-blue-outline barber-blue white-text"
-                    href="{{ url_for('reviews', page=page_num) }}">{{ page_num }}</a>
-                {% endif %}
-                {% else %}
-                {% if not session.user %}
-                <a class="p-0 my-0 ml-0 btn pagination-tab barber-blue-outline white-text"
-                    href="{{ url_for('reviews_', page=page_num) }}">{{ page_num }}</a>
+                    href="{{ url_for('my_reviews', page=page_num) }}">{{ page_num }}</a>
                 {% else %}
                 <a class="p-0 my-0 ml-0 btn pagination-tab barber-blue-outline white-text"
-                    href="{{ url_for('reviews', page=page_num) }}">{{ page_num }}</a>
-                {% endif %}
+                    href="{{ url_for('my_reviews', page=page_num) }}">{{ page_num }}</a>
                 {% endif %}
                 {% else %}
                 <i class="p-0 my-0 ml-0 pagination-icon fas fa-cut white-text"></i>
@@ -574,8 +564,933 @@
             </div>
             <!-- /pagination -->
         </div>
-        <!-- /review cards -->
+        <!-- /review cards (mobile and tablet) -->
+        <!-- review cards (desktop+) -->
+        {% for review_row in reviews.items|batch(2) %}
+        <div class="row d-none d-xl-block mx-xl-0">
+            {% if loop.index % 2 != 0 %}
+            <div class="row m-xl-0">
+                {% for review in review_row %}
+                {% if loop.index % 2 != 0 %}
+                {% if user.id == review.user_id %}
+                <div class="col-xl-6 d-xl-flex pr-xl-2 review-card-wrapper my-reviews mb-3 mb-md-4 mb-xl-3 p-xl-0">
+                    <div class="card z-depth-5">
+                        <!-- review card header -->
+                        <div class="card-header reviews-card-header font-weight-light white-text">
+                            <div class="star-rating-display yellow-text w-75 mx-auto text-center p-3">
+                                {% if review.rating == 5 %}<i class="fas fa-star p-1"></i><i
+                                    class="fas fa-star p-1 yellow-text"></i><i class="fas fa-star p-1"></i><i
+                                    class="fas fa-star p-1"></i><i class="fas fa-star p-1"></i>{% elif review.rating ==
+                                4
+                                %}<i class="fas fa-star p-1"></i><i class="fas fa-star p-1 yellow-text"></i><i
+                                    class="fas fa-star p-1"></i><i class="fas fa-star p-1"></i>{% elif review.rating ==
+                                3
+                                %}<i class="fas fa-star p-1"></i><i class="fas fa-star p-1 yellow-text"></i><i
+                                    class="fas fa-star p-1"></i>{% elif review.rating == 2 %}<i
+                                    class="fas fa-star p-1"></i><i class="fas fa-star p-1 yellow-text"></i>{% elif
+                                review.rating == 1 %}<i class="fas fa-star p-1"></i>{% endif %}</div>
+                        </div>
+                        <!-- /review card header -->
+                        <!-- review card body -->
+                        <div class="card-body d-xl-flex p-0">
+                            <div class="row mx-0">
+                                <div
+                                    class="col-md-4 d-md-flex flex-md-column align-items-md-center justify-content-md-center barber-blue-text pt-4 pb-md-4 pl-md-5 pl-xl-4 pr-md-0">
+                                    <p class="h2 mb-1 font-weight-normal text-center">{{ review.barbershopname }}
+                                    </p>
+                                    <p
+                                        class="h5 barbers-vibe font-weight-light barber-red-text mb-1 mb-md-3 text-center">
+                                        vibe: {{ review.vibe|replace(" and ", " & ") }}
+                                    </p>
+                                    <!-- review card More Info modal trigger button (tablet+) -->
+                                    <button type="button"
+                                        class="btn white-text mt-0 mb-3 mb-md-2 btn-more-info barber-blue px-3 px-xl-2 d-none d-md-block"
+                                        data-toggle="modal" data-target="#_review-card-modal_{{ review.id }}">
+                                        More info <i class="fas white-text fa-cut"></i>
+                                    </button>
+                                    <!-- /review card More Info modal trigger button (tablet+) -->
 
+                                    <div class="btn-group-vertical d-none d-md-block" role="group"
+                                        aria-label="Vertical button group">
+
+                                        <!-- Update Review button (tablet+) -->
+                                        <a href="{{ url_for('review_update', review_id=review.id) }}"
+                                            class="btn mb-3 mb-md-2 rounded-top px-3 px-xl-2 btn-update-review-btn btn-success success-outline m-0">Update
+                                            Review <i class="fas white-text fa-cut"></i></a>
+                                        <!-- /Update Review button (tablet+) -->
+                                        <!-- review card Are You Sure? modal trigger button (tablet+) -->
+                                        <a class="btn mb-3 mb-md-2 rounded-bottom px-3 px-xl-2 btn-delete-review-btn barber-red-outline barber-red white-text m-0"
+                                            id="review-delete-modal-trigger" data-toggle="modal"
+                                            data-target="#_review-card-are-you-sure-modal_{{ review.id }}">Delete
+                                            Review <i class="fas white-text fa-cut"></i></a>
+                                        <!-- /review card Are You Sure? modal trigger button (tablet+) -->
+
+                                    </div>
+
+                                    <!-- review card More Info modal (tablet+) -->
+                                    <div class="modal fade" id="_review-card-modal_{{ review.id }}" tabindex="-1"
+                                        role="dialog" aria-labelledby="_review-card-modal-title" aria-hidden="true">
+                                        <!-- review card modal vertical centering -->
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <!-- review card modal header -->
+                                                <div class="modal-header barber-red white-text text-center p-4">
+                                                    <h5 class="modal-title" id="_review-card-modal-title">
+                                                        <p class="mb-0">Review posted by<i
+                                                                class="fas fa-cut px-2 py-0 white-text rounded-circle "
+                                                                aria-hidden="true"></i></p>
+                                                        <p class="mb-0 modal-header-customer-name">
+                                                            {{ review.customername }}
+                                                        </p>
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <!-- /review card modal header -->
+                                                <!-- review card modal body -->
+                                                <div class="modal-body p-0">
+                                                    <ul class="list-group list-group-flush">
+                                                        <ul class="list-group modal-list-group">
+                                                            <li
+                                                                class="py-3 pl-4 list-group-item barber-blue text-left white-text">
+                                                                {{ review.barbershopname }} offers booking:</li>
+                                                            <li class="list-group-item"><span
+                                                                    class="mr-3 modal-icon-wrapper">{% if
+                                                                    review.phone == "by phone" %}<i
+                                                                        class="fas fa-phone bg-success white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    else %}<i
+                                                                        class="fas fa-phone grey white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    endif %}</span><span>by
+                                                                    phone</span>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <span class="mr-3 modal-icon-wrapper">{% if
+                                                                    review.online ==
+                                                                    "online" %}<i
+                                                                        class="fas fa-laptop bg-success white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{% else %}<i
+                                                                        class="fas fa-laptop grey white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    endif %}</span><span>online</span>
+                                                            </li>
+                                                            <li class="list-group-item pb-4">
+                                                                <span class="mr-3 modal-icon-wrapper">{% if
+                                                                    review.walkin ==
+                                                                    "walk-in" %}<i
+                                                                        class="fas fa-walking bg-success white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{% else %}<i
+                                                                        class="fas fa-walking grey white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    endif %}</span><span>by
+                                                                    walk-in</span>
+                                                            </li>
+                                                        </ul>
+                                                        <ul class="list-group modal-list-group">
+                                                            <li
+                                                                class="text-left py-3 pl-4 list-group-item barber-blue white-text">
+                                                                and payment:
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <span class="mr-3 modal-icon-wrapper">{% if review.cash
+                                                                    == "cash"
+                                                                    %}<i class="fas fa-money-bill bg-success white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{% else %}<i
+                                                                        class="fas fa-money-bill grey white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    endif %}</span><span>by
+                                                                    cash</span>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <span class="mr-3 modal-icon-wrapper">{% if review.card
+                                                                    == "card"
+                                                                    %}<i class="fas fa-credit-card bg-success white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{% else %}<i
+                                                                        class="fas fa-credit-card grey white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    endif %}</span><span>by
+                                                                    card</span>
+                                                            </li>
+                                                        </ul>
+                                                    </ul>
+                                                </div>
+                                                <!-- /review card modal body -->
+                                                <!-- review card modal footer -->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn white-text barber-red mx-auto"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+                                                <!-- /review card modal footer -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /review card More Info modal (tablet+) -->
+                                    <!-- review card Are You Sure? modal (tablet+) -->
+                                    <div class="modal fade" id="_review-card-are-you-sure-modal_{{ review.id }}"
+                                        tabindex="-1" role="dialog"
+                                        aria-labelledby="_review-card-are-you-sure-modal-title" aria-hidden="true">
+                                        <!-- review card Are You Sure? modal vertical centering -->
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <!-- review card Are You Sure? modal header -->
+                                                <div class="modal-header barber-red white-text text-center py-4 px-4_5 px-md-5"
+                                                    id="are-you-sure-modal-header">
+                                                    <h5 class="modal-title" id="_review-card-are-you-sure-modal-title">
+                                                        <p class="mb-0">Are you sure you want to delete your review of:
+                                                        </p>
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <!-- /review card Are You Sure? modal header -->
+                                                <!-- review card Are You Sure? modal body -->
+                                                <div class="modal-body text-center px-2 pt-3 pb-4">
+                                                    <h6 class="mt-4 mb-0 barber-blue-text">{{ review.barbershopname }}?
+                                                    </h6>
+                                                </div>
+                                                <!-- /review card Are You Sure? modal body -->
+                                                <!-- review card Are You Sure? modal footer -->
+                                                <div class="modal-footer">
+                                                    <div class="btn-group-vertical" role="group"
+                                                        aria-label="Vertical button group">
+                                                        <!-- Delete Review button -->
+                                                        <a href="{{ url_for('review_delete', review_id=review.id) }}"
+                                                            class="btn mb-3 rounded-top barber-red-outline px-3 btn-yes-delete-btn barber-red white-text m-0">Yes
+                                                            <i class="fas  white-text fa-cut"></i></a>
+                                                        <!-- /Delete Review button -->
+                                                        <!-- review card Are You Sure? modal dismiss button -->
+                                                        <a class="btn mb-3 rounded-bottom px-3 btn-no-keep-btn barber-blue barber-blue-outline white-text m-0"
+                                                            id="review-delete-modal-trigger" data-dismiss="modal">No <i
+                                                                class="fas white-text fa-cut"></i></a>
+                                                        <!-- /review card Are You Sure? modal dismiss button -->
+                                                    </div>
+                                                </div>
+                                                <!-- /review card Are You Sure? modal footer -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /review card Are You Sure? modal (tablet+) -->
+                                </div>
+                                <div
+                                    class="col-md-8 d-md-flex flex-md-column align-items-md-center justify-content-md-center lighten-5 rounded-left pt-2 pb-4 pr-md-5 pr-xl-4 pt-md-4">
+                                    <blockquote class="blockquote blockquote-odd pb-0 font-weight-light mb-0">
+                                        <p class="blockquote-paragraph">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ review.comments }}</p>
+                                        <footer class="blockquote-footer mt-3 barber-blue-text">
+                                            {{ review.customername }}
+                                            visited @ <span class="time-span">{{ review.time }}</span> on <span
+                                                class="date-span">{{ review.date }}</span></footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /review card body -->
+                    </div>
+                </div>
+                {% endif %}
+                {% else %}
+                {% if user.id == review.user_id %}
+                <div class="col-xl-6 d-xl-flex pl-xl-2 review-card-wrapper my-reviews mb-3 mb-md-4 mb-xl-3 p-xl-0">
+                    <div class="card z-depth-5">
+                        <!-- review card header -->
+                        <div class="card-header reviews-card-header font-weight-light white-text">
+                            <div class="star-rating-display yellow-text w-75 mx-auto text-center p-3">
+                                {% if review.rating == 5 %}<i class="fas fa-star p-1"></i><i
+                                    class="fas fa-star p-1 yellow-text"></i><i class="fas fa-star p-1"></i><i
+                                    class="fas fa-star p-1"></i><i class="fas fa-star p-1"></i>{% elif review.rating ==
+                                4
+                                %}<i class="fas fa-star p-1"></i><i class="fas fa-star p-1 yellow-text"></i><i
+                                    class="fas fa-star p-1"></i><i class="fas fa-star p-1"></i>{% elif review.rating ==
+                                3
+                                %}<i class="fas fa-star p-1"></i><i class="fas fa-star p-1 yellow-text"></i><i
+                                    class="fas fa-star p-1"></i>{% elif review.rating == 2 %}<i
+                                    class="fas fa-star p-1"></i><i class="fas fa-star p-1 yellow-text"></i>{% elif
+                                review.rating == 1 %}<i class="fas fa-star p-1"></i>{% endif %}</div>
+                        </div>
+                        <!-- /review card header -->
+                        <!-- review card body -->
+                        <div class="card-body d-xl-flex p-0">
+                            <div class="row mx-0">
+                                <div
+                                    class="col-md-4 d-md-flex flex-md-column align-items-md-center justify-content-md-center barber-blue-text pt-4 pb-md-4 pl-md-5 pl-xl-4 pr-md-0">
+                                    <p class="h2 mb-1 font-weight-normal text-center">{{ review.barbershopname }}
+                                    </p>
+                                    <p
+                                        class="h5 barbers-vibe font-weight-light barber-red-text mb-1 mb-md-3 text-center">
+                                        vibe: {{ review.vibe|replace(" and ", " & ") }}
+                                    </p>
+                                    <!-- review card More Info modal trigger button (tablet+) -->
+                                    <button type="button"
+                                        class="btn white-text mt-0 mb-3 mb-md-2 btn-more-info barber-blue px-3 px-xl-2 d-none d-md-block"
+                                        data-toggle="modal" data-target="#_review-card-modal_{{ review.id }}">
+                                        More info <i class="fas white-text fa-cut"></i>
+                                    </button>
+                                    <!-- /review card More Info modal trigger button (tablet+) -->
+
+                                    <div class="btn-group-vertical d-none d-md-block" role="group"
+                                        aria-label="Vertical button group">
+
+                                        <!-- Update Review button (tablet+) -->
+                                        <a href="{{ url_for('review_update', review_id=review.id) }}"
+                                            class="btn mb-3 mb-md-2 rounded-top px-3 px-xl-2 btn-update-review-btn btn-success success-outline m-0">Update
+                                            Review <i class="fas white-text fa-cut"></i></a>
+                                        <!-- /Update Review button (tablet+) -->
+                                        <!-- review card Are You Sure? modal trigger button (tablet+) -->
+                                        <a class="btn mb-3 mb-md-2 rounded-bottom px-3 px-xl-2 btn-delete-review-btn barber-red-outline barber-red white-text m-0"
+                                            id="review-delete-modal-trigger" data-toggle="modal"
+                                            data-target="#_review-card-are-you-sure-modal_{{ review.id }}">Delete
+                                            Review <i class="fas white-text fa-cut"></i></a>
+                                        <!-- /review card Are You Sure? modal trigger button (tablet+) -->
+
+                                    </div>
+
+                                    <!-- review card More Info modal (tablet+) -->
+                                    <div class="modal fade" id="_review-card-modal_{{ review.id }}" tabindex="-1"
+                                        role="dialog" aria-labelledby="_review-card-modal-title" aria-hidden="true">
+                                        <!-- review card modal vertical centering -->
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <!-- review card modal header -->
+                                                <div class="modal-header barber-red white-text text-center p-4">
+                                                    <h5 class="modal-title" id="_review-card-modal-title">
+                                                        <p class="mb-0">Review posted by<i
+                                                                class="fas fa-cut px-2 py-0 white-text rounded-circle "
+                                                                aria-hidden="true"></i></p>
+                                                        <p class="mb-0 modal-header-customer-name">
+                                                            {{ review.customername }}
+                                                        </p>
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <!-- /review card modal header -->
+                                                <!-- review card modal body -->
+                                                <div class="modal-body p-0">
+                                                    <ul class="list-group list-group-flush">
+                                                        <ul class="list-group modal-list-group">
+                                                            <li
+                                                                class="py-3 pl-4 list-group-item barber-blue text-left white-text">
+                                                                {{ review.barbershopname }} offers booking:</li>
+                                                            <li class="list-group-item"><span
+                                                                    class="mr-3 modal-icon-wrapper">{% if
+                                                                    review.phone == "by phone" %}<i
+                                                                        class="fas fa-phone bg-success white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    else %}<i
+                                                                        class="fas fa-phone grey white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    endif %}</span><span>by
+                                                                    phone</span>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <span class="mr-3 modal-icon-wrapper">{% if
+                                                                    review.online ==
+                                                                    "online" %}<i
+                                                                        class="fas fa-laptop bg-success white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{% else %}<i
+                                                                        class="fas fa-laptop grey white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    endif %}</span><span>online</span>
+                                                            </li>
+                                                            <li class="list-group-item pb-4">
+                                                                <span class="mr-3 modal-icon-wrapper">{% if
+                                                                    review.walkin ==
+                                                                    "walk-in" %}<i
+                                                                        class="fas fa-walking bg-success white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{% else %}<i
+                                                                        class="fas fa-walking grey white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    endif %}</span><span>by
+                                                                    walk-in</span>
+                                                            </li>
+                                                        </ul>
+                                                        <ul class="list-group modal-list-group">
+                                                            <li
+                                                                class="text-left py-3 pl-4 list-group-item barber-blue white-text">
+                                                                and payment:
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <span class="mr-3 modal-icon-wrapper">{% if review.cash
+                                                                    == "cash"
+                                                                    %}<i class="fas fa-money-bill bg-success white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{% else %}<i
+                                                                        class="fas fa-money-bill grey white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    endif %}</span><span>by
+                                                                    cash</span>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <span class="mr-3 modal-icon-wrapper">{% if review.card
+                                                                    == "card"
+                                                                    %}<i class="fas fa-credit-card bg-success white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{% else %}<i
+                                                                        class="fas fa-credit-card grey white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    endif %}</span><span>by
+                                                                    card</span>
+                                                            </li>
+                                                        </ul>
+                                                    </ul>
+                                                </div>
+                                                <!-- /review card modal body -->
+                                                <!-- review card modal footer -->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn white-text barber-red mx-auto"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+                                                <!-- /review card modal footer -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /review card More Info modal (tablet+) -->
+                                    <!-- review card Are You Sure? modal (tablet+) -->
+                                    <div class="modal fade" id="_review-card-are-you-sure-modal_{{ review.id }}"
+                                        tabindex="-1" role="dialog"
+                                        aria-labelledby="_review-card-are-you-sure-modal-title" aria-hidden="true">
+                                        <!-- review card Are You Sure? modal vertical centering -->
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <!-- review card Are You Sure? modal header -->
+                                                <div class="modal-header barber-red white-text text-center py-4 px-4_5 px-md-5"
+                                                    id="are-you-sure-modal-header">
+                                                    <h5 class="modal-title" id="_review-card-are-you-sure-modal-title">
+                                                        <p class="mb-0">Are you sure you want to delete your review of:
+                                                        </p>
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <!-- /review card Are You Sure? modal header -->
+                                                <!-- review card Are You Sure? modal body -->
+                                                <div class="modal-body text-center px-2 pt-3 pb-4">
+                                                    <h6 class="mt-4 mb-0 barber-blue-text">{{ review.barbershopname }}?
+                                                    </h6>
+                                                </div>
+                                                <!-- /review card Are You Sure? modal body -->
+                                                <!-- review card Are You Sure? modal footer -->
+                                                <div class="modal-footer">
+                                                    <div class="btn-group-vertical" role="group"
+                                                        aria-label="Vertical button group">
+                                                        <!-- Delete Review button -->
+                                                        <a href="{{ url_for('review_delete', review_id=review.id) }}"
+                                                            class="btn mb-3 rounded-top barber-red-outline px-3 btn-yes-delete-btn barber-red white-text m-0">Yes
+                                                            <i class="fas  white-text fa-cut"></i></a>
+                                                        <!-- /Delete Review button -->
+                                                        <!-- review card Are You Sure? modal dismiss button -->
+                                                        <a class="btn mb-3 rounded-bottom px-3 btn-no-keep-btn barber-blue barber-blue-outline white-text m-0"
+                                                            id="review-delete-modal-trigger" data-dismiss="modal">No <i
+                                                                class="fas white-text fa-cut"></i></a>
+                                                        <!-- /review card Are You Sure? modal dismiss button -->
+                                                    </div>
+                                                </div>
+                                                <!-- /review card Are You Sure? modal footer -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /review card Are You Sure? modal (tablet+) -->
+                                </div>
+                                <div
+                                    class="col-md-8 d-md-flex flex-md-column align-items-md-center justify-content-md-center lighten-5 rounded-left pt-2 pb-4 pr-md-5 pr-xl-4 pt-md-4">
+                                    <blockquote class="blockquote blockquote-odd pb-0 font-weight-light mb-0">
+                                        <p class="blockquote-paragraph">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ review.comments }}</p>
+                                        <footer class="blockquote-footer mt-3 barber-blue-text">
+                                            {{ review.customername }}
+                                            visited @ <span class="time-span">{{ review.time }}</span> on <span
+                                                class="date-span">{{ review.date }}</span></footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /review card body -->
+                    </div>
+                </div>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="row m-xl-0">
+                {% for review in review_row %}
+                {% if loop.index % 2 != 0 %}
+                {% if user.id == review.user_id %}
+                <div class="col-xl-6 d-xl-flex pr-xl-2 review-card-wrapper my-reviews mb-3 mb-md-4 mb-xl-3 p-xl-0">
+                    <div class="card z-depth-5">
+                        <!-- review card header -->
+                        <div class="card-header reviews-card-header font-weight-light white-text">
+                            <div class="star-rating-display yellow-text w-75 mx-auto text-center p-3">
+                                {% if review.rating == 5 %}<i class="fas fa-star p-1"></i><i
+                                    class="fas fa-star p-1 yellow-text"></i><i class="fas fa-star p-1"></i><i
+                                    class="fas fa-star p-1"></i><i class="fas fa-star p-1"></i>{% elif review.rating ==
+                                4
+                                %}<i class="fas fa-star p-1"></i><i class="fas fa-star p-1 yellow-text"></i><i
+                                    class="fas fa-star p-1"></i><i class="fas fa-star p-1"></i>{% elif review.rating ==
+                                3
+                                %}<i class="fas fa-star p-1"></i><i class="fas fa-star p-1 yellow-text"></i><i
+                                    class="fas fa-star p-1"></i>{% elif review.rating == 2 %}<i
+                                    class="fas fa-star p-1"></i><i class="fas fa-star p-1 yellow-text"></i>{% elif
+                                review.rating == 1 %}<i class="fas fa-star p-1"></i>{% endif %}</div>
+                        </div>
+                        <!-- /review card header -->
+                        <!-- review card body -->
+                        <div class="card-body d-xl-flex p-0">
+                            <div class="row mx-0">
+                                <div
+                                    class="col-md-4 d-md-flex flex-md-column align-items-md-center justify-content-md-center barber-blue-text pt-4 pb-md-4 pl-md-0 pr-xl-4 pr-md-0 order-xl-2">
+                                    <p class="h2 mb-1 font-weight-normal text-center">{{ review.barbershopname }}
+                                    </p>
+                                    <p
+                                        class="h5 barbers-vibe font-weight-light barber-red-text mb-1 mb-md-3 text-center">
+                                        vibe: {{ review.vibe|replace(" and ", " & ") }}
+                                    </p>
+                                    <!-- review card More Info modal trigger button (tablet+) -->
+                                    <button type="button"
+                                        class="btn white-text mt-0 mb-3 mb-md-2 btn-more-info barber-blue px-3 px-xl-2 d-none d-md-block"
+                                        data-toggle="modal" data-target="#_review-card-modal_{{ review.id }}">
+                                        More info <i class="fas white-text fa-cut"></i>
+                                    </button>
+                                    <!-- /review card More Info modal trigger button (tablet+) -->
+
+                                    <div class="btn-group-vertical d-none d-md-block" role="group"
+                                        aria-label="Vertical button group">
+
+                                        <!-- Update Review button (tablet+) -->
+                                        <a href="{{ url_for('review_update', review_id=review.id) }}"
+                                            class="btn mb-3 mb-md-2 rounded-top px-3 px-xl-2 btn-update-review-btn btn-success success-outline m-0">Update
+                                            Review <i class="fas white-text fa-cut"></i></a>
+                                        <!-- /Update Review button (tablet+) -->
+                                        <!-- review card Are You Sure? modal trigger button (tablet+) -->
+                                        <a class="btn mb-3 mb-md-2 rounded-bottom px-3 px-xl-2 btn-delete-review-btn barber-red-outline barber-red white-text m-0"
+                                            id="review-delete-modal-trigger" data-toggle="modal"
+                                            data-target="#_review-card-are-you-sure-modal_{{ review.id }}">Delete
+                                            Review <i class="fas white-text fa-cut"></i></a>
+                                        <!-- /review card Are You Sure? modal trigger button (tablet+) -->
+
+                                    </div>
+
+                                    <!-- review card More Info modal (tablet+) -->
+                                    <div class="modal fade" id="_review-card-modal_{{ review.id }}" tabindex="-1"
+                                        role="dialog" aria-labelledby="_review-card-modal-title" aria-hidden="true">
+                                        <!-- review card modal vertical centering -->
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <!-- review card modal header -->
+                                                <div class="modal-header barber-red white-text text-center p-4">
+                                                    <h5 class="modal-title" id="_review-card-modal-title">
+                                                        <p class="mb-0">Review posted by<i
+                                                                class="fas fa-cut px-2 py-0 white-text rounded-circle "
+                                                                aria-hidden="true"></i></p>
+                                                        <p class="mb-0 modal-header-customer-name">
+                                                            {{ review.customername }}
+                                                        </p>
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <!-- /review card modal header -->
+                                                <!-- review card modal body -->
+                                                <div class="modal-body p-0">
+                                                    <ul class="list-group list-group-flush">
+                                                        <ul class="list-group modal-list-group">
+                                                            <li
+                                                                class="py-3 pl-4 list-group-item barber-blue text-left white-text">
+                                                                {{ review.barbershopname }} offers booking:</li>
+                                                            <li class="list-group-item"><span
+                                                                    class="mr-3 modal-icon-wrapper">{% if
+                                                                    review.phone == "by phone" %}<i
+                                                                        class="fas fa-phone bg-success white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    else %}<i
+                                                                        class="fas fa-phone grey white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    endif %}</span><span>by
+                                                                    phone</span>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <span class="mr-3 modal-icon-wrapper">{% if
+                                                                    review.online ==
+                                                                    "online" %}<i
+                                                                        class="fas fa-laptop bg-success white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{% else %}<i
+                                                                        class="fas fa-laptop grey white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    endif %}</span><span>online</span>
+                                                            </li>
+                                                            <li class="list-group-item pb-4">
+                                                                <span class="mr-3 modal-icon-wrapper">{% if
+                                                                    review.walkin ==
+                                                                    "walk-in" %}<i
+                                                                        class="fas fa-walking bg-success white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{% else %}<i
+                                                                        class="fas fa-walking grey white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    endif %}</span><span>by
+                                                                    walk-in</span>
+                                                            </li>
+                                                        </ul>
+                                                        <ul class="list-group modal-list-group">
+                                                            <li
+                                                                class="text-left py-3 pl-4 list-group-item barber-blue white-text">
+                                                                and payment:
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <span class="mr-3 modal-icon-wrapper">{% if review.cash
+                                                                    == "cash"
+                                                                    %}<i class="fas fa-money-bill bg-success white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{% else %}<i
+                                                                        class="fas fa-money-bill grey white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    endif %}</span><span>by
+                                                                    cash</span>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <span class="mr-3 modal-icon-wrapper">{% if review.card
+                                                                    == "card"
+                                                                    %}<i class="fas fa-credit-card bg-success white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{% else %}<i
+                                                                        class="fas fa-credit-card grey white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    endif %}</span><span>by
+                                                                    card</span>
+                                                            </li>
+                                                        </ul>
+                                                    </ul>
+                                                </div>
+                                                <!-- /review card modal body -->
+                                                <!-- review card modal footer -->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn white-text barber-red mx-auto"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+                                                <!-- /review card modal footer -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /review card More Info modal (tablet+) -->
+                                    <!-- review card Are You Sure? modal (tablet+) -->
+                                    <div class="modal fade" id="_review-card-are-you-sure-modal_{{ review.id }}"
+                                        tabindex="-1" role="dialog"
+                                        aria-labelledby="_review-card-are-you-sure-modal-title" aria-hidden="true">
+                                        <!-- review card Are You Sure? modal vertical centering -->
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <!-- review card Are You Sure? modal header -->
+                                                <div class="modal-header barber-red white-text text-center py-4 px-4_5 px-md-5"
+                                                    id="are-you-sure-modal-header">
+                                                    <h5 class="modal-title" id="_review-card-are-you-sure-modal-title">
+                                                        <p class="mb-0">Are you sure you want to delete your review of:
+                                                        </p>
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <!-- /review card Are You Sure? modal header -->
+                                                <!-- review card Are You Sure? modal body -->
+                                                <div class="modal-body text-center px-2 pt-3 pb-4">
+                                                    <h6 class="mt-4 mb-0 barber-blue-text">{{ review.barbershopname }}?
+                                                    </h6>
+                                                </div>
+                                                <!-- /review card Are You Sure? modal body -->
+                                                <!-- review card Are You Sure? modal footer -->
+                                                <div class="modal-footer">
+                                                    <div class="btn-group-vertical" role="group"
+                                                        aria-label="Vertical button group">
+                                                        <!-- Delete Review button -->
+                                                        <a href="{{ url_for('review_delete', review_id=review.id) }}"
+                                                            class="btn mb-3 rounded-top barber-red-outline px-3 btn-yes-delete-btn barber-red white-text m-0">Yes
+                                                            <i class="fas  white-text fa-cut"></i></a>
+                                                        <!-- /Delete Review button -->
+                                                        <!-- review card Are You Sure? modal dismiss button -->
+                                                        <a class="btn mb-3 rounded-bottom px-3 btn-no-keep-btn barber-blue barber-blue-outline white-text m-0"
+                                                            id="review-delete-modal-trigger" data-dismiss="modal">No <i
+                                                                class="fas white-text fa-cut"></i></a>
+                                                        <!-- /review card Are You Sure? modal dismiss button -->
+                                                    </div>
+                                                </div>
+                                                <!-- /review card Are You Sure? modal footer -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /review card Are You Sure? modal (tablet+) -->
+                                </div>
+                                <div
+                                    class="col-md-8 order-xl-1 d-md-flex flex-md-column align-items-md-center justify-content-md-center lighten-5 rounded-left pt-2 pb-4 pl-xl-4 pt-md-4">
+                                    <blockquote class="blockquote blockquote-even pr-xl-4 pb-0 font-weight-light mb-0">
+                                        <p class="blockquote-paragraph">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ review.comments }}</p>
+                                        <footer class="blockquote-footer mt-3 barber-blue-text">
+                                            {{ review.customername }}
+                                            visited @ <span class="time-span">{{ review.time }}</span> on <span
+                                                class="date-span">{{ review.date }}</span></footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /review card body -->
+                    </div>
+                </div>
+                {% endif %}
+                {% else %}
+                {% if user.id == review.user_id %}
+                <div class="col-xl-6 d-xl-flex pl-xl-2 review-card-wrapper my-reviews mb-3 mb-md-4 mb-xl-3 p-xl-0">
+                    <div class="card z-depth-5">
+                        <!-- review card header -->
+                        <div class="card-header reviews-card-header font-weight-light white-text">
+                            <div class="star-rating-display yellow-text w-75 mx-auto text-center p-3">
+                                {% if review.rating == 5 %}<i class="fas fa-star p-1"></i><i
+                                    class="fas fa-star p-1 yellow-text"></i><i class="fas fa-star p-1"></i><i
+                                    class="fas fa-star p-1"></i><i class="fas fa-star p-1"></i>{% elif review.rating ==
+                                4
+                                %}<i class="fas fa-star p-1"></i><i class="fas fa-star p-1 yellow-text"></i><i
+                                    class="fas fa-star p-1"></i><i class="fas fa-star p-1"></i>{% elif review.rating ==
+                                3
+                                %}<i class="fas fa-star p-1"></i><i class="fas fa-star p-1 yellow-text"></i><i
+                                    class="fas fa-star p-1"></i>{% elif review.rating == 2 %}<i
+                                    class="fas fa-star p-1"></i><i class="fas fa-star p-1 yellow-text"></i>{% elif
+                                review.rating == 1 %}<i class="fas fa-star p-1"></i>{% endif %}</div>
+                        </div>
+                        <!-- /review card header -->
+                        <!-- review card body -->
+                        <div class="card-body d-xl-flex p-0">
+                            <div class="row mx-0">
+                                <div
+                                    class="col-md-4 d-md-flex flex-md-column align-items-md-center justify-content-md-center barber-blue-text pt-4 pb-md-4 pl-md-0 pr-xl-4 pr-md-0 order-xl-2">
+                                    <p class="h2 mb-1 font-weight-normal text-center">{{ review.barbershopname }}
+                                    </p>
+                                    <p
+                                        class="h5 barbers-vibe font-weight-light barber-red-text mb-1 mb-md-3 text-center">
+                                        vibe: {{ review.vibe|replace(" and ", " & ") }}
+                                    </p>
+                                    <!-- review card More Info modal trigger button (tablet+) -->
+                                    <button type="button"
+                                        class="btn white-text mt-0 mb-3 mb-md-2 btn-more-info barber-blue px-3 px-xl-2 d-none d-md-block"
+                                        data-toggle="modal" data-target="#_review-card-modal_{{ review.id }}">
+                                        More info <i class="fas white-text fa-cut"></i>
+                                    </button>
+                                    <!-- /review card More Info modal trigger button (tablet+) -->
+
+                                    <div class="btn-group-vertical d-none d-md-block" role="group"
+                                        aria-label="Vertical button group">
+
+                                        <!-- Update Review button (tablet+) -->
+                                        <a href="{{ url_for('review_update', review_id=review.id) }}"
+                                            class="btn mb-3 mb-md-2 rounded-top px-3 px-xl-2 btn-update-review-btn btn-success success-outline m-0">Update
+                                            Review <i class="fas white-text fa-cut"></i></a>
+                                        <!-- /Update Review button (tablet+) -->
+                                        <!-- review card Are You Sure? modal trigger button (tablet+) -->
+                                        <a class="btn mb-3 mb-md-2 rounded-bottom px-3 px-xl-2 btn-delete-review-btn barber-red-outline barber-red white-text m-0"
+                                            id="review-delete-modal-trigger" data-toggle="modal"
+                                            data-target="#_review-card-are-you-sure-modal_{{ review.id }}">Delete
+                                            Review <i class="fas white-text fa-cut"></i></a>
+                                        <!-- /review card Are You Sure? modal trigger button (tablet+) -->
+
+                                    </div>
+
+                                    <!-- review card More Info modal (tablet+) -->
+                                    <div class="modal fade" id="_review-card-modal_{{ review.id }}" tabindex="-1"
+                                        role="dialog" aria-labelledby="_review-card-modal-title" aria-hidden="true">
+                                        <!-- review card modal vertical centering -->
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <!-- review card modal header -->
+                                                <div class="modal-header barber-red white-text text-center p-4">
+                                                    <h5 class="modal-title" id="_review-card-modal-title">
+                                                        <p class="mb-0">Review posted by<i
+                                                                class="fas fa-cut px-2 py-0 white-text rounded-circle "
+                                                                aria-hidden="true"></i></p>
+                                                        <p class="mb-0 modal-header-customer-name">
+                                                            {{ review.customername }}
+                                                        </p>
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <!-- /review card modal header -->
+                                                <!-- review card modal body -->
+                                                <div class="modal-body p-0">
+                                                    <ul class="list-group list-group-flush">
+                                                        <ul class="list-group modal-list-group">
+                                                            <li
+                                                                class="py-3 pl-4 list-group-item barber-blue text-left white-text">
+                                                                {{ review.barbershopname }} offers booking:</li>
+                                                            <li class="list-group-item"><span
+                                                                    class="mr-3 modal-icon-wrapper">{% if
+                                                                    review.phone == "by phone" %}<i
+                                                                        class="fas fa-phone bg-success white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    else %}<i
+                                                                        class="fas fa-phone grey white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    endif %}</span><span>by
+                                                                    phone</span>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <span class="mr-3 modal-icon-wrapper">{% if
+                                                                    review.online ==
+                                                                    "online" %}<i
+                                                                        class="fas fa-laptop bg-success white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{% else %}<i
+                                                                        class="fas fa-laptop grey white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    endif %}</span><span>online</span>
+                                                            </li>
+                                                            <li class="list-group-item pb-4">
+                                                                <span class="mr-3 modal-icon-wrapper">{% if
+                                                                    review.walkin ==
+                                                                    "walk-in" %}<i
+                                                                        class="fas fa-walking bg-success white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{% else %}<i
+                                                                        class="fas fa-walking grey white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    endif %}</span><span>by
+                                                                    walk-in</span>
+                                                            </li>
+                                                        </ul>
+                                                        <ul class="list-group modal-list-group">
+                                                            <li
+                                                                class="text-left py-3 pl-4 list-group-item barber-blue white-text">
+                                                                and payment:
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <span class="mr-3 modal-icon-wrapper">{% if review.cash
+                                                                    == "cash"
+                                                                    %}<i class="fas fa-money-bill bg-success white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{% else %}<i
+                                                                        class="fas fa-money-bill grey white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    endif %}</span><span>by
+                                                                    cash</span>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <span class="mr-3 modal-icon-wrapper">{% if review.card
+                                                                    == "card"
+                                                                    %}<i class="fas fa-credit-card bg-success white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{% else %}<i
+                                                                        class="fas fa-credit-card grey white-text rounded-circle "
+                                                                        aria-hidden="true"></i>{%
+                                                                    endif %}</span><span>by
+                                                                    card</span>
+                                                            </li>
+                                                        </ul>
+                                                    </ul>
+                                                </div>
+                                                <!-- /review card modal body -->
+                                                <!-- review card modal footer -->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn white-text barber-red mx-auto"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+                                                <!-- /review card modal footer -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /review card More Info modal (tablet+) -->
+                                    <!-- review card Are You Sure? modal (tablet+) -->
+                                    <div class="modal fade" id="_review-card-are-you-sure-modal_{{ review.id }}"
+                                        tabindex="-1" role="dialog"
+                                        aria-labelledby="_review-card-are-you-sure-modal-title" aria-hidden="true">
+                                        <!-- review card Are You Sure? modal vertical centering -->
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <!-- review card Are You Sure? modal header -->
+                                                <div class="modal-header barber-red white-text text-center py-4 px-4_5 px-md-5"
+                                                    id="are-you-sure-modal-header">
+                                                    <h5 class="modal-title" id="_review-card-are-you-sure-modal-title">
+                                                        <p class="mb-0">Are you sure you want to delete your review of:
+                                                        </p>
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <!-- /review card Are You Sure? modal header -->
+                                                <!-- review card Are You Sure? modal body -->
+                                                <div class="modal-body text-center px-2 pt-3 pb-4">
+                                                    <h6 class="mt-4 mb-0 barber-blue-text">{{ review.barbershopname }}?
+                                                    </h6>
+                                                </div>
+                                                <!-- /review card Are You Sure? modal body -->
+                                                <!-- review card Are You Sure? modal footer -->
+                                                <div class="modal-footer">
+                                                    <div class="btn-group-vertical" role="group"
+                                                        aria-label="Vertical button group">
+                                                        <!-- Delete Review button -->
+                                                        <a href="{{ url_for('review_delete', review_id=review.id) }}"
+                                                            class="btn mb-3 rounded-top barber-red-outline px-3 btn-yes-delete-btn barber-red white-text m-0">Yes
+                                                            <i class="fas  white-text fa-cut"></i></a>
+                                                        <!-- /Delete Review button -->
+                                                        <!-- review card Are You Sure? modal dismiss button -->
+                                                        <a class="btn mb-3 rounded-bottom px-3 btn-no-keep-btn barber-blue barber-blue-outline white-text m-0"
+                                                            id="review-delete-modal-trigger" data-dismiss="modal">No <i
+                                                                class="fas white-text fa-cut"></i></a>
+                                                        <!-- /review card Are You Sure? modal dismiss button -->
+                                                    </div>
+                                                </div>
+                                                <!-- /review card Are You Sure? modal footer -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /review card Are You Sure? modal (tablet+) -->
+                                </div>
+                                <div
+                                    class="col-md-8 order-xl-1 d-md-flex flex-md-column align-items-md-center justify-content-md-center lighten-5 rounded-left pt-2 pb-4 pl-xl-4 pt-md-4">
+                                    <blockquote class="blockquote blockquote-even pr-xl-4 pb-0 font-weight-light mb-0">
+                                        <p class="blockquote-paragraph">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ review.comments }}</p>
+                                        <footer class="blockquote-footer mt-3 barber-blue-text">
+                                            {{ review.customername }}
+                                            visited @ <span class="time-span">{{ review.time }}</span> on <span
+                                                class="date-span">{{ review.date }}</span></footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /review card body -->
+                    </div>
+                </div>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <!-- pagination -->
+        <div class="col-12 pagination-wrapper my-3 mb-md-0 mt-md-4 d-none d-xl-flex mx-xl-auto">
+            {% if reviews.total > 10 %}
+            {% for page_num in reviews.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+            {% if page_num %}
+            {% if reviews.page == page_num %}
+            <a class="p-0 my-0 ml-0 btn pagination-tab barber-blue-outline barber-blue white-text"
+                href="{{ url_for('my_reviews', page=page_num) }}">{{ page_num }}</a>
+            {% else %}
+            <a class="p-0 my-0 ml-0 btn pagination-tab barber-blue-outline white-text"
+                href="{{ url_for('my_reviews', page=page_num) }}">{{ page_num }}</a>
+            {% endif %}
+            {% else %}
+            <i class="p-0 my-0 ml-0 pagination-icon fas fa-cut white-text"></i>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+        </div>
+        <!-- /pagination -->
+        <!-- /review cards (desktop+) -->
     </div>
 </div>
 <!-- /reviews card container -->
@@ -584,10 +1499,10 @@
 
 <!-- no reviews submitted alert -->
 <div class="form-card logout-alert alert alert-info text-center pb-4">
-    <h4 class="mt-3 mb-4">Looks like you haven't submitted any reviews yet, {{ user.firstname }}!</h4>
+    <h4 class="mt-3 mb-4 px-xl-5">Looks like you haven't submitted any reviews yet, {{ user.firstname }}!</h4>
     <hr class="mt-2 mb-3 logout-divider">
-    <p>To get started, simply click here:</p>
-    <a class="btn barber-blue white-text btn-lg" href="{{ url_for('review_submit') }}" role="button">Rate your
+    <p class="mb-xl-4">To get started, simply click here:</p>
+    <a class="btn barber-blue white-text btn-lg mb-xl-4 d-xl-block mx-xl-auto" href="{{ url_for('review_submit') }}" role="button">Rate your
         barber <i class="fas fa-cut pt-1"></i></a>
 </div>
 <!-- /no reviews submitted alert -->

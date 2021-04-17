@@ -546,7 +546,7 @@ def contact():
             msg.set_content('This is a plain text email')
             msg.add_alternative(
                 f"<ul><li><strong>Message category:</strong> {category}</li><li><strong>Message:</strong> {sender_message}</li><li><strong>Message sender:</strong> {sender_name}</li><li><strong>Sender's email:</strong> {sender_email}</li></ul><br>&#128513;", subtype='html')
-            with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+            with smtplib.SMTP_SSL("smtp.stackmail.com", 465) as smtp:
                 smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
 
                 smtp.send_message(msg)

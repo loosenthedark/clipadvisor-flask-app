@@ -875,6 +875,10 @@ blockquote:after {
     max-width: 70%;
   }
 
+  .reviews-card.form-card {
+    min-height: calc(100vh - 134px);
+  }
+
   /* spacing/utility classes */
 
   .pull-content-up {
@@ -1004,6 +1008,11 @@ blockquote:after {
     border-left: 0.25rem solid #eceeef;
   }
 
+  .blockquote p {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
   .blockquote-paragraph {
     position: relative;
   }
@@ -1114,6 +1123,10 @@ blockquote:after {
     font-size: 2.4rem;
   }
 
+  h4 {
+    font-size: 1.8rem;
+  }
+
   #navbar-nav-list .nav-item > .nav-link {
     font-size: 1rem;
     padding-top: 6px;
@@ -1127,6 +1140,10 @@ blockquote:after {
 
   .main-container {
     min-height: calc(100vh - 60px);
+  }
+
+  .reviews-card.form-card {
+    min-height: calc(100vh - 126px);
   }
 
   /* spacing/utility classes */
@@ -1233,5 +1250,51 @@ blockquote:after {
     width: 94%;
     margin-left: 3%;
     margin-right: 3%;
+  }
+
+  /* Barbers page */
+
+  .nav-tabs .nav-link {
+    font-size: 1rem;
+  }
+
+  /* Logout page */
+
+  .logout-alert,
+  .thank-you-alert {
+    top: 0;
+    position: relative;
+    min-width: 40vw;
+    min-height: 23vw;
+    max-height: 310px;
+    max-width: 520px;
+  }
+
+  .logout-alert p,
+  .thank-you-alert p {
+    font-size: 1.1rem;
+  }
+
+  .logout-alert i,
+  .thank-you-alert i {
+    font-size: 1.7rem;
+  }
+
+  .logout-alert .btn {
+    max-width: 250px;
+  }
+
+  /* Contact page */
+
+  #form-contact > h3,
+  #form-contact > .form-group,
+  #form-contact > button {
+    max-width: 340px;
+  }
+
+  /* Error Handlers */
+
+  .error-alert {
+    top: -0;
   }
 }
