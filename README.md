@@ -1,4 +1,34 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+<h1 align='center'>Clipadvisor Web Application</h1>
+
+
+
+<p align="center"><img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" alt="Code Institute logo" width="200" height="auto" style="margin-right:2rem;"> <img src="docs/images/screenshots/clipadvisor-logo.png" alt="Clipadvisor logo" width="200" height="auto" style="padding-bottom:1.6rem;"></p>
+
+
+
+<p align="center" style="font-style:italic;">Code Institute Diploma in Software Development: Python and Data-Centric Development - Milestone Project</p>
+
+
+
+<p align="center"><a href="https://clipadvisor-flask-app.herokuapp.com/" style="font-weight:bold;">Live link to deployed project</a> (hosted on GitHub Pages)</p>
+
+
+
+---
+
+
+
+**Clipadvisor** is a full-stack web application that boasts comprehensive CRUD functionality, allowing users to post, view, edit and delete reviews of barbers. Backend data processing is facilitated by Python+Flask in tandem with SQLAlchemy (via the Flask-SQLAlchemy extension). Dynamic templating logic has been put in place to enable visitors to navigate with ease and choose from an appropriate selection of frontend pages (routes), depending on whether they are logged in or out. The site offers a highly rewarding User Experience through the use of carefully-targetted colour schemes, fully-responsive design flourishes and smart interactivity. Overall, it comfortably fulfills its goal of being "a cut above" its competitors!
+
+
+
+<p align="center"><img src="docs/images/screenshots/clipadvisor-landing.png" alt="Clipadvisor landing (Home) page screenshots across multiple device sizes" width="70%" height="auto"></p>
+
+
+
+---
+
+
 
 * [Flask + SQLAlchemy CRUD application tutorial | Parwiz Forogh on YouTube](https://www.youtube.com/watch?v=XTpLbBJTOM4)
 
