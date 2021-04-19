@@ -2,7 +2,8 @@
 
 
 
-<p align="center"><img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" alt="Code Institute logo" width="200" height="auto" style="margin-right:2rem;"> <img src="docs/images/screenshots/clipadvisor-logo.png" alt="Clipadvisor logo" width="200" height="auto" style="padding-bottom:1.6rem;"></p>
+<p align="center"><img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" alt="Code Institute logo" width="200" height="auto"></p>
+<p align="center"><img src="docs/images/screenshots/clipadvisor-logo.png" alt="Clipadvisor logo" width="200" height="auto"></p>
 
 
 
@@ -23,6 +24,45 @@
 
 
 <p align="center"><img src="docs/images/screenshots/clipadvisor-landing.png" alt="Clipadvisor landing (Home) page screenshots across multiple device sizes" width="70%" height="auto"></p>
+
+
+
+## User Experience (UX)
+
+As we emerge from Level-5 lockdown, and normality slowly returns to the services and retail sectors, the majority of us will be looking forward to getting a long-overdue and much-needed haircut. Given that this set of circumstances will likely result in long waiting lists at barbers everywhere, it would be nice to know which businesses are worth waiting for and which should best be avoided.
+
+That's where Clipadvisor comes in, offering users a convenient, trustworthy and authoritative source of barbershop ratings and reviews.
+
+As with any such application, the best way to showcase Clipadvisor's benefits and features is to profile a number of **User Stories** pertaining to typical visitors to the site. With this in mind, a list of such User Stories might include (but by no means be limited to) the following:
+
+1. "As a first-time user, I would like to be able to CREATE a review of a barber I visited recently."
+2. "As a first-time user, I would like to be able to READ reviews of barbers posted previously by others."
+3. "As a returning user, I would like to be able to UPDATE a review I posted recently."
+4. "As a returning user, I would like to be able to DELETE a review I posted recently."
+5. "As a Clipadvisor user, I would like to be able to contact the site owner(s) with a specific query."
+6. "As a developer and frequent site user, I would like to be able to contact the site owner(s) to offer feedback on the app's functionality."
+7. "As site owner, I would like to be able to moderate all user-submitted content, i.e. have the ability to UPDATE and/or DELETE reviews where necessary."
+8. "As site owner, I would like for users to be able to contact me directly, i.e. without having to leave the application."
+
+
+
+On the **Design** front, a [Material Design for Bootstrap](https://mdbootstrap.com/) stylesheet was used to give the site its overall look and feel - more specifically, the [MDB jQuery 3 (default Bootstrap 4 version)](https://mdbootstrap.com/docs/b4/jquery/) was chosen for this purpose.
+
+
+
+The traditional 'barbers pole' **colours** of red, blue and white are employed throughout. The particular shades of red and blue (given the class names `.barber-red` and `.barber-blue`, respectively, in the site's custom stylesheet) are taken from [this Shutterstock 'barber shop icon'](https://www.shutterstock.com/image-vector/barber-symbol-shop-icon-hair-service-1070505362?id=1070505362&irclickid=1jiSOcU5OxyLUmQwUx0Mo3EqUkEXh30ItXjY1M0&irgwc=1&utm_medium=Affiliate&utm_campaign=Free%20SVG&utm_source=2022575&utm_term=&c3ch=Affiliate&c3nid=IR-2022575), and lend visual clarity and consistency to the site.
+
+
+
+In terms of **font** preferences, things were kept pretty simple: Roboto was chosen for the vast majority of site text; this is complemented by [Roboto Condensed](https://fonts.google.com/specimen/Roboto+Condensed?query=roboto+conde) for most headings as well as the Clipadvisor logo `.navbar-brand` element.
+
+
+
+From the perspective of **imagery**, the site's background hero image (a hand-drawn sketch featuring a variety of barbershop utensils) is a stock illustration [taken from Shutterstock's library](https://www.shutterstock.com/image-illustration/barber-shop-seamless-pattern-hand-drawn-1715625478). The aforementioned ['barbers pole' icon](https://www.shutterstock.com/image-vector/barber-symbol-shop-icon-hair-service-1070505362?id=1070505362&irclickid=1jiSOcU5OxyLUmQwUx0Mo3EqUkEXh30ItXjY1M0&irgwc=1&utm_medium=Affiliate&utm_campaign=Free%20SVG&utm_source=2022575&utm_term=&c3ch=Affiliate&c3nid=IR-2022575), used for the site's favicon as well as to accompany most of the main headings, is also used with permission from Shutterstock. All other icons are imported from [Font Awesome](https://fontawesome.com/).
+
+
+
+All pre-existing site content (user profiles, barbershop names, reviews etc.) at the time of writing is purely generic filler text compiled by the site's creator for the sake of authenticity.
 
 
 
