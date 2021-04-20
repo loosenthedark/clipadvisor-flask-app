@@ -66,6 +66,104 @@ All pre-existing site content (user profiles, barbershop names, reviews etc.) at
 
 
 
+## Features
+
+### Navigation
+
+- The site boasts a dynamically-generated `.navbar` (collapsed on mobile devices) that is displayed across the top of each page and responds to whether the user happens to be logged in or not at any given time:
+<p align="center"><img src="docs/images/screenshots/clipadvisor-navbar-logged-out1.png" alt="Clipadvisor logged-out user navbar on mobile" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-navbar-logged-out2.png" alt="Clipadvisor logged-out user navbar on tablet" width="25%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-navbar-logged-in1.png" alt="Clipadvisor logged-in user navbar on mobile" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-navbar-logged-in2.png" alt="Clipadvisor logged-in user navbar on tablet" width="25%" height="auto"></p>
+
+
+### Main landing (Home) page:
+
+- Visitors are greeted by an eye-catching `.jumbotron` message encouraging them to contribute a review by clicking on the blue and white 'call-to-action' `button`:
+
+<p align="center"><img src="docs/images/screenshots/clipadvisor-landing1.png" alt="Clipadvisor landing page call-to-action" width="15%" height="auto"></p>
+
+- Assuming that the user _is not_ already logged-in, clicking on this `button` will bring them to the site's registration page. Here, they can either:
+  - fill out and submit a short form in order to create their profile (a requirement for posting reviews)
+  or
+  - click instead on the login `button` beneath the registration form, which will bring them to the login page where they can enter their previously-registered email and password in order to log in
+  - In either case, they will then be redirected to a page where they can compose and submit a review (a dismissible Flash welcome message - styled using Bootstrap's `.alert` classes - will appear between the main `.navbar` and the 'Rate your barber!' heading at the top of the `form` when they first arrive on this page):
+<p align="center"><img src="docs/images/screenshots/clipadvisor-register-pre.png" alt="Clipadvisor registration form" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-register-post.png" alt="Clipadvisor review submit form post-registration" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-login-pre.png" alt="Clipadvisor login form" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-login-post.png" alt="Clipadvisor review submit form post-login" width="15%" height="auto"></p>
+
+- If, on the other hand, the user _is_ already logged-in, then clicking on the landing page's CTA `button` will take them directly to this review submission form (minus any Flash messaging, as this is seen as being redundant here):
+<p align="center"><img src="docs/images/screenshots/clipadvisor-landing-logged-in1.png" alt="Clipadvisor landing page for logged-in user" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-landing-logged-in2.png" alt="Clipadvisor review submit form for logged-in user" width="15%" height="auto"></p>
+
+### Login page
+
+- The login link in the site's main `.navbar` simply brings the user to the login page illustrated above. If they're not already registered at this point, they will have to do so by leaving the login page via the 'Register Here' button at the foot of the login form. This will redirect them to the registration form, where they can enter their details (all `input` fields are once again required)
+<p align="center"><img src="docs/images/screenshots/clipadvisor-login-form.png" alt="Clipadvisor login form" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-registration-form.png" alt="Clipadvisor registration form" width="15%" height="auto"></p>
+
+### Barbers page(s)
+
+- The Barbers link in the main `.navbar` leads the user to four interconnected pages, each of which applies a different filter to the list of barbers stored in the site's backend database:
+<p align="center"><img src="docs/images/screenshots/clipadvisor-barbers.png" alt="Clipadvisor Barbers page screenshots across multiple device sizes" width="70%" height="auto"></p>
+  
+  - A compact tabbed interface has been put in place using Bootstrap's `.nav-tabs` class for streamlined sorting of all stored barbershops under a variety of self-explanatory headings:
+    - 'All Barbers'
+    - 'Top-Rated'
+    - 'Walk-Ins Welcome'
+    - 'Cash Accepted'
+<p align="center"><img src="docs/images/screenshots/clipadvisor-barbers-nav-tabs1.png" alt="Clipadvisor Barbers page tabbed navbar UI" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-barbers-nav-tabs2.png" alt="Clipadvisor Barbers page tabbed navbar UI" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-barbers-nav-tabs3.png" alt="Clipadvisor Barbers page tabbed navbar UI" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-barbers-nav-tabs4.png" alt="Clipadvisor Barbers page tabbed navbar UI" width="15%" height="auto"></p>
+  - This is intended to enhance the overall UX by providing (relatively basic) search functionality, in lieu of an actual site-wide search bar (a potential future feature to be added at a later date)
+
+- In addition to this tabbed sorting, a visually-appealing colour scheme has also been applied to the alphabetised list of barbers displayed based on user descriptions: all "cheap & cheerful" barbers are thus given a light green `.card-header` element (etc.)
+
+- Furthermore, when a user clicks on one of these descriptor tags (e.g. 'cheap & cheerful') within the `.card-body` they are brought to a list comprised solely of barbers with that same 'vibe':
+<p align="center"><img src="docs/images/screenshots/clipadvisor-barbers-vibes-pages-1.png" alt="Clipadvisor Barbers categorised pages" width="12%" height="auto" style="margin-right: 0.5%;"><img src="docs/images/screenshots/clipadvisor-barbers-vibes-pages-2.png" alt="Clipadvisor Barbers categorised pages" width="12%" height="auto" style="margin-right: 0.5%;"><img src="docs/images/screenshots/clipadvisor-barbers-vibes-pages-3.png" alt="Clipadvisor Barbers categorised pages" width="12%" height="auto" style="margin-right: 0.5%;"><img src="docs/images/screenshots/clipadvisor-barbers-vibes-pages-4.png" alt="Clipadvisor Barbers categorised pages" width="12%" height="auto" style="margin-right: 0.5%;"><img src="docs/images/screenshots/clipadvisor-barbers-vibes-pages-5.png" alt="Clipadvisor Barbers categorised pages" width="12%" height="auto" style="margin-right: 0.5%;"><img src="docs/images/screenshots/clipadvisor-barbers-vibes-pages-6.png" alt="Clipadvisor Barbers categorised pages" width="12%" height="auto" style="margin-right: 0.5%;"><img src="docs/images/screenshots/clipadvisor-barbers-vibes-pages-7.png" alt="Clipadvisor Barbers categorised pages" width="12%" height="auto" style="margin-right: 0.5%;"><img src="docs/images/screenshots/clipadvisor-barbers-vibes-pages-8.png" alt="Clipadvisor Barbers categorised pages" width="12%" height="auto"></p>
+
+### Recent Reviews page
+
+- The Recent Reviews link in the main `.navbar` brings the user to a list of reviews filtered by recency (with the most recent reviews at the top of this list)
+- The colour scheme is the same for all reviews this time, however:
+<p align="center"><img src="docs/images/screenshots/clipadvisor-recent-reviews1.png" alt="Clipadvisor Recent Reviews page screenshot on tablet" width="25%" height="auto"></p>
+
+- Clicking on the 'More Info' `button` embedded within the body of each review triggers an informational `.modal` component giving a breakdown of some of the more granular aspects of each barbershop experience:
+<p align="center"><img src="docs/images/screenshots/clipadvisor-recent-reviews2.png" alt="Clipadvisor Recent Reviews page 'More Info' modal screenshot on tablet" width="25%" height="auto"></p>
+
+- Logged-in users will notice that reviews they have previously submitted are displayed in bolder colours that make them stand out
+- They will also see two additional buttons attached to each of their submitted reviews allowing them to either **update** or **delete** the review in question (see User Stories for a more thorough explanation of this CRUD functionality)
+<p align="center"><img src="docs/images/screenshots/clipadvisor-recent-reviews3.png" alt="Clipadvisor Recent Reviews page logged-in user UI screenshot on desktop" width="60%" height="auto"></p>
+
+- As with the Barbers page(s) discussed above, pagination has been implemented at the foot of the main reviews UI. The number of reviews displayed per page is capped at ten. Users can navigate both backwards and forwards using custom pagination links.
+<p align="center"><img src="docs/images/screenshots/clipadvisor-pagination-1.png" alt="Clipadvisor custom pagination links" width="15%" height="auto" style="margin-right: 1%;"><img src="docs/images/screenshots/clipadvisor-pagination-2.png" alt="Clipadvisor custom pagination links" width="15%" height="auto" style="margin-right: 1%;"><img src="docs/images/screenshots/clipadvisor-pagination-3.png" alt="Clipadvisor custom pagination links" width="15%" height="auto" style="margin-right: 1%;"><img src="docs/images/screenshots/clipadvisor-pagination-4.png" alt="Clipadvisor custom pagination links" width="15%" height="auto" style="margin-right: 1%;"><img src="docs/images/screenshots/clipadvisor-pagination-5.png" alt="Clipadvisor custom pagination links" width="15%" height="auto" style="margin-right: 1%;"><img src="docs/images/screenshots/clipadvisor-pagination-6.png" alt="Clipadvisor custom pagination links" width="15%" height="auto"></p>
+
+- This pagination functionality was built with help from [this YouTube tutorial](https://www.youtube.com/watch?v=PSWf2TjTGNY)
+
+### Submit A Review page
+
+- Once a user is logged in (see above), they may post a review to the site by completing a `form` element consisting of a total of nine `.form-group` input fields and a submit button. All nine of these fields are required (in the case of both the 'booking options' and 'payment options' fields, a minimum of one checkbox must be selected). A combination of browser default HTML5 `form` validation and both custom client-side and server-side validation prevents users from submitting incomplete forms.
+<p align="center"><img src="docs/images/screenshots/clipadvisor-review-submit-form.png" alt="Clipadvisor review submit form screenshot on tablet" width="25%" height="auto"></p>
+
+- When they have successfully completed and submitted this form, the user is redirected to the Recent Reviews page (see above), where they will see their posted review at the top of the page. There will also be a dismissible Flash messaging alert box right below the main `.navbar` thanking them for contributing to Clipadvisor.
+<p align="center"><img src="docs/images/screenshots/clipadvisor-review-submit-post-submit-redirect.png" alt="Clipadvisor review submit form post-submission redirect screenshot on tablet" width="25%" height="auto"></p>
+
+### My Reviews page
+
+- A logged-in user can find all of their submitted reviews together in one place by clicking on the 'My Reviews' link in the main `.navbar`. Much like its parent 'Recent Reviews' page, this personalised page displays the user's reviews in reverse chronological order (most recent reviews at the top). The user can also avail of full update and delete functionality here by using the corresponding buttons (as outlined above):
+<p align="center"><img src="docs/images/screenshots/clipadvisor-my-reviews.png" alt="Clipadvisor My Reviews page screenshot on tablet" width="25%" height="auto"></p>
+
+### Contact page
+
+- It's easy for users to contact the site owner, regardless of whether they happen to be logged-in regular visitors or first-time guests. Selecting the Contact link in the main `.navbar` brings them to a user-friendly contact form, where they are asked to fill in the details of their request/query/feedback. If the user _is_ logged in at this point, they are not asked to provide their email address, as this will already be stored in the current session's cookie data. Logged-out users, on the other hand, will have to provide an email address in order to submit the contact form (whose `input` fields are once again all required).
+
+- Assuming everything is in order and all `form` fields have been completed, the user is briefly redirected to a page thanking them for getting in touch and assuring them that someone from Clipadvisor will respond to their request/query/feedback in due course. A simple JavaScript timeout function has been set on this page which then returns the user to the site's Home page after five seconds.
+<p align="center"><img src="docs/images/screenshots/clipadvisor-contact-logged-in-user.png" alt="Clipadvisor Contact page logged-in user form view" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-contact-logged-out-user.png" alt="Clipadvisor Contact page logged-out user form view" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-contact-post-redirect1.png" alt="Clipadvisor Contact page post-submit redirect page" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-contact-post-redirect2.png" alt="Clipadvisor Contact page post-submit redirect back to Home page" width="15%" height="auto"></p>
+
+### Logging out
+
+- Logged-in users can log out of the site at any time by clicking the Log Out link in the main `.navbar`. In a similar vein as the post-submission redirect functionality applied to the Contact page, as soon as a user logs out they are briefly taken to a holding screen where their logout is confirmed and they are thanked for being a part of Clipadvisor. This is swiftly followed (again, after five seconds) by a second redirect that returns them to the site's Home page.
+<p align="center"><img src="docs/images/screenshots/clipadvisor-logout-1.png" alt="Clipadvisor logout functionality step 1" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-logout-2.png" alt="Clipadvisor logout functionality step 2" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-logout-3.png" alt="Clipadvisor logout functionality step 3" width="15%" height="auto"></p>
+
+### Wireframes
+
+- [mobile]()
+- [tablet]()
+- [desktop]()
+
+
+
 ---
 
 
@@ -83,8 +181,6 @@ All pre-existing site content (user profiles, barbershop names, reviews etc.) at
 * Bespoke 'page rating' code snippet used within `#review-submit-form` adapted from [this template](https://codepen.io/hesguru/pen/BaybqXv)
 
 * `sqlalchemy.exc.NoSuchModuleError: Can't load plugin: sqlalchemy.dialects:postgres` [fix](sqlalchemy.exc.NoSuchModuleError: Can't load plugin: sqlalchemy.dialects:postgres)
-
-* Flask-SQLAlchemy Pagination tutorial: https://www.youtube.com/watch?v=PSWf2TjTGNY
 
 * I was able to make flash messages more visually appealing by adding some basic markup (for line breaks etc.) using the [`flask.Markup` extension](https://tedboy.github.io/flask/generated/generated/flask.Markup.html) after following advice posted on [this Stack Overflow thread](https://stackoverflow.com/questions/18225713/how-to-display-html-content-through-flask-messages)
 
