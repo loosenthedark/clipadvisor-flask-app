@@ -346,9 +346,9 @@ All pre-existing site content (user profiles, barbershop names, reviews etc.) at
 
     <p align="center"><img src="docs/images/screenshots/clipadvisor-user-story-9a.png" alt="Clipadvisor user story #9 screenshot" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-user-story-6b.png" alt="Clipadvisor user story #9 screenshot" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-user-story-9c.png" alt="Clipadvisor user story #9 screenshot" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-user-story-9d.png" alt="Clipadvisor user story #9 screenshot" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-user-story-7b.png" alt="Clipadvisor user story #9 screenshot" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-user-story-9f.png" alt="Clipadvisor user story #9 screenshot" width="15%" height="auto"></p>
 
-- Form Validation & Error Handling
+- Form Validation
 
-  - There are several forms and potential sites for invalid user input/interaction throughout the site, as detailed below:
+  - There are several forms and potential opportunities for invalid user input/interaction throughout the site, as detailed below:
 
     - **Registration form**
       - All five fields are required - this was implemented by adding the `required` attribute to the relevant HTML tag in each instance
@@ -396,11 +396,21 @@ All pre-existing site content (user profiles, barbershop names, reviews etc.) at
 
         <p align="center"><img src="docs/images/screenshots/clipadvisor-form-validation10.png" alt="Clipadvisor contact form validation screenshot" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-form-validation11.png" alt="Clipadvisor contact form validation screenshot" width="15%" height="auto"></p>
 
-- Redirecting Errant (Logged-In) Users:
+- Redirecting Errant (Logged-In) Users
 
   - If a logged-in user tries for some reason to navigate to the Login or Register page (e.g. by manually entering the URL of the `/login` or `/register` route into the address bar), they will be shown a dismissible Flash message informing them they are already logged in, as well being redirected to their personalised 'My Reviews' page (even if they haven't yet submitted any reviews):
 
   <p align="center"><img src="docs/images/screenshots/clipadvisor-already-logged-in-redirect1.png" alt="Clipadvisor redirect for logged-in user screenshot" width="15%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-already-logged-in-redirect2.png" alt="Clipadvisor redirect for logged-in user screenshot" width="15%" height="auto"></p>
+
+- Custom Error Handling
+
+  - [In line with best practice](https://flask.palletsprojects.com/en/1.1.x/patterns/errorpages/), error handlers have been registered to cater for the three most common types of error arising from wayward/unwanted user interaction (listed here with corresponding HTTP error code):
+    - [404 Not Found](https://en.wikipedia.org/wiki/HTTP_404)
+    - [403 Forbidden](https://en.wikipedia.org/wiki/HTTP_403)
+    - [500 Internal Server Error](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_errors)
+  - Shown below are screenshots demonstrating the first two (and most common) of these. Note how both custom error pages blend seamlessly with the site as a whole, offer clear explanatory feedback to the user and guide them back to the safety of the Clipadvisor Home page:
+
+  <p align="center"><img src="docs/images/screenshots/clipadvisor-error-404-page-screenshot.png" alt="Clipadvisor 404 custom error page screenshot" width="45%" height="auto" style="margin-right: 20px;"><img src="docs/images/screenshots/clipadvisor-error-500-page-screenshot.png" alt="Clipadvisor 500 custom error page screenshot" width="45%" height="auto"></p>
 
 ---
 

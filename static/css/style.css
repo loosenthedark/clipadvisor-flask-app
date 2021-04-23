@@ -897,6 +897,11 @@ blockquote:after {
     top: 122px;
   }
 
+  .px-md-4_5 {
+    padding-left: 36px!important;
+    padding-right: 36px!important;
+  }
+
   /* Flash message container */
 
   .well.container.flash-message-container {
@@ -956,9 +961,16 @@ blockquote:after {
   /* Logout page */
 
   .logout-alert,
-  .logout-alert.push-down {
+  .logout-alert.push-down,
+  .error-alert {
     max-width: 70%;
     top: -40px;
+  }
+
+  .logout-divider,
+  .logout-alert p,
+  .thank-you-alert p {
+    max-width: 360px;
   }
 
   /* Pagination */
@@ -1267,6 +1279,7 @@ blockquote:after {
   /* Logout page */
 
   .logout-alert,
+  .logout-alert.push-down,
   .thank-you-alert {
     top: 0;
     position: relative;
@@ -1302,5 +1315,6 @@ blockquote:after {
 
   .error-alert {
     top: -0;
+    max-width: 520px;
   }
 }

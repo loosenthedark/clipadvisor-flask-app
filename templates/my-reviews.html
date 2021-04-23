@@ -1498,11 +1498,11 @@
 {% else %}
 
 <!-- no reviews submitted alert -->
-<div class="form-card logout-alert alert alert-info px-0 border-0 text-center pb-4">
-    <h4 class="mt-3 mb-4 px-3 px-md-4 px-xl-5">Looks like you haven't submitted any reviews yet, {{ user.firstname }}!</h4>
-    <hr class="mt-2 mb-3 px-3 logout-divider">
-    <p class="px-3 mb-xl-4">To get started, simply click here:</p>
-    <a class="btn barber-blue white-text btn-lg mb-xl-4 d-xl-block mx-xl-auto" href="{{ url_for('review_submit') }}" role="button">Rate your
+<div class="form-card logout-alert alert alert-info px-0 border-0 text-center pt-md-3 pb-4">
+    <h4 class="mt-3 mt-md-4 mb-4 px-3 px-md-4_5 px-xl-5">Looks like you haven't submitted any reviews yet, {{ user.firstname }}!</h4>
+    <hr class="mt-2 mb-3 mx-4 logout-divider mx-md-auto">
+    <p class="px-4 mx-auto mb-xl-4">To get started, simply click here:</p>
+    <a class="btn barber-blue white-text btn-lg mb-xl-3 d-xl-block mx-xl-auto" href="{{ url_for('review_submit') }}" role="button">Rate your
         barber <i class="fas fa-cut pt-1"></i></a>
 </div>
 <!-- /no reviews submitted alert -->
