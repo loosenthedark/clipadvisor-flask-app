@@ -83,7 +83,8 @@ nav {
 .form-card.review-update-form-card,
 .form-card.reviews-card,
 .form-card.login-form-card,
-.form-card.contact-form-card {
+.form-card.contact-form-card,
+.form-card.logout-alert {
   width: 100%;
 }
 
@@ -142,7 +143,7 @@ nav {
   font-size: 18px;
 }
 
-.card-body h5.barber-blue-text.thumbs {
+.card-body .barber-blue-text.thumbs {
   font-size: 24px;
 }
 
@@ -364,7 +365,7 @@ nav {
   line-height: 40px;
 }
 
-.card-body h5.barber-blue-text > i {
+.card-body .barber-blue-text > i {
   font-size: 22px;
 }
 
@@ -700,6 +701,10 @@ blockquote:after {
   top: -20px;
 }
 
+.logout-alert.push-down {
+  top: 14px;
+}
+
 /* Pagination */
 
 .pagination-wrapper {
@@ -950,7 +955,8 @@ blockquote:after {
 
   /* Logout page */
 
-  .logout-alert {
+  .logout-alert,
+  .logout-alert.push-down {
     max-width: 70%;
     top: -40px;
   }

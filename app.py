@@ -17,7 +17,7 @@ if os.path.exists('env.py'):
 # configure app
 app = Flask(__name__)
 
-ENV = 'dev'
+ENV = 'prod'
 
 if ENV == 'dev':
     app.debug = True
@@ -58,58 +58,80 @@ def register():
         password1 = data.get('register-form-password1')
         password2 = data.get('register-form-password2')
 
-        # Register form validation and categorised flash messaging conditional logic
-        if firstname == '' or lastname == '' or email == '' or password1 == '' or password2 == '':
+        # Register form validation and categorised
+        # flash messaging conditional logic
+        if firstname == '' or lastname == '' or email == ''\
+                or password1 == '' or password2 == '':
             message = Markup(
-                'Please fill out all fields!<br><i class="fas all-fields-icon fa-cut pt-1"></i>')
+                'Please fill out all fields!<br>\
+                    <i class="fas all-fields-icon fa-cut pt-1"></i>')
             flash(message, 'warning')
         if len(firstname) > 0 and len(firstname) < 2:
             message = Markup(
-                'Your first name is too short!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your first name is too short!</br>\
+                    Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(firstname) > 50:
             message = Markup(
-                'Your first name is too long!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your first name is too long!</br>\
+                    Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(lastname) > 0 and len(lastname) < 2:
             message = Markup(
-                'Your last name is too short!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your last name is too short!</br>\
+                    Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(lastname) > 50:
             message = Markup(
-                'Your last name is too long!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your last name is too long!</br>\
+                    Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(email) > 0 and len(email) < 6:
             message = Markup(
-                'Your email address is too short!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your email address is too short!</br>\
+                    Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(email) > 100:
             message = Markup(
-                'Your email address is too long!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your email address is too long!</br>\
+                    Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')
-        if len(password1) > 0 and len(password2) > 0 and len(password1) < 8 or len(password2) < 8:
+        if len(password1) > 0 and len(password2) > 0 and\
+                len(password1) < 8 or len(password2) < 8:
             message = Markup(
-                'Your password is too short!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your password is too short!</br>\
+                    Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(password1) > 100 or len(password2) > 100:
             message = Markup(
-                'Your password is too long!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your password is too long!</br>\
+                    Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')
-        if len(password1) >= 8 and len(password2) >= 8 and len(password1) < 100 and len(password2) < 100 and password1 != password2:
+        if len(password1) >= 8 and len(password2) >= 8 and len(password1)\
+                < 100 and len(password2) < 100 and password1 != password2:
             message = Markup(
-                'Your passwords don\'t match!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your passwords don\'t match!</br>\
+                    Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')
 
-        if len(firstname) >= 2 and len(firstname) <= 50 and len(lastname) >= 2 and len(lastname) <= 50 and len(email) >= 6 and len(email) <= 100 and len(password1) >= 8 and len(password2) >= 8 and len(password1) <= 100 and len(password2) <= 100 and password1 == password2:
+        if len(firstname) >= 2 and len(firstname) <= 50 and len(lastname)\
+            >= 2 and len(lastname) <= 50 and len(email) >= 6 and len(email)\
+            <= 100 and len(password1) >= 8 and len(password2) >= 8\
+            and len(password1) <= 100 and len(password2) <= 100 and\
+                password1 == password2:
             # Check to see if user/email entered already exists in DB
             if db.session.query(User).filter(User.email == email).count() == 0:
                 # flash msg here to confirm user registration upon redirect
                 message = Markup(
-                    'Thanks for registering, {} <i class="fas fa-cut"></i></br>Welcome to the Clipadvisor community!</br>Is there a new barber you\'d like to tell us about?'.format(firstname))
+                    'Thanks for registering, {} <i class="fas fa-cut"></i></br>\
+                        Welcome to the Clipadvisor community!</br>Is there a\
+                        new barber you\'d like to tell us about?'
+                    .format(firstname))
                 flash(message, 'success')
 
                 new_user = User(
-                    firstname=firstname, lastname=lastname, email=email, password=generate_password_hash(
+                    firstname=firstname, lastname=lastname, email=email,
+                    password=generate_password_hash(
                         password1, method='sha256'))
                 db.session.add(new_user)
                 db.session.commit()
@@ -121,7 +143,8 @@ def register():
                 return redirect(url_for('review_submit'))
 
             message = Markup(
-                'There is already an account associated with that email address!<br>Please try again <i class="fas fa-cut"></i>')
+                'There is already an account associated with that email\
+                    address!<br>Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')
 
     # Check to see whether user is already logged in
@@ -149,31 +172,40 @@ def login():
         email = data.get('login-email')
         password = data.get('login-password')
 
-        # Login form validation and categorised flash messaging conditional logic
+        # Login form validation and categorised
+        # flash messaging conditional logic
         if email == '' or password == '':
             message = Markup(
-                'Please fill out all fields!<br><i class="fas all-fields-icon fa-cut pt-1"></i>')
+                'Please fill out all fields!<br><i class="fas all-fields-icon\
+                     fa-cut pt-1"></i>')
             flash(message, 'warning')
         if len(email) > 0 and len(email) < 6:
             message = Markup(
-                'Your email address is too short!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your email address is too short!</br>Please try again\
+                     <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(email) > 100:
             message = Markup(
-                'Your email address is too long!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your email address is too long!</br>Please try again\
+                     <i class="fas fa-cut"></i>')
             flash(message, 'warning')
 
-        if len(email) >= 6 and len(email) <= 100 and len(password) >= 8 and len(password) <= 100:
+        if len(email) >= 6 and len(email) <= 100 and len(password) >= 8\
+                and len(password) <= 100:
             # Check to see if user/email entered already exists in DB
             if db.session.query(User).filter(User.email == email).count() != 0:
 
-                # verify that login password matches hashed password stored in DB
+                # verify that login password matches hashed password
+                # stored in DB
                 login_user = db.session.query(User).filter(User.email == email)
                 if login_user.count() != 0:
                     if check_password_hash(
                             login_user[0].password, password):
-                        message = Markup('Nice to see you, {} <i class="fas fa-cut"></i></br>Is there a new barber you\'d like to tell us about?'.format(
-                            login_user[0].firstname))
+                        message = Markup(
+                            'Nice to see you, {} <i class="fas fa-cut"></i></br> Is there\
+                                a new barber you\'d like to tell\
+                                     us about?'.format(
+                                login_user[0].firstname))
                         flash(message, 'success')
 
                         # Store logged-in user in session cookie
@@ -181,20 +213,26 @@ def login():
 
                         return redirect(url_for('review_submit'))
                     else:
-                        # Deliberately ambiguous message to guard against malicious brute-force login attempts
+                        # Deliberately ambiguous message to guard against
+                        # malicious brute-force login attempts
                         message = Markup(
-                            'You have entered an invalid email address/password!</br>Please try again <i class="fas fa-cut"></i>')
+                            'You have entered an invalid email address/password!\
+                                </br>Please try again <i class="fas fa-cut">\
+                                    </i>')
                         flash(message, 'warning')
             else:
                 # Prompt unregistered user to register before trying to log in
                 message = Markup(
-                    'You haven\'t registered yet!</br>You can do so right now by clicking the button below <i class="fas fa-cut"></i>')
+                    'You haven\'t registered yet!</br>You can do so right now by\
+                        clicking the button below <i class="fas fa-cut"></i>')
                 flash(message, 'warning')
 
         else:
-            # Another deliberately ambiguous message to guard against malicious brute-force login attempts
+            # Another deliberately ambiguous message to
+            # guard against malicious brute-force login attempts
             message = Markup(
-                'You have entered an invalid email address/password!</br>Please try again <i class="fas fa-cut"></i>')
+                'You have entered an invalid email address/password!</br>\
+                    Please try again <i class="fas fa-cut"></i>')
             flash(message, 'warning')
     # Check to see whether user is already logged in
     if 'user' in session:
@@ -307,44 +345,64 @@ def review_submit():
         online = data.get('review-submit-form-booking-online-checkbox')
         walkin = data.get('review-submit-form-booking-walkin-checkbox')
 
-        # Submit A Review form validation and categorised flash messaging conditional logic
-        if customername == '' or barbershopname == '' or date == '' or time == '' or phone == '' and online == '' and walkin == '' or cash == '' and card == '' or vibe == '' or comments == '' or rating == '':
+        # Submit A Review form validation and categorised
+        # flash messaging conditional logic
+        if customername == '' or barbershopname == '' or date == '' or time\
+            == '' or phone == '' and online == '' and walkin == '' or cash\
+            == '' and card == '' or vibe == '' or comments == '' or rating\
+                == '':
             message = Markup(
-                'Please fill out all fields!<br><i class="fas all-fields-icon fa-cut pt-1"></i>')
+                'Please fill out all fields!<br><i class="fas all-fields-icon\
+                    fa-cut pt-1"></i>')
             flash(message, 'warning')
         if len(customername) > 0 and len(customername) < 4:
             message = Markup(
-                'Your name is too short!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your name is too short!</br>Please try again\
+                    <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(customername) > 50:
             message = Markup(
-                'Your name is too long!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your name is too long!</br>Please try again\
+                    <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(barbershopname) > 0 and len(barbershopname) < 3:
             message = Markup(
-                'Your barber\'s name is too short!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your barber\'s name is too short!</br>Please try again\
+                    <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(barbershopname) > 50:
             message = Markup(
-                'Your barber\'s name is too long!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your barber\'s name is too long!</br>Please try again\
+                    <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(comments) > 0 and len(comments) < 10:
             message = Markup(
-                'Your comment is too short!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your comment is too short!</br>Please try again\
+                    <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(comments) > 1000:
             message = Markup(
-                'Your comment is too long!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your comment is too long!</br>Please try again\
+                    <i class="fas fa-cut"></i>')
             flash(message, 'warning')
 
-        if len(customername) >= 4 and len(customername) <= 50 and len(barbershopname) >= 3 and len(barbershopname) <= 50 and date != '' and time != '' and len(comments) >= 10 and len(comments) <= 1000 and rating != '':
+        if len(customername) >= 4 and len(customername) <= 50 and\
+            len(barbershopname) >= 3 and len(barbershopname) <= 50 and\
+                date != '' and time != '' and len(comments) >= 10 and\
+                len(comments) <= 1000 and rating != '':
             # flash msg here to confirm review submission upon redirect
             message = Markup(
-                'Thanks for rating your barber!<br>Your name will be entered into a draw at the end of the month to win a €100 barbershop voucher.<br><i class="fas thanks-for-reviewing-icon fa-cut pt-1"></i>')
+                'Thanks for rating your barber!<br>Your name will be entered\
+                    into a draw at the end of the month to win a €100\
+                        barbershop voucher.<br><i class="fas\
+                            thanks-for-reviewing-icon fa-cut pt-1"></i>')
             flash(message, 'success')
 
             new_review = Review(
-                customername=customername, barbershopname=barbershopname, date=date, time=time, cash=cash, card=card, vibe=vibe, rating=rating, comments=comments, user_id=user_id, phone=phone, online=online, walkin=walkin)
+                customername=customername, barbershopname=barbershopname,
+                date=date, time=time, cash=cash, card=card, vibe=vibe,
+                rating=rating, comments=comments, user_id=user_id,
+                phone=phone, online=online, walkin=walkin)
             db.session.add(new_review)
             db.session.commit()
             db.session.close()
@@ -389,46 +447,69 @@ def review_update(review_id):
         updated_review.walkin = data.get(
             'review-update-form-booking-walkin-checkbox')
 
-        # Update Review form validation and categorised flash messaging conditional logic
-        if updated_review.customername == '' or updated_review.barbershopname == '' or updated_review.date == '' or updated_review.time == '' or updated_review.phone == '' and updated_review.online == '' and updated_review.walkin == '' or updated_review.cash == '' and updated_review.card == '' or updated_review.vibe == '' or updated_review.comments == '' or updated_review.rating == '':
+        # Update Review form validation and
+        # categorised flash messaging conditional logic
+        if updated_review.customername == '' or updated_review.barbershopname\
+            == '' or updated_review.date == '' or updated_review.time == '' or\
+            updated_review.phone == '' and updated_review.online == '' and\
+            updated_review.walkin == '' or updated_review.cash == '' and\
+            updated_review.card == '' or updated_review.vibe == '' or\
+                updated_review.comments == '' or updated_review.rating == '':
             message = Markup(
-                'Please fill out all fields!<br><i class="fas all-fields-icon fa-cut pt-1"></i>')
+                'Please fill out all fields!<br><i class="fas all-fields-icon\
+                    fa-cut pt-1"></i>')
             flash(message, 'warning')
         if len(
             updated_review.customername) > 0 and len(
                 updated_review.customername) < 4:
             message = Markup(
-                'Your name is too short!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your name is too short!</br>Please try again\
+                    <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(updated_review.customername) > 50:
             message = Markup(
-                'Your name is too long!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your name is too long!</br>Please try again\
+                    <i class="fas fa-cut"></i>')
             flash(message, 'warning')
-        if len(updated_review.barbershopname) > 0 and len(updated_review.barbershopname) < 3:
+        if len(updated_review.barbershopname) > 0 and\
+                len(updated_review.barbershopname) < 3:
             message = Markup(
-                'Your barber\'s name is too short!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your barber\'s name is too short!</br>Please try again\
+                    <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(updated_review.barbershopname) > 50:
             message = Markup(
-                'Your barber\'s name is too long!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your barber\'s name is too long!</br>Please try again\
+                    <i class="fas fa-cut"></i>')
             flash(message, 'warning')
-        if len(updated_review.comments) > 0 and len(updated_review.comments) < 10:
+        if len(updated_review.comments) > 0 and\
+                len(updated_review.comments) < 10:
             message = Markup(
-                'Your comment is too short!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your comment is too short!</br>Please try again\
+                    <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(updated_review.comments) > 1000:
             message = Markup(
-                'Your comment is too long!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your comment is too long!</br>Please try again\
+                    <i class="fas fa-cut"></i>')
             flash(message, 'warning')
 
-        if len(updated_review.customername) >= 4 and len(updated_review.customername) <= 50 and len(updated_review.barbershopname) >= 3 and len(updated_review.barbershopname) <= 50 and updated_review.date != '' and updated_review.time != '' and len(updated_review.comments) >= 10 and len(updated_review.comments) <= 1000 and updated_review.rating != '':
+        if len(updated_review.customername) >= 4 and\
+            len(updated_review.customername) <= 50 and\
+            len(updated_review.barbershopname) >= 3 and\
+            len(updated_review.barbershopname) <= 50 and\
+            updated_review.date != '' and updated_review.time\
+            != '' and len(updated_review.comments) >= 10 and\
+            len(updated_review.comments) <= 1000 and\
+                updated_review.rating != '':
 
             db.session.commit()
             db.session.close()
 
             # flash msg here to confirm review resubmission upon redirect
             message = Markup(
-                'Review updated successfully!<br><i class="fas thanks-for-reviewing-icon fa-cut pt-1"></i>')
+                'Review updated successfully!<br><i class="fas\
+                    thanks-for-reviewing-icon fa-cut pt-1"></i>')
             flash(message, 'success')
 
             return redirect(url_for('reviews'))
@@ -490,7 +571,8 @@ def review_delete(review_id):
     db.session.close()
 
     message = Markup(
-        'Review deleted successfully!<br><i class="fas thanks-for-reviewing-icon fa-cut pt-1"></i>')
+        'Review deleted successfully!<br><i class="fas\
+            thanks-for-reviewing-icon fa-cut pt-1"></i>')
     flash(message, 'success')
 
     return redirect(url_for('reviews'))
@@ -511,41 +593,56 @@ def contact():
 
         # Contact form validation and categorised flash messaging conditional\
         #  logic
-        if sender_name == '' or sender_email == '' or category == '' or sender_message == '':
+        if sender_name == '' or sender_email == '' or category\
+                == '' or sender_message == '':
             message = Markup(
-                'Please fill out all fields!<br><i class="fas all-fields-icon fa-cut pt-1"></i>')
+                'Please fill out all fields!<br><i class="fas\
+                    all-fields-icon fa-cut pt-1"></i>')
             flash(message, 'warning')
         if len(sender_name) > 0 and len(sender_name) < 4:
             message = Markup(
-                'Your name is too short!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your name is too short!</br>Please try again\
+                    <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(sender_name) > 50:
             message = Markup(
-                'Your name is too long!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your name is too long!</br>Please try again\
+                    <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(sender_email) > 0 and len(sender_email) < 6:
             message = Markup(
-                'Your email address is too short!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your email address is too short!</br>Please try again\
+                    <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(sender_email) > 50:
             message = Markup(
-                'Your email address is too long!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your email address is too long!</br>Please try again\
+                    <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(sender_message) > 0 and len(sender_message) < 10:
             message = Markup(
-                'Your message is too short!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your message is too short!</br>Please try again\
+                    <i class="fas fa-cut"></i>')
             flash(message, 'warning')
         if len(sender_message) > 2000:
             message = Markup(
-                'Your message is too long!</br>Please try again <i class="fas fa-cut"></i>')
+                'Your message is too long!</br>Please try again\
+                    <i class="fas fa-cut"></i>')
             flash(message, 'warning')
-        if len(sender_name) >= 4 and len(sender_name) <= 50 and len(sender_email) >= 6 and len(sender_email) <= 50 and category != '' and len(sender_message) >= 10 and len(sender_message) <= 2000:
+        if len(sender_name) >= 4 and len(sender_name) <= 50 and\
+            len(sender_email) >= 6 and len(sender_email) <= 50 and\
+                category != '' and len(sender_message) >= 10 and\
+                len(sender_message) <= 2000:
             msg['Subject'] = 'You have a new message from a Clipadvisor user!'
             msg['From'] = EMAIL_ADDRESS
             msg['To'] = 'hello@loosenthedark.tech'
             msg.set_content('This is a plain text email')
             msg.add_alternative(
-                f"<ul><li><strong>Message category:</strong> {category}</li><li><strong>Message:</strong> {sender_message}</li><li><strong>Message sender:</strong> {sender_name}</li><li><strong>Sender's email:</strong> {sender_email}</li></ul><br>&#128513;", subtype='html')
+                f"<ul><li><strong>Message category:</strong> {category}</li><li>\
+                    <strong>Message:</strong> {sender_message}</li><li>\
+                    <strong>Message sender:</strong> {sender_name}</li>\
+                        <li><strong>Sender's email:</strong> {sender_email}\
+                            </li></ul><br>&#128513;", subtype='html')
             with smtplib.SMTP_SSL("smtp.stackmail.com", 465) as smtp:
                 smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
 

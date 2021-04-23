@@ -1,5 +1,4 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.sql import func
 
 
 db = SQLAlchemy()
@@ -13,7 +12,6 @@ class User(db.Model):
     lastname = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(100), nullable=False)
     password = db.Column(db.String(100), nullable=False)
-    # reviews = db.relationship('Review')
 
     def __init__(self, firstname, lastname, email, password):
         self.firstname = firstname
@@ -42,7 +40,8 @@ class Review(db.Model):
 
     def __init__(
         self, customername, barbershopname, date, time,
-            cash, card, vibe, rating, comments, user_id, phone, online, walkin):
+            cash, card, vibe, rating, comments,
+            user_id, phone, online, walkin):
         self.customername = customername
         self.barbershopname = barbershopname
         self.date = date
