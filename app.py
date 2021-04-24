@@ -14,7 +14,7 @@ if os.path.exists('env.py'):
     import env
 
 
-# configure app
+# create Flask app
 app = Flask(__name__)
 
 ENV = 'prod'
@@ -24,7 +24,7 @@ if ENV == 'dev':
 else:
     app.debug = False
 
-# configure DB
+# configure app
 # bug fix/workaround: https://github.com/pallets/flask-sqlalchemy/issues/929
 app.config[
     'SQLALCHEMY_DATABASE_URI'] = os.environ.get(
@@ -32,7 +32,7 @@ app.config[
 app.secret_key = os.environ.get('SECRET_KEY')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# initiate connection to DB
+# create SQLAlchemy object
 db = SQLAlchemy(app)
 
 # SQLAlchemy engine configuration (with connection pooling)
