@@ -53,7 +53,7 @@
                                                         class="card-header reviews-card-header font-weight-light white-text">
                                                         {% endif %}
                                                         <div
-                                                            class="star-rating-display yellow-text w-75 mx-auto text-center p-3">
+                                                            class="star-rating-display yellow-text mx-auto text-center p-3">
                                                             {% if review.rating == 5 %}<i class="fas fa-star p-1"></i><i
                                                                 class="fas fa-star p-1 yellow-text"></i><i
                                                                 class="fas fa-star p-1"></i><i
@@ -559,7 +559,7 @@
                                                         {% else %}
                                                         <div class="card-header reviews-card-header font-weight-light white-text">
                                                         {% endif %}
-                                                        <div class="star-rating-display yellow-text w-75 mx-auto text-center p-3">
+                                                        <div class="star-rating-display yellow-text mx-auto text-center p-3">
                                                             {% if review.rating == 5 %}
                                                             <i class="fas fa-star p-1"></i>
                                                             <i class="fas fa-star p-1 yellow-text"></i>
@@ -592,46 +592,8 @@
                                                                     <p class="h2 mb-1 font-weight-normal text-center">{{
                                                                         review.barbershopname }}
                                                                     </p>
-                                                                    <a href="{{ url_for('_barbers', vibe=review.vibe) }}">
-                                                                        {% if review.vibe == 'cheap and cheerful' %}
-                                                                        <p class="barbers-vibe green-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe|replace(" and ", " & ") }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'work commute' %}
-                                                                        <p class="barbers-vibe brown-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'hipster' %}
-                                                                        <p class="barbers-vibe purple-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'cookie cutter' %}
-                                                                        <p class="barbers-vibe orange-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'old school' %}
-                                                                        <p class="barbers-vibe grey-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'sweatbox' %}
-                                                                        <p class="barbers-vibe cyan-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'dancefloor' %}
-                                                                        <p class="barbers-vibe dancefloor-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'silence is golden' %}
-                                                                        <p class="barbers-vibe teal-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% else %}
-                                                                        <p class="h5 font-weight-light barber-red-text mb-1 text-center">vibe: {{ review.vibe }}
-                                                                        </p>
-                                                                        {% endif %}
-                                                                    </a>
                                                                     <!-- review card More Info modal trigger button (tablet+) -->
-                                                                    <button type="button" class="btn white-text mt-0 mb-3 mb-md-0 btn-more-info barber-blue px-3 d-none d-md-block" data-toggle="modal"
+                                                                    <button type="button" class="btn white-text mt-3 mb-3 mb-md-0 btn-more-info barber-blue px-3 d-none d-md-block" data-toggle="modal"
                                                                         data-target="#_review-card-modal_{{ review.id }}">
                                                                         More info <i class="fas white-text fa-cut"></i>
                                                                     </button>
@@ -768,7 +730,7 @@
                                                         {% else %}
                                                         <div class="card-header reviews-card-header font-weight-light white-text">
                                                         {% endif %}
-                                                            <div class="star-rating-display yellow-text w-75 mx-auto text-center p-3">
+                                                            <div class="star-rating-display yellow-text mx-auto text-center p-3">
                                                                 {% if review.rating == 5 %}
                                                                 <i class="fas fa-star p-1"></i>
                                                                 <i class="fas fa-star p-1 yellow-text"></i>
@@ -801,46 +763,8 @@
                                                                     <p class="h2 mb-1 font-weight-normal text-center">{{
                                                                         review.barbershopname }}
                                                                     </p>
-                                                                    <a href="{{ url_for('_barbers', vibe=review.vibe) }}">
-                                                                        {% if review.vibe == 'cheap and cheerful' %}
-                                                                        <p class="barbers-vibe green-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe|replace(" and ", " & ") }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'work commute' %}
-                                                                        <p class="barbers-vibe brown-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'hipster' %}
-                                                                        <p class="barbers-vibe purple-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'cookie cutter' %}
-                                                                        <p class="barbers-vibe orange-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'old school' %}
-                                                                        <p class="barbers-vibe grey-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'sweatbox' %}
-                                                                        <p class="barbers-vibe cyan-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'dancefloor' %}
-                                                                        <p class="barbers-vibe dancefloor-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'silence is golden' %}
-                                                                        <p class="barbers-vibe teal-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% else %}
-                                                                        <p class="h5 font-weight-light barber-red-text mb-1 mb-md-3 text-center">vibe: {{ review.vibe }}
-                                                                        </p>
-                                                                        {% endif %}
-                                                                    </a>
                                                                     <!-- review card More Info modal trigger button (tablet+) -->
-                                                                    <button type="button" class="btn white-text mt-0 mb-3 mb-md-0 btn-more-info barber-blue px-3 d-none d-md-block"
+                                                                    <button type="button" class="btn white-text mt-3 mb-3 mb-md-0 btn-more-info barber-blue px-3 d-none d-md-block"
                                                                         data-toggle="modal" data-target="#_review-card-modal_{{ review.id }}">
                                                                         More info <i class="white-text fas fa-cut"></i>
                                                                     </button>
@@ -983,7 +907,7 @@
                                                         {% else %}
                                                         <div class="card-header reviews-card-header font-weight-light white-text">
                                                         {% endif %}
-                                                        <div class="star-rating-display yellow-text w-75 mx-auto text-center p-3">
+                                                        <div class="star-rating-display yellow-text mx-auto text-center p-3">
                                                             {% if review.rating == 5 %}
                                                             <i class="fas fa-star p-1"></i>
                                                             <i class="fas fa-star p-1 yellow-text"></i>
@@ -1016,46 +940,8 @@
                                                                     <p class="h2 mb-1 font-weight-normal text-center">{{
                                                                         review.barbershopname }}
                                                                     </p>
-                                                                    <a href="{{ url_for('_barbers', vibe=review.vibe) }}">
-                                                                        {% if review.vibe == 'cheap and cheerful' %}
-                                                                        <p class="barbers-vibe green-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe|replace(" and ", " & ") }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'work commute' %}
-                                                                        <p class="barbers-vibe brown-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'hipster' %}
-                                                                        <p class="barbers-vibe purple-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'cookie cutter' %}
-                                                                        <p class="barbers-vibe orange-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'old school' %}
-                                                                        <p class="barbers-vibe grey-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'sweatbox' %}
-                                                                        <p class="barbers-vibe cyan-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'dancefloor' %}
-                                                                        <p class="barbers-vibe dancefloor-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'silence is golden' %}
-                                                                        <p class="barbers-vibe teal-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% else %}
-                                                                        <p class="h5 font-weight-light barber-red-text mb-1 text-center">vibe: {{ review.vibe }}
-                                                                        </p>
-                                                                        {% endif %}
-                                                                    </a>
                                                                     <!-- review card More Info modal trigger button (tablet+) -->
-                                                                    <button type="button" class="btn white-text mt-0 mb-3 mb-md-0 btn-more-info barber-blue px-3 d-none d-md-block" data-toggle="modal"
+                                                                    <button type="button" class="btn white-text mt-3 mb-3 mb-md-0 btn-more-info barber-blue px-3 d-none d-md-block" data-toggle="modal"
                                                                         data-target="#_review-card-modal_{{ review.id }}">
                                                                         More info <i class="fas white-text fa-cut"></i>
                                                                     </button>
@@ -1192,7 +1078,7 @@
                                                     {% else %}
                                                     <div class="card-header reviews-card-header font-weight-light white-text">
                                                     {% endif %}
-                                                        <div class="star-rating-display yellow-text w-75 mx-auto text-center p-3">
+                                                        <div class="star-rating-display yellow-text mx-auto text-center p-3">
                                                             {% if review.rating == 5 %}
                                                             <i class="fas fa-star p-1"></i>
                                                             <i class="fas fa-star p-1 yellow-text"></i>
@@ -1225,46 +1111,8 @@
                                                                     <p class="h2 mb-1 font-weight-normal text-center">{{
                                                                         review.barbershopname }}
                                                                     </p>
-                                                                    <a href="{{ url_for('_barbers', vibe=review.vibe) }}">
-                                                                        {% if review.vibe == 'cheap and cheerful' %}
-                                                                        <p class="barbers-vibe green-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe|replace(" and ", " & ") }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'work commute' %}
-                                                                        <p class="barbers-vibe brown-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'hipster' %}
-                                                                        <p class="barbers-vibe purple-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'cookie cutter' %}
-                                                                        <p class="barbers-vibe orange-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'old school' %}
-                                                                        <p class="barbers-vibe grey-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'sweatbox' %}
-                                                                        <p class="barbers-vibe cyan-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'dancefloor' %}
-                                                                        <p class="barbers-vibe dancefloor-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% elif review.vibe == 'silence is golden' %}
-                                                                        <p class="barbers-vibe teal-text mb-1 mb-md-3 text-center">vibe: {{
-                                                                            review.vibe }}
-                                                                        </p>
-                                                                        {% else %}
-                                                                        <p class="h5 font-weight-light barber-red-text mb-1 text-center">vibe: {{ review.vibe }}
-                                                                        </p>
-                                                                        {% endif %}
-                                                                    </a>
                                                                     <!-- review card More Info modal trigger button (tablet+) -->
-                                                                    <button type="button" class="btn white-text mt-0 mb-3 mb-md-0 btn-more-info barber-blue px-3 d-none d-md-block" data-toggle="modal"
+                                                                    <button type="button" class="btn white-text mt-3 mb-3 mb-md-0 btn-more-info barber-blue px-3 d-none d-md-block" data-toggle="modal"
                                                                         data-target="#_review-card-modal_{{ review.id }}">
                                                                         More info <i class="fas white-text fa-cut"></i>
                                                                     </button>

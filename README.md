@@ -75,9 +75,9 @@ All pre-existing site content (user profiles, barbershop names, reviews etc.) at
 
 - The site boasts a dynamically-populated `.navbar` (collapsed on mobile devices) that is displayed across the top of each page and responds to whether the user happens to be logged in or not at any given time:
 <p align="center"><img src="docs/images/screenshots/clipadvisor-navbar-logged-out1.png" alt="Clipadvisor logged-out user navbar on mobile" width="15%" height="auto" style="margin-right: 20px;">
-<img src="docs/images/screenshots/clipadvisor-navbar-logged-out2.png" alt="Clipadvisor logged-out user navbar on tablet" width="25%" height="auto" style="margin-right: 20px;">
+<img src="docs/images/screenshots/clipadvisor-navbar-logged-out2.png" alt="Clipadvisor logged-out user navbar on tablet" width="30%" height="auto" style="margin-right: 20px;">
 <img src="docs/images/screenshots/clipadvisor-navbar-logged-in1.png" alt="Clipadvisor logged-in user navbar on mobile" width="15%" height="auto" style="margin-right: 20px;">
-<img src="docs/images/screenshots/clipadvisor-navbar-logged-in2.png" alt="Clipadvisor logged-in user navbar on tablet" width="25%" height="auto"></p>
+<img src="docs/images/screenshots/clipadvisor-navbar-logged-in2.png" alt="Clipadvisor logged-in user navbar on tablet" width="30%" height="auto"></p>
 
 
 #### Main landing (Home) page:
@@ -102,7 +102,7 @@ All pre-existing site content (user profiles, barbershop names, reviews etc.) at
 
 #### Login/Registration page
 
-- The login link in the site's main `.navbar` simply brings the user to the login page illustrated above. If they're not already registered at this point, they will have to do so by leaving the login page via the 'Register Here' button at the foot of the login form. This will redirect them to the registration form, where they can enter their details (as with all forms across the site, all `input` fields here are required)
+- The login link in the site's main `.navbar` simply brings the user to the login page described above. If they're not already registered at this point, they will have to do so by leaving the login page via the 'Register Here' button at the foot of the login form. This will redirect them to the registration form, where they can enter their details (as with all forms across the site, all `input` fields here are required)
 <p align="center"><img src="docs/images/screenshots/clipadvisor-login-form.png" alt="Clipadvisor login form" width="15%" height="auto" style="margin-right: 20px;">
 <img src="docs/images/screenshots/clipadvisor-registration-form.png" alt="Clipadvisor registration form" width="15%" height="auto"></p>
 
@@ -117,9 +117,9 @@ All pre-existing site content (user profiles, barbershop names, reviews etc.) at
   - 'Walk-Ins Welcome'
   - 'Cash Accepted'
 
-<p align="center"><img src="docs/images/screenshots/clipadvisor-barbers-nav-tabs1.png" alt="Clipadvisor Barbers page tabbed navbar UI" width="15%" height="auto" style="margin-right: 20px;">
-<img src="docs/images/screenshots/clipadvisor-barbers-nav-tabs2.png" alt="Clipadvisor Barbers page tabbed navbar UI" width="15%" height="auto" style="margin-right: 20px;">
-<img src="docs/images/screenshots/clipadvisor-barbers-nav-tabs3.png" alt="Clipadvisor Barbers page tabbed navbar UI" width="15%" height="auto" style="margin-right: 20px;">
+<p align="center"><img src="docs/images/screenshots/clipadvisor-barbers-nav-tabs1.png" alt="Clipadvisor Barbers page tabbed navbar UI" width="15%" height="auto" style="margin-right: 30px;">
+<img src="docs/images/screenshots/clipadvisor-barbers-nav-tabs2.png" alt="Clipadvisor Barbers page tabbed navbar UI" width="15%" height="auto" style="margin-right: 30px;">
+<img src="docs/images/screenshots/clipadvisor-barbers-nav-tabs3.png" alt="Clipadvisor Barbers page tabbed navbar UI" width="15%" height="auto" style="margin-right: 30px;">
 <img src="docs/images/screenshots/clipadvisor-barbers-nav-tabs4.png" alt="Clipadvisor Barbers page tabbed navbar UI" width="15%" height="auto"></p>
 
 - This is intended to enhance the overall UX by providing (relatively basic) search functionality, in lieu of an actual site-wide search bar (a potential future feature to be added at a later date)
