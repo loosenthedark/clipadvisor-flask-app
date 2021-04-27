@@ -29,7 +29,7 @@
 
 ## User Experience (UX)
 
-As we emerge from Level-5 lockdown, and normality slowly returns to the services and retail sectors, the majority of us will be looking forward to getting a long-overdue and much-needed haircut. Given that this set of circumstances will likely result in long waiting lists at barbers everywhere, it would be nice to know which businesses are worth waiting for and which should best be avoided.
+As we emerge from Level-5 lockdown, and normality slowly returns to the services and retail sectors, the majority of us will be looking forward to getting a long-overdue and much-needed haircut. Given that this set of circumstances will likely result in long waiting lists at barbers everywhere, it would be nice to know which businesses are worth waiting in line for and which should best be avoided.
 
 That's where Clipadvisor comes in, offering users a convenient, trustworthy and authoritative source of barbershop ratings and reviews.
 
@@ -73,7 +73,7 @@ All pre-existing site content (user profiles, barbershop names, reviews etc.) at
 
 #### Navigation
 
-- The site boasts a dynamically-generated `.navbar` (collapsed on mobile devices) that is displayed across the top of each page and responds to whether the user happens to be logged in or not at any given time:
+- The site boasts a dynamically-populated `.navbar` (collapsed on mobile devices) that is displayed across the top of each page and responds to whether the user happens to be logged in or not at any given time:
 <p align="center"><img src="docs/images/screenshots/clipadvisor-navbar-logged-out1.png" alt="Clipadvisor logged-out user navbar on mobile" width="15%" height="auto" style="margin-right: 20px;">
 <img src="docs/images/screenshots/clipadvisor-navbar-logged-out2.png" alt="Clipadvisor logged-out user navbar on tablet" width="25%" height="auto" style="margin-right: 20px;">
 <img src="docs/images/screenshots/clipadvisor-navbar-logged-in1.png" alt="Clipadvisor logged-in user navbar on mobile" width="15%" height="auto" style="margin-right: 20px;">
@@ -87,10 +87,10 @@ All pre-existing site content (user profiles, barbershop names, reviews etc.) at
 <p align="center"><img src="docs/images/screenshots/clipadvisor-landing1.png" alt="Clipadvisor landing page call-to-action" width="15%" height="auto"></p>
 
 - Assuming that the user _is not_ already logged-in, clicking on this `button` will bring them to the site's registration page. Here, they can either:
-  - fill out and submit a short form in order to create their profile (a requirement for posting reviews)
-  or
+  - fill out and submit a short form in order to create a profile (a requirement for posting reviews)
+  or...
   - click instead on the login `button` beneath the registration form, which will bring them to the login page where they can enter their previously-registered email and password in order to log in
-  - In either case, they will then be redirected to a page where they can compose and submit a review (a dismissible Flash welcome message - styled using Bootstrap's `.alert` classes - will appear between the main `.navbar` and the 'Rate your barber!' heading at the top of the `form` when they first arrive on this page):
+  - In either case, they will then be redirected to a page where they can compose and submit a review (a dismissible Flash welcome message - styled using Bootstrap's `.alert` classes - will appear between the main `.navbar` and the 'Rate your barber!' heading at the top of the `form` when they first arrive on this `/review-submit` page):
 <p align="center"><img src="docs/images/screenshots/clipadvisor-register-pre.png" alt="Clipadvisor registration form" width="15%" height="auto" style="margin-right: 20px;">
 <img src="docs/images/screenshots/clipadvisor-register-post.png" alt="Clipadvisor review submit form post-registration" width="15%" height="auto" style="margin-right: 20px;">
 <img src="docs/images/screenshots/clipadvisor-login-pre.png" alt="Clipadvisor login form" width="15%" height="auto" style="margin-right: 20px;">
@@ -102,29 +102,32 @@ All pre-existing site content (user profiles, barbershop names, reviews etc.) at
 
 #### Login/Registration page
 
-- The login link in the site's main `.navbar` simply brings the user to the login page illustrated above. If they're not already registered at this point, they will have to do so by leaving the login page via the 'Register Here' button at the foot of the login form. This will redirect them to the registration form, where they can enter their details (all `input` fields are once again required)
+- The login link in the site's main `.navbar` simply brings the user to the login page illustrated above. If they're not already registered at this point, they will have to do so by leaving the login page via the 'Register Here' button at the foot of the login form. This will redirect them to the registration form, where they can enter their details (as with all forms across the site, all `input` fields here are required)
 <p align="center"><img src="docs/images/screenshots/clipadvisor-login-form.png" alt="Clipadvisor login form" width="15%" height="auto" style="margin-right: 20px;">
 <img src="docs/images/screenshots/clipadvisor-registration-form.png" alt="Clipadvisor registration form" width="15%" height="auto"></p>
 
 #### Barbers page(s)
 
-- The Barbers link in the main `.navbar` leads the user to four interconnected pages, each of which applies a different filter to the list of barbers stored in the site's backend database:
+- The Barbers link in the main `.navbar` leads the user to four interconnected pages, each of which applies a different filter to the list of barbers stored in the app's backend database:
 <p align="center"><img src="docs/images/screenshots/clipadvisor-barbers.png" alt="Clipadvisor Barbers page screenshots across multiple device sizes" width="70%" height="auto"></p>
   
-  - A compact tabbed interface has been put in place using Bootstrap's `.nav-tabs` class for streamlined sorting of all stored barbershops under a variety of self-explanatory headings:
-    - 'All Barbers'
-    - 'Top-Rated'
-    - 'Walk-Ins Welcome'
-    - 'Cash Accepted'
+- A compact tabbed interface has been put in place using Bootstrap's `.nav-tabs` class for streamlined sorting of all stored barbershops under a variety of self-explanatory headings:
+  - 'All Barbers'
+  - 'Top-Rated'
+  - 'Walk-Ins Welcome'
+  - 'Cash Accepted'
+
 <p align="center"><img src="docs/images/screenshots/clipadvisor-barbers-nav-tabs1.png" alt="Clipadvisor Barbers page tabbed navbar UI" width="15%" height="auto" style="margin-right: 20px;">
 <img src="docs/images/screenshots/clipadvisor-barbers-nav-tabs2.png" alt="Clipadvisor Barbers page tabbed navbar UI" width="15%" height="auto" style="margin-right: 20px;">
 <img src="docs/images/screenshots/clipadvisor-barbers-nav-tabs3.png" alt="Clipadvisor Barbers page tabbed navbar UI" width="15%" height="auto" style="margin-right: 20px;">
 <img src="docs/images/screenshots/clipadvisor-barbers-nav-tabs4.png" alt="Clipadvisor Barbers page tabbed navbar UI" width="15%" height="auto"></p>
-  - This is intended to enhance the overall UX by providing (relatively basic) search functionality, in lieu of an actual site-wide search bar (a potential future feature to be added at a later date)
+
+- This is intended to enhance the overall UX by providing (relatively basic) search functionality, in lieu of an actual site-wide search bar (a potential future feature to be added at a later date)
 
 - In addition to this tabbed sorting, a visually-appealing colour scheme has also been applied to the alphabetised list of barbers displayed based on user descriptions: all "cheap & cheerful" barbers are thus given a light green `.card-header` element (etc.)
 
 - Furthermore, when a user clicks on one of these descriptor tags (e.g. 'cheap & cheerful') within the `.card-body` they are brought to a list comprised solely of barbers with that same 'vibe':
+
 <p align="center"><img src="docs/images/screenshots/clipadvisor-barbers-vibes-pages-1.png" alt="Clipadvisor Barbers categorised pages" width="12%" height="auto" style="margin-right: 0.5%;">
 <img src="docs/images/screenshots/clipadvisor-barbers-vibes-pages-2.png" alt="Clipadvisor Barbers categorised pages" width="12%" height="auto" style="margin-right: 0.5%;">
 <img src="docs/images/screenshots/clipadvisor-barbers-vibes-pages-3.png" alt="Clipadvisor Barbers categorised pages" width="12%" height="auto" style="margin-right: 0.5%;">
@@ -144,10 +147,10 @@ All pre-existing site content (user profiles, barbershop names, reviews etc.) at
 <p align="center"><img src="docs/images/screenshots/clipadvisor-recent-reviews2.png" alt="Clipadvisor Recent Reviews page 'More Info' modal screenshot on tablet" width="25%" height="auto"></p>
 
 - Logged-in users will notice that reviews they have previously submitted are displayed in bolder colours that make them stand out
-- They will also see two additional buttons attached to each of their submitted reviews allowing them to either **update** or **delete** the review in question (see User Stories for a more thorough explanation of this CRUD functionality)
+- They will also see two additional buttons attached to each of their submitted reviews allowing them to either **update** or **delete** the review in question (see User Stories for a more thorough exploration of this CRUD functionality)
 <p align="center"><img src="docs/images/screenshots/clipadvisor-recent-reviews3.png" alt="Clipadvisor Recent Reviews page logged-in user UI screenshot on desktop" width="60%" height="auto"></p>
 
-- As with the Barbers page(s) discussed above, pagination has been implemented at the foot of the main reviews UI. The number of reviews displayed per page is capped at ten. Users can navigate both backwards and forwards using custom pagination links.
+- As with the Barbers page(s) discussed above, pagination has been implemented at the foot of the Recent Reviews UI. The number of reviews displayed per page is capped at ten. Users can navigate both backwards and forwards using custom pagination links.
 <p align="center"><img src="docs/images/screenshots/clipadvisor-pagination-1.png" alt="Clipadvisor custom pagination links" width="15%" height="auto" style="margin-right: 1%;">
 <img src="docs/images/screenshots/clipadvisor-pagination-2.png" alt="Clipadvisor custom pagination links" width="15%" height="auto" style="margin-right: 1%;">
 <img src="docs/images/screenshots/clipadvisor-pagination-3.png" alt="Clipadvisor custom pagination links" width="15%" height="auto" style="margin-right: 1%;">
@@ -159,7 +162,7 @@ All pre-existing site content (user profiles, barbershop names, reviews etc.) at
 
 #### Submit A Review page
 
-- Once a user is logged in (see above), they may post a review to the site by completing a `form` element consisting of a total of nine `.form-group` input fields and a submit button. All nine of these fields are required (in the case of both the 'booking options' and 'payment options' fields, a minimum of one checkbox must be selected). A combination of browser default HTML5 `form` validation and both custom client-side and server-side validation prevents users from submitting incomplete forms.
+- Once a user is logged in (see above), they may post a review to the site by completing a `form` element consisting of a total of nine `.form-group` input fields and a submit button. All nine of these fields are required (in the case of both the 'booking options' and 'payment options' fields, a minimum of one checkbox must be selected). A combination of browser-default HTML5 `form` validation and both custom client-side and server-side validation prevents users from submitting incomplete forms.
 <p align="center"><img src="docs/images/screenshots/clipadvisor-review-submit-form.png" alt="Clipadvisor review submit form screenshot on tablet" width="25%" height="auto"></p>
 
 - When they have successfully completed and submitted this form, the user is redirected to the Recent Reviews page (see above), where they will see their posted review at the top of the page. There will also be a dismissible Flash messaging alert box right below the main `.navbar` thanking them for contributing to Clipadvisor.
@@ -261,7 +264,7 @@ Full application testing details can be found [here](testing.md)
 
 <p align="center"><img src="docs/images/screenshots/clipadvisor-database-session-crud-screenshot.png" alt="Clipadvisor database declaring models screenshot" width="30%" height="auto"></p>
 
-- Finally, [the following steps](https://www.postgresqltutorial.com/postgresql-create-table/) were executed from the command line to create Heroku Postgres (PostgreSQL) tables from the data
+- Finally, [these steps](https://www.postgresqltutorial.com/postgresql-create-table/) were executed from the command line to create Heroku Postgres (PostgreSQL) tables with the data obtained from Clipadvisor users
 
 
 
