@@ -2,12 +2,9 @@
 
 
 
-<p align="center"><img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" alt="Code Institute logo" width="200" height="auto"></p>
 <p align="center"><img src="docs/images/screenshots/clipadvisor-logo.png" alt="Clipadvisor logo" width="200" height="auto"></p>
 
 
-
-<p align="center" style="font-style:italic;">Code Institute Diploma in Software Development: Python and Data-Centric Development - Milestone Project</p>
 
 
 
@@ -361,7 +358,7 @@ The steps involved in deployment were as follows:
 
   - The repository housing the source code for the jQuery DateTimePicker plugin used in the `#review-submit-form` and `#review-update-form` can be found [here](https://github.com/xdan/datetimepicker)
 
-  - After trying everything including chatting with Igor on the Code Institute Tutor Assistance tab, and even going as far as creating a brand new workspace, uninstalling and then reinstalling all of the package dependencies from my `requirements.txt` file (none of which resolved the issue), I finally discovered that the cause of a persistent `sqlalchemy.exc.NoSuchModuleError: Can't load plugin: sqlalchemy.dialects:postgres` error was a bug linked to how SQLAlchemy stores the dialect for the project's Database URI (environment variable). After following the advice [on this forum](https://github.com/pallets/flask-sqlalchemy/issues/929), I was eventually able to overcome this problem by modifying the DB URI dialect in my `env.py` file
+  - After trying everything including creating a brand new workspace, uninstalling and then reinstalling all of the package dependencies from my `requirements.txt` file (none of which resolved the issue), I finally discovered that the cause of a persistent `sqlalchemy.exc.NoSuchModuleError: Can't load plugin: sqlalchemy.dialects:postgres` error was a bug linked to how SQLAlchemy stores the dialect for the project's Database URI (environment variable). After following the advice [on this forum](https://github.com/pallets/flask-sqlalchemy/issues/929), I was eventually able to overcome this problem by modifying the DB URI dialect in my `env.py` file
 
   - I was able to make Flash messages more visually appealing by adding some basic markup (for line breaks etc.) using the [`flask.Markup` extension](https://tedboy.github.io/flask/generated/generated/flask.Markup.html) after following advice posted on [this Stack Overflow thread](https://stackoverflow.com/questions/18225713/how-to-display-html-content-through-flask-messages)
 
