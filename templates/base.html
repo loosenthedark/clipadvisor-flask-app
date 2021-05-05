@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta property="og:title" content="Clipadvisor: Rate your barber!" />
+    <meta property="og:image" content="static/images/barbers-tools_background.jpg" />
+    <meta property="og:description" content="Clipadvisor is a data-centric SaaS application with full CRUD functionality, enabling users to post, view, edit and delete reviews of barbers" />
+    <meta property="og:url" content="https://clipadvisor-flask-app.herokuapp.com/" />
+
     <link rel="icon" href="../static/images/barbers-pole_favicon.png" type="image/png">
 
     <!-- Font Awesome -->
@@ -40,7 +45,8 @@
             <ul class="navbar-nav pt-2" id="navbar-nav-list">
                 {% block navbarnavhome %}
                 <li class="nav-item">
-                    <a class="nav-link px-md-2 px-xl-3" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link px-md-2 px-xl-3" href="{{ url_for('home') }}">Home <span
+                            class="sr-only">(current)</span></a>
                 </li>
                 {% endblock %}
                 {% block navbarnavbarbers %}
@@ -59,7 +65,8 @@
                 {% endblock %}
                 {% if session.user%}
                 {% block navbarnavmyreviews %}
-                <li class="nav-item"><a href="{{ url_for('my_reviews') }}" class="nav-link px-md-2 px-xl-3">My Reviews</a></li>
+                <li class="nav-item"><a href="{{ url_for('my_reviews') }}" class="nav-link px-md-2 px-xl-3">My
+                        Reviews</a></li>
                 {% endblock %}
                 {% endif %}
                 {% block navbarnavsubmitareview %}
