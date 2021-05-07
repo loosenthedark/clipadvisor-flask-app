@@ -1200,7 +1200,9 @@ blockquote:after {
     font-size: 2.6rem;
   }
 
-  .jumbotron hr,
+  .jumbotron hr {
+    width: 450px;
+  }
   .jumbotron hr + p {
     max-width: 450px;
   }

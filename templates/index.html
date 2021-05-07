@@ -11,8 +11,8 @@
 <div class="jumbotron form-card text-center">
     <h2 class="h1-responsive mt-xl-4 mx-xl-5">Know a good barber?</h2>
     <p class="lead mx-xl-5">Then tell us below!</p>
-    <hr class="my-2 mx-xl-5">
-    <p class="mx-xl-5">Submit your review today to be in with a chance of winning a €100 barbershop voucher</p>
+    <hr class="my-2 mx-xl-auto">
+    <p class="mx-xl-auto">Submit your review today to be in with a chance of winning a €100 barbershop voucher</p>
     {% if not session.user %}
     <a class="btn barber-blue white-text btn-lg mx-xl-auto mb-xl-4" href="{{ url_for('register') }}" role="button">Rate your
         barber <i class="fas fa-cut white-text pt-1"></i></a>
