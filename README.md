@@ -243,7 +243,7 @@ Full application testing details can be found [here](testing.md)
 
 
 
-## Database
+## <a name="db"></a>Database
 
 - To get started, [the following steps were followed using Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/quickstart/#quickstart):
   1. Create the Flask application
@@ -265,7 +265,7 @@ Full application testing details can be found [here](testing.md)
 
 
 
-## <a name="deployment"></a>Deployment
+## Deployment
 
 A development version of this project was hosted on [**GitHub**](https://github.com/), with [**Gitpod**](https://gitpod.io/workspaces) as the chosen IDE. At the time of writing it has only one (master) branch.
 
@@ -370,7 +370,7 @@ The steps involved in deployment were as follows:
 
   - I received pointers for generating email in Python from contact form user input from [this Corey Schafer video tutorial](https://www.youtube.com/watch?v=JRCJ6RtE3xU)
   
-  - Lastly, several code blocks used in the [Deployment section of this Markdown file](#deployment) have been beautified with the free-to-use [Ray.so](https://ray.so/) tool
+  - Lastly, several code blocks used in the [Database section of this Markdown file](#db) have been beautified with the free-to-use [Ray.so](https://ray.so/) tool
 
 ### Acknowledgements
 
