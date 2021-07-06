@@ -162,7 +162,7 @@ All pre-existing site content (user profiles, barbershop names, reviews etc.) at
 - Once a user is logged in (see above), they may post a review to the site by completing a `form` element consisting of a total of nine `.form-group` input fields and a submit button. All nine of these fields are required (in the case of both the 'booking options' and 'payment options' fields, a minimum of one checkbox must be selected). A combination of browser-default HTML5 `form` validation and both custom client-side and server-side validation prevents users from submitting incomplete forms.
 <p align="center"><img src="docs/images/screenshots/clipadvisor-review-submit-form.png" alt="Clipadvisor review submit form screenshot on tablet" width="25%" height="auto"></p>
 
-- When they have successfully completed and submitted this form, the user is redirected to the Recent Reviews page (see above), where they will see their posted review at the top of the page. There will also be a dismissible Flash messaging alert box right below the main `.navbar` thanking them for contributing to Clipadvisor.
+- When they have successfully completed and submitted this form, the user is redirected to the Recent Reviews page (see below), where they will see their posted review at the top of the page. There will also be a dismissible Flash messaging alert box right below the main `.navbar` thanking them for contributing to Clipadvisor.
 <p align="center"><img src="docs/images/screenshots/clipadvisor-review-submit-post-submit-redirect.png" alt="Clipadvisor review submit form post-submission redirect screenshot on tablet" width="25%" height="auto"></p>
 
 #### My Reviews page
